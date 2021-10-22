@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:musicappp/Library.dart';
-import 'package:musicappp/Player.dart';
-import 'package:musicappp/catogories.dart';
-import 'package:musicappp/favorites.dart';
-import 'package:musicappp/options.dart';
-import 'package:musicappp/savedplaylist.dart';
+import 'package:e_commerce/Library.dart';
+import 'package:e_commerce/Player.dart';
+import 'catogories.dart';
+import 'favorites.dart';
+import 'options.dart';
+import 'savedplaylist.dart';
+import 'songslist.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -151,14 +153,18 @@ class Mainpagee extends StatelessWidget {
               children: [
                Stack(
                  children: [
-              Container(
-              height: 150.0,
-              width: 100.0,
-              child: Neumorphic(
-                  child: Image.asset('assets/4.png'),
+              MaterialButton(
+                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                padding: EdgeInsets.only(left: 5),
+                child: Container(
+                height: 150.0,
+                width: 100.0,
+                child: Neumorphic(
+                    child: Image.asset('assets/4.png'),
 
-              ),
+                ),
             ),
+              ),
                 Positioned(
                   bottom: 0,
                   child: Container(
@@ -166,7 +172,7 @@ class Mainpagee extends StatelessWidget {
 
                    margin: EdgeInsets.only(left: 13.0),
                     child: Neumorphic(
-                      child: Text(' Wedding ',
+                      child: Text(' Hip hop ',
                         style: TextStyle(
                           color: Colors.brown,
                           fontWeight: FontWeight.bold,
@@ -191,12 +197,16 @@ class Mainpagee extends StatelessWidget {
                ),
                 Stack(
                   children: [
-                    Container(
-                      height: 150.0,
-                      width: 100.0,
-                      child: Neumorphic(
-                        child: Image.asset('assets/4.png'),
+                    MaterialButton(
+                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Player()));},
+                      padding: EdgeInsets.only(left: 5),
+                      child: Container(
+                        height: 150.0,
+                        width: 100.0,
+                        child: Neumorphic(
+                          child: Image.asset('assets/4.png'),
 
+                        ),
                       ),
                     ),
                     Positioned(
@@ -231,12 +241,16 @@ class Mainpagee extends StatelessWidget {
                 ),
                 Stack(
                   children: [
-                    Container(
-                      height: 150.0,
-                      width: 100.0,
-                      child: Neumorphic(
-                        child: Image.asset('assets/4.png'),
+                    MaterialButton(
+                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Player()));},
+                      padding: EdgeInsets.only(left: 5),
+                      child: Container(
+                        height: 150.0,
+                        width: 100.0,
+                        child: Neumorphic(
+                          child: Image.asset('assets/4.png'),
 
+                        ),
                       ),
                     ),
                     Positioned(
@@ -276,125 +290,10 @@ class Mainpagee extends StatelessWidget {
 
             ),
             SizedBox(height: 40.0,),
-
-            Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 50.0),
-                  child: Text('More Music',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-
-                  ),),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left:250.0),
-                  height: 50,
-                  width: 50,
-                  child: Neumorphic(
-
-                    child: IconButton(
-
-                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Library()));} ,
-                      color: Colors.white,
-                      icon: const Icon(Icons.add),
-
-
-
-                    ),
-                    style: NeumorphicStyle(
-                        shape: NeumorphicShape.concave,
-                        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                        depth: 8,
-                        lightSource: LightSource.topLeft,
-                        color: Colors.cyan
-                    ),
-
-
-                  ),
-
-                )
-
-              ],
-            ),
-            Container(
-
-              child: Neumorphic(
-              child: Row(
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 20.0),
-
-                    height: 50.0,
-                    width: 50.0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('assets/5.jpg'),
-                      ),
-
-                      border: Border.all(
-                        width: 4,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 10.0),
-                    child: TextButton(
-                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Player()));},
-                      child: Text('Mad Love ',
-                        style: TextStyle(
-
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-
-
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 120.0),
-                    child: Icon(Icons.arrow_left,color: Colors.white,),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: Icon(Icons.pause,color: Colors.white,),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: Icon(Icons.arrow_right,color: Colors.white,),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 80.0),
-                    child: Icon(Icons.close,color: Colors.white,),
-                  ),
-
-
-
-
-
-
-                ],
-              ),
-                style: NeumorphicStyle(
-                    shape: NeumorphicShape.concave,
-                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                    depth: 8,
-                    lightSource: LightSource.topLeft,
-                    color: Colors.cyan
-                ),
-              ),
-
-
-            ),
-
-            Container(
-              child: Neumorphic(
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Container(
+                color: Colors.grey,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -402,24 +301,12 @@ class Mainpagee extends StatelessWidget {
 
                       height: 60,
                       width: 60,
-                      child: Neumorphic(
+                      child: IconButton(
 
-                        child: IconButton(
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} ,
+                        color: Colors.white,
+                        icon: const Icon(Icons.home),
 
-                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} ,
-                          color: Colors.white,
-                          icon: const Icon(Icons.home),
-
-
-
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                            depth: 8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.cyan
-                        ),
 
 
                       ),
@@ -429,24 +316,12 @@ class Mainpagee extends StatelessWidget {
 
                       height: 60,
                       width: 60,
-                      child: Neumorphic(
+                      child: IconButton(
 
-                        child: IconButton(
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
+                        color: Colors.white,
+                        icon: const Icon(Icons.music_note),
 
-                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
-                          color: Colors.white,
-                          icon: const Icon(Icons.music_note),
-
-
-
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                            depth: 8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.cyan
-                        ),
 
 
                       ),
@@ -456,51 +331,26 @@ class Mainpagee extends StatelessWidget {
 
                       height: 60,
                       width: 60,
-                      child: Neumorphic(
+                      child: IconButton(
 
-                        child: IconButton(
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Favorites()));} ,
+                        color: Colors.white,
+                        icon: const Icon(Icons.favorite),
 
-                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Favorites()));} ,
-                          color: Colors.white,
-                          icon: const Icon(Icons.favorite),
-
-
-
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                            depth: 8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.cyan
-                        ),
 
 
                       ),
 
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 20.0),
                       height: 60,
                       width: 60,
-                      child: Neumorphic(
+                      child: IconButton(
 
-                        child: IconButton(
+                        onPressed: () {} ,
+                        color: Colors.white,
+                        icon: const Icon(Icons.person),
 
-                          onPressed: () {} ,
-                          color: Colors.white,
-                          icon: const Icon(Icons.person),
-
-
-
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                            depth: 8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.cyan
-                        ),
 
 
                       ),
@@ -509,15 +359,8 @@ class Mainpagee extends StatelessWidget {
 
                   ],
                 ),
-                style: NeumorphicStyle(
-                    shape: NeumorphicShape.concave,
-                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                    depth: 8,
-                    lightSource: LightSource.topLeft,
-                    color: Colors.cyan
-                ),
-              ),
 
+              ),
             ),
 
 
