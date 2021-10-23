@@ -44,7 +44,7 @@ class Songlist extends StatelessWidget {
                         padding: EdgeInsets.only(left: 30,right: 130),
 
                       ),
-                      Icon(Icons.favorite_outline, color:navigationbarcolor,size: 30,)
+                      Icon(Icons.favorite_outline, color:navigationbariconcolor,size: 30,)
                     ],
                   ),
                 ],
@@ -73,9 +73,9 @@ class Songlist extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Icon(Icons.favorite_outline, color: navigationbarcolor, size: 30,),
+                      Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
                       SizedBox(width: 10,),
-                      Icon(Icons.add_circle_outline, color: navigationbarcolor,size: 30,)
+                      Icon(Icons.add_circle_outline, color: navigationbariconcolor,size: 30,)
                     ],
                   ),
                   SizedBox(height: 20,),
@@ -97,9 +97,9 @@ class Songlist extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Icon(Icons.favorite_outline, color: navigationbarcolor, size: 30,),
+                      Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
                       SizedBox(width: 10,),
-                      Icon(Icons.add_circle_outline, color: navigationbarcolor,size: 30,)
+                      Icon(Icons.add_circle_outline, color: navigationbariconcolor,size: 30,)
                     ],
                   ),
                   SizedBox(height: 20,),
@@ -121,9 +121,9 @@ class Songlist extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Icon(Icons.favorite_outline, color: navigationbarcolor, size: 30,),
+                      Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
                       SizedBox(width: 10,),
-                      Icon(Icons.add_circle_outline, color: navigationbarcolor,size: 30,)
+                      Icon(Icons.add_circle_outline, color: navigationbariconcolor,size: 30,)
                     ],
                   ),
                   SizedBox(height: 20,),
@@ -145,9 +145,9 @@ class Songlist extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Icon(Icons.favorite_outline, color: navigationbarcolor, size: 30,),
+                      Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
                       SizedBox(width: 10,),
-                      Icon(Icons.add_circle_outline, color: navigationbarcolor,size: 30,)
+                      Icon(Icons.add_circle_outline, color: navigationbariconcolor,size: 30,)
                     ],
                   ),
                   SizedBox(height: 20,),
@@ -169,9 +169,9 @@ class Songlist extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Icon(Icons.favorite_outline, color: navigationbarcolor, size: 30,),
+                      Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
                       SizedBox(width: 10,),
-                      Icon(Icons.add_circle_outline, color: navigationbarcolor,size: 30,)
+                      Icon(Icons.add_circle_outline, color: navigationbariconcolor,size: 30,)
                     ],
                   ),
                   SizedBox(height: 20,),
@@ -193,9 +193,9 @@ class Songlist extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Icon(Icons.favorite_outline, color: navigationbarcolor, size: 30,),
+                      Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
                       SizedBox(width: 10,),
-                      Icon(Icons.add_circle_outline, color: navigationbarcolor,size: 30,)
+                      Icon(Icons.add_circle_outline, color: navigationbariconcolor,size: 30,)
                     ],
                   ),
                   SizedBox(height: 20,),
@@ -217,9 +217,9 @@ class Songlist extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Icon(Icons.favorite_outline, color: navigationbarcolor, size: 30,),
+                      Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
                       SizedBox(width: 10,),
-                      Icon(Icons.add_circle_outline, color: navigationbarcolor,size: 30,)
+                      Icon(Icons.add_circle_outline, color: navigationbariconcolor,size: 30,)
                     ],
                   ),
                   SizedBox(height: 20,),
