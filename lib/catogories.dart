@@ -1,15 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:musicappp/Library.dart';
-import 'package:musicappp/Mainpage.dart';
-import 'package:musicappp/catogory.dart';
-import 'package:musicappp/favorites.dart';
-import 'package:musicappp/savedplaylist.dart';
-
-
-
-
+import 'Library.dart';
+import 'Mainpage.dart';
+import 'catogory.dart';
+import 'favorites.dart';
+import 'savedplaylist.dart';
+import 'colors.dart';
 
 class Categories extends StatelessWidget {
   const Categories({Key? key}) : super(key: key);
@@ -17,7 +14,7 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan,
+      backgroundColor: Color(0xFF1F2933),
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
@@ -26,51 +23,54 @@ class Categories extends StatelessWidget {
           },
           icon: Icon(Icons.arrow_back_ios_rounded),
         ),
-        title: Text('Categories'),
+        title: Text('Categories',),
+
         centerTitle: true,
-        backgroundColor: Colors.cyan,
+        backgroundColor: Color(0xFF323F4B),
 
       ),
+
 
 //search bar
 
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(30, 20, 50, 0),
+          padding: const EdgeInsets.fromLTRB(30, 25, 50, 0),
           child: Column(
             children:<Widget> [
               Neumorphic(
                 child: Container(
-                  height: 50,
+                  height: 35,
                   width: 350,
-                  color: Colors.white,
+                  color: Color(0xFF9AA5B1),
                   child: TextField(decoration: InputDecoration(
-                      icon: Icon(Icons.search, color: Colors.black54,),
-                      suffixIcon: Icon(Icons.mic, color: Colors.black54),
+                      icon: Icon(Icons.search, color: Color(0xFF323F4B),),
                       hintText: 'Search for ...',
                       hintStyle: TextStyle(
-                          fontSize:20
+                          fontSize:15,
+                          color: Color(0xFFF5F7FA),
                       ),
 
-                      fillColor: Colors.white,
+                      fillColor: Color(0xFF9AA5B1),
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       filled: true,
                       border: UnderlineInputBorder(),
                       labelStyle: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 30,
+                        fontSize: 25,
+                        textBaseline: TextBaseline.alphabetic,
                       )
 
                   ),
                   ),
                 ),
                 style: NeumorphicStyle(
-                    shape: NeumorphicShape.concave,
-                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                    depth: -8,
-                    lightSource: LightSource.topLeft,
-                    color: Colors.grey
+                    shape: NeumorphicShape.flat,
+                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(40)),
+                    depth: 0,
+                    color: Color(0xFF323F4B),
                 ),
               ),
               SizedBox(height: 30,),
@@ -81,50 +81,41 @@ class Categories extends StatelessWidget {
                   Container(
                       width: 300,
                       height: 90,
-                      color: Colors.cyan,
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: containercolor,
+                      ),
 
                       child: Stack(
                         children:<Widget> [
-
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
-                            child: Neumorphic(
-                              child: Container(
-                                  height: 70,
-                                  width: 300,
-                                  color: Colors.cyan,
-                                  child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(120, 10, 30, 5),
-                                    child: FlatButton(
-                                      onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
-                                      },
-                                      child: Column(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(120, 10, 30, 5),
+                              child: FlatButton(
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
+                                },
+                                child: Column(
 
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
 
-                                          Text('The Party Track',style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold
-                                          ),
-                                          ),
-                                          Text('10k songs', style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white
-                                          ),)
-                                        ],
-                                      ),
+                                    Text('The Party Track',style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
                                     ),
-                                  )
-                              ),
-                              style: NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
-                                  depth: 5,
-                                  lightSource: LightSource.topLeft,
-                                  color: Colors.black
+                                    ),
+                                    Text('10k songs', style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                    ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -147,54 +138,44 @@ class Categories extends StatelessWidget {
                         ],
                       )
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 15,),
                   Container(
                       width: 300,
                       height: 90,
-                      color: Colors.cyan,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: containercolor,
+                      ),
 
                       child: Stack(
                         children:<Widget> [
 
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
-                            child: Neumorphic(
-                              child: Container(
-                                  height: 70,
-                                  width: 300,
-                                  color: Colors.cyan,
-                                  child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(120, 10, 30, 5),
-                                    child: FlatButton(
-                                      onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
-                                      },
-                                      child: Column(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(120, 10, 30, 5),
+                              child: FlatButton(
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
+                                },
+                                child: Column(
 
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
 
-                                          Text('Dance Track',style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold
-                                          ),
-                                          ),
-                                          Text('10k songs', style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white
-                                          ),)
-                                        ],
-                                      ),
+                                    Text('Dance Track',style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
                                     ),
-                                  )
-                              ),
-                              style: NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
-                                  depth: 5,
-                                  lightSource: LightSource.topLeft,
-                                  color: Colors.black
+                                    ),
+                                    Text('10k songs', style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                    ),)
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -217,54 +198,46 @@ class Categories extends StatelessWidget {
                         ],
                       )
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 15,),
                   Container(
                       width: 300,
                       height: 90,
-                      color: Colors.cyan,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: containercolor,
+                      ),
+
 
                       child: Stack(
                         children:<Widget> [
 
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
-                            child: Neumorphic(
-                              child: Container(
-                                  height: 70,
-                                  width: 300,
-                                  color: Colors.cyan,
-                                  child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(120, 10, 30, 5),
-                                    child: FlatButton(
-                                      onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
-                                      },
-                                      child: Column(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(120, 10, 30, 5),
+                              child: FlatButton(
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
+                                },
+                                child: Column(
 
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
 
-                                          Text('Function Track',style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold
-                                          ),
-                                          ),
-                                          Text('10k songs', style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white
-                                          ),)
-                                        ],
-                                      ),
+                                    Text('Function Track',style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+
                                     ),
-                                  )
-                              ),
-                              style: NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
-                                  depth: 5,
-                                  lightSource: LightSource.topLeft,
-                                  color: Colors.black
+                                    ),
+                                    Text('10k songs', style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                    ),)
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -287,54 +260,45 @@ class Categories extends StatelessWidget {
                         ],
                       )
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 15,),
                   Container(
                       width: 300,
                       height: 90,
-                      color: Colors.cyan,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: containercolor,
+                      ),
+
 
                       child: Stack(
                         children:<Widget> [
 
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
-                            child: Neumorphic(
-                              child: Container(
-                                  height: 70,
-                                  width: 300,
-                                  color: Colors.cyan,
-                                  child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(120, 10, 30, 5),
-                                    child: FlatButton(
-                                      onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
-                                      },
-                                      child: Column(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(120, 10, 30, 5),
+                              child: FlatButton(
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
+                                },
+                                child: Column(
 
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
 
-                                          Text('Disco Track',style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold
-                                          ),
-                                          ),
-                                          Text('10k songs', style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white
-                                          ),)
-                                        ],
-                                      ),
+                                    Text('Disco Track',style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
                                     ),
-                                  )
-                              ),
-                              style: NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
-                                  depth: 5,
-                                  lightSource: LightSource.topLeft,
-                                  color: Colors.black
+                                    ),
+                                    Text('10k songs', style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                    ),)
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -357,144 +321,216 @@ class Categories extends StatelessWidget {
                         ],
                       )
                   ),
+                  SizedBox(height: 15,),
+                  Container(
+                      width: 300,
+                      height: 90,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: containercolor,
+                      ),
+
+
+                      child: Stack(
+                        children:<Widget> [
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(120, 10, 30, 5),
+                              child: FlatButton(
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
+                                },
+                                child: Column(
+
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+
+                                    Text('Disco Track',style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: darkfontcolor,
+                                    ),
+                                    ),
+                                    Text('10k songs', style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: darkfontcolor,
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                              top:00 ,
+                              left: 15,
+                              child: Container(
+                                width: 75,
+                                height: 75,
+                                decoration: new BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  image: new DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: AssetImage('assets/4.png')) ,
+                                  borderRadius: BorderRadius.circular(20),
+
+                                ),
+                              )),
+
+                        ],
+                      )
+                  ),
+                  SizedBox(height: 15,),
+                  Container(
+                      width: 300,
+                      height: 90,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: containercolor,
+                      ),
+
+
+                      child: Stack(
+                        children:<Widget> [
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(120, 10, 30, 5),
+                              child: FlatButton(
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
+                                },
+                                child: Column(
+
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+
+                                    Text('Disco Track',style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: darkfontcolor,
+                                    ),
+                                    ),
+                                    Text('10k songs', style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: darkfontcolor,
+                                    ),)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                              top:00 ,
+                              left: 15,
+                              child: Container(
+                                width: 75,
+                                height: 75,
+                                decoration: new BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  image: new DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: AssetImage('assets/4.png')) ,
+                                  borderRadius: BorderRadius.circular(20),
+
+                                ),
+                              )),
+
+                        ],
+                      )
+                  ),
+
+
 
 
 
                 ],
               ),
-              Container(
-                margin: EdgeInsets.only(top: 110.0),
-                child: Neumorphic(
+
+          SizedBox(height: 40.0,),
+          Padding(
+             padding: const EdgeInsets.only(top: 30),
+                child: Container(
+                  color: naviationbarcolor,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
 
-                        height: 60,
-                        width: 60,
-                        child: Neumorphic(
-
-                          child: IconButton(
-
-                            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} ,
-                            color: Colors.white,
-                            icon: const Icon(Icons.home),
+                           height: 60,
+                            width: 60,
+                            child: IconButton(
+                              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} ,
+                               color: navigationbariconcolor,
+                                icon: const Icon(Icons.home),
 
 
 
-                          ),
-                          style: NeumorphicStyle(
-                              shape: NeumorphicShape.concave,
-                              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                              depth: 8,
-                              lightSource: LightSource.topLeft,
-                              color: Colors.cyan
-                          ),
+                  ),
 
-
-                        ),
-
-                      ),
+                ),
                       Container(
 
-                        height: 60,
-                        width: 60,
-                        child: Neumorphic(
+                           height: 60,
+                           width: 60,
+                           child: IconButton(
 
-                          child: IconButton(
-
-                            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
-                            color: Colors.white,
-                            icon: const Icon(Icons.music_note),
+                              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
+                              color: navigationbariconcolor,
+                              icon: const Icon(Icons.music_note),
 
 
 
-                          ),
-                          style: NeumorphicStyle(
-                              shape: NeumorphicShape.concave,
-                              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                              depth: 8,
-                              lightSource: LightSource.topLeft,
-                              color: Colors.cyan
-                          ),
+                  ),
 
-
-                        ),
-
-                      ),
+                ),
                       Container(
 
-                        height: 60,
-                        width: 60,
-                        child: Neumorphic(
-
+                          height: 60,
+                          width: 60,
                           child: IconButton(
 
-                            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Favorites()));} ,
-                            color: Colors.white,
-                            icon: const Icon(Icons.favorite),
+                             onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Favorites()));} ,
+                             color: navigationbariconcolor,
+                             icon: const Icon(Icons.favorite),
 
 
 
-                          ),
-                          style: NeumorphicStyle(
-                              shape: NeumorphicShape.concave,
-                              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                              depth: 8,
-                              lightSource: LightSource.topLeft,
-                              color: Colors.cyan
-                          ),
+                  ),
 
-
-                        ),
-
-                      ),
+                ),
                       Container(
-                        padding: EdgeInsets.only(left: 20.0),
-                        height: 60,
-                        width: 60,
-                        child: Neumorphic(
-
+                          height: 60,
+                          width: 60,
                           child: IconButton(
 
                             onPressed: () {} ,
-                            color: Colors.white,
+                            color: navigationbariconcolor,
                             icon: const Icon(Icons.person),
 
 
 
-                          ),
-                          style: NeumorphicStyle(
-                              shape: NeumorphicShape.concave,
-                              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                              depth: 8,
-                              lightSource: LightSource.topLeft,
-                              color: Colors.cyan
-                          ),
-
-
-                        ),
-
-                      ),
-
-                    ],
                   ),
-                  style: NeumorphicStyle(
-                      shape: NeumorphicShape.concave,
-                      boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                      depth: 8,
-                      lightSource: LightSource.topLeft,
-                      color: Colors.cyan
-                  ),
+
                 ),
 
-              ),
+              ],
+            ),
 
-            ],
           ),
         ),
 
 
+
+],
+
+
+      ),
+    ),
       ),
     );
 
