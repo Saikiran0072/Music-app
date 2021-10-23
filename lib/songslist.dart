@@ -64,7 +64,7 @@ class Songlist extends StatelessWidget {
                           padding: EdgeInsets.only(top: 15, left: 8),
                           height: 80,
                           width: 250,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                           child: Column(
                             children: [
                               Text("song 1", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -88,7 +88,7 @@ class Songlist extends StatelessWidget {
                           padding: EdgeInsets.only(top: 15, left: 8),
                           height: 80,
                           width: 250,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                           child: Column(
                             children: [
                               Text("song 2", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -112,7 +112,7 @@ class Songlist extends StatelessWidget {
                           padding: EdgeInsets.only(top: 15, left: 8),
                           height: 80,
                           width: 250,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                           child: Column(
                             children: [
                               Text("song 3", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -136,7 +136,7 @@ class Songlist extends StatelessWidget {
                           padding: EdgeInsets.only(top: 15, left: 8),
                           height: 80,
                           width: 250,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                           child: Column(
                             children: [
                               Text("song 4", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -160,7 +160,7 @@ class Songlist extends StatelessWidget {
                           padding: EdgeInsets.only(top: 15, left: 8),
                           height: 80,
                           width: 250,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                           child: Column(
                             children: [
                               Text("song 5", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -184,7 +184,7 @@ class Songlist extends StatelessWidget {
                           padding: EdgeInsets.only(top: 15, left: 8),
                           height: 80,
                           width: 250,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                           child: Column(
                             children: [
                               Text("song 6", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -208,7 +208,7 @@ class Songlist extends StatelessWidget {
                           padding: EdgeInsets.only(top: 15, left: 8),
                           height: 80,
                           width: 250,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                           child: Column(
                             children: [
                               Text("song 7", style: TextStyle(fontSize: 15,color: darkfontcolor),),
