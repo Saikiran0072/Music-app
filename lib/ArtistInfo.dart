@@ -44,7 +44,7 @@ class Artist extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 130),
                       child: MaterialButton(onPressed: (){},child: Text("FOLLOW"), color: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
                     ),
-                    Icon(Icons.play_circle_fill_outlined, size: 40, color: navigationbarcolor,)
+                    Icon(Icons.play_circle_fill_outlined, size: 40, color: navigationbariconcolor,)
                   ],
                 ),
                 SizedBox(height: 10,),
