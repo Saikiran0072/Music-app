@@ -549,7 +549,7 @@ class Mainpagee extends StatelessWidget {
                       child: IconButton(
 
                         onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} ,
-                        color: navigationbarcolor,
+                        color: navigationbariconcolor,
                         icon: const Icon(Icons.home),
 
 
@@ -564,7 +564,7 @@ class Mainpagee extends StatelessWidget {
                       child: IconButton(
 
                         onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
-                        color: navigationbarcolor,
+                        color: navigationbariconcolor,
                         icon: const Icon(Icons.music_note),
 
 
@@ -579,7 +579,7 @@ class Mainpagee extends StatelessWidget {
                       child: IconButton(
 
                         onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Favorites()));} ,
-                        color: navigationbarcolor,
+                        color: navigationbariconcolor,
                         icon: const Icon(Icons.favorite),
 
 
@@ -593,7 +593,7 @@ class Mainpagee extends StatelessWidget {
                       child: IconButton(
 
                         onPressed: () {} ,
-                        color: navigationbarcolor,
+                        color: navigationbariconcolor,
                         icon: const Icon(Icons.person),
 
 
