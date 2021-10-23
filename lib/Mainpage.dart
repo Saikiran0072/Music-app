@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:e_commerce/Library.dart';
-import 'package:e_commerce/Player.dart';
+import 'Library.dart';
+import 'Player.dart';
 import 'catogories.dart';
 import 'favorites.dart';
 import 'options.dart';
 import 'savedplaylist.dart';
+import 'colors.dart';
 import 'songslist.dart';
+
 
 
 void main() {
@@ -21,16 +23,22 @@ class Mainpagee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan,
+
+      backgroundColor: Color(0xFF1F2933),
       appBar: AppBar(
-        backgroundColor:Colors.cyan,
-        title: Text('MUSIC'),
+        backgroundColor:Color(0xFF323F4B),
+        title: Text('MUSIC',
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Color(0xFFF5F7FA),
+          ),
+        ),
         leading: IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Options()));},
           icon: Icon(
             Icons.menu,
+            color: Color(0xFF9AA5B1),
 
-          ),
-        ),
+          ),),
         actions: [
           Container(
             height: 50.0,
@@ -44,256 +52,493 @@ class Mainpagee extends StatelessWidget {
 
               border: Border.all(
                 width: 4,
-                color: Theme.of(context).scaffoldBackgroundColor,
+                color: Color(0xFF9AA5B1),
               ),
             ),
           ),
-
-
         ],
       ),
 
+
       body: SingleChildScrollView(
-        child: Column(
-          children: [
+        child: SafeArea(
 
-            SizedBox(height: 30.0,),
-        Container(
+          child:Column(
+            children: [
 
-
-        child: Neumorphic(
-
-        margin: EdgeInsets.fromLTRB(30.0, 0  , 30, 0),
-        child: TextField(
-          decoration: InputDecoration(
-
-          icon: Icon(Icons.search),
-            hintText:'Search for ...',
-            enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-            ),
-            fillColor: Colors.white,
-            filled: true,
-            border: UnderlineInputBorder(
-            ),
-            labelStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,color: Colors.black
-            )
-        ),
-          cursorColor: Colors.black,
+              SizedBox(height: 30.0,),
 
 
-        ),
-        style: NeumorphicStyle(
-            shape: NeumorphicShape.concave,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-            depth: -8,
-            lightSource: LightSource.topLeft,
-            color: Colors.white,
-        ),
+              //search bar
+              Container(
 
-    ),
-
-    ),
-            SizedBox(height: 50.0,),
-            Center(
-              child: Container(
-                height: 150.0,
-                width: 300.0,
                 child: Neumorphic(
-                child: Image.asset('assets/4.png'),
-
-                ),
-                ),
-              ),
-            Row(
-              children: [
-                SizedBox(height: 90.0,),
-                Container(
-                  margin: EdgeInsets.fromLTRB(60.0, 0.0, 0.0, 0.0),
-                  child: Icon(Icons.format_list_bulleted_sharp,
-
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(left: 30.0),
-                  child: Text('Categories',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-
-                  ),
-                  ),
-                ),
-                Container(
-
-                  padding: EdgeInsets.only(left: 160.0),
-                  child: Neumorphic(
-                    child: RaisedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Categories()));},
-                      child: Text('View All'),
-                      color: Colors.cyan,
-                    ),
-                    style: NeumorphicStyle(
-
-
-                      depth: 8,
-
-                      color: Colors.cyan,
-                      boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                    ),
-                  ),
-                ),
-
-              ],
-            ),
-            SizedBox(height: 10.0,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-               Stack(
-                 children: [
-              MaterialButton(
-                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
-                padding: EdgeInsets.only(left: 5),
-                child: Container(
-                height: 150.0,
-                width: 100.0,
-                child: Neumorphic(
-                    child: Image.asset('assets/4.png'),
-
-                ),
-            ),
-              ),
-                Positioned(
-                  bottom: 0,
-                  child: Container(
-                    width: 100.0,
-
-                   margin: EdgeInsets.only(left: 13.0),
-                    child: Neumorphic(
-                      child: Text(' Hip hop ',
-                        style: TextStyle(
-                          color: Colors.brown,
+                  margin: EdgeInsets.fromLTRB(30.0, 0  , 30, 0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.search),
+                        hintText:'Search for ...',
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFF9AA5B1)),
+                        ),
+                        fillColor: Color(0xFF9AA5B1),
+                        filled: true,
+                        border: UnderlineInputBorder(
+                        ),
+                        labelStyle: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                        ),
-
-                      ),
-                      style: NeumorphicStyle(
-
-
-                        depth: 8,
-
-                        color: Colors.white,
-                        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                      ),
+                          fontSize: 30,color: Color(0xFFF5F7FA),
+                        )
                     ),
+                    cursorColor: Colors.black,
+                  ),
+                  style: NeumorphicStyle(
+                    shape: NeumorphicShape.concave,
+                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
+                    depth: -8,
+                    lightSource: LightSource.topLeft,
+                    color: Color(0xFF9AA5B1),
+                  ),
+                ),
+              ),
+              SizedBox(height: 30.0,),
 
 
-                ),
-                ),
-        ],
-               ),
-                Stack(
-                  children: [
-                    MaterialButton(
-                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Player()));},
-                      padding: EdgeInsets.only(left: 5),
-                      child: Container(
-                        height: 150.0,
-                        width: 100.0,
-                        child: Neumorphic(
+              //top containers
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    SizedBox(width: 10,),
+                    Stack(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          height: 150.0,
+                          width: 350.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: containercolor,
+                          ),
+                          child: Image.asset(''),
+
+                        ),
+                      ],
+                    ),
+                    SizedBox(width:15,),
+                    Stack(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          height: 150.0,
+                          width: 350.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: containercolor,
+                          ),
                           child: Image.asset('assets/4.png'),
 
                         ),
-                      ),
+                      ],
                     ),
-                    Positioned(
-                      bottom: 0,
-                      child: Container(
-                        width: 100.0,
-
-                        margin: EdgeInsets.only(left: 13.0),
-                        child: Neumorphic(
-                          child: Text(' Party  ',
-                            style: TextStyle(
-                              color: Colors.brown,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
-                            ),
-
+                    SizedBox(width:15,),
+                    Stack(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          height: 150.0,
+                          width: 350.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: containercolor,
                           ),
-                          style: NeumorphicStyle(
-
-
-                            depth: 8,
-
-                            color: Colors.white,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                          ),
-                        ),
-
-
-                      ),
-                    ),
-                  ],
-                ),
-                Stack(
-                  children: [
-                    MaterialButton(
-                      onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Player()));},
-                      padding: EdgeInsets.only(left: 5),
-                      child: Container(
-                        height: 150.0,
-                        width: 100.0,
-                        child: Neumorphic(
                           child: Image.asset('assets/4.png'),
 
                         ),
+                      ],
+                    ),
+                    SizedBox(width:15,),
+                  ],
+                ),
+              ),
+
+
+              //categories and view all buttons
+              Row(
+                children: [
+                  SizedBox(height: 120.0,),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
+                    child: Icon(Icons.format_list_bulleted_sharp,
+                      color: Color(0xFF9AA5B1),
+
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 20.0),
+                    child: Text('Categories',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFF5F7FA),
+
                       ),
                     ),
-                    Positioned(
-                      bottom: 0,
-                      child: Container(
-                        width: 100,
+                  ),
+                  SizedBox(
+                    width:60,
+                  ),
+                  Container(
 
-                        margin: EdgeInsets.only(left: 13.0),
-                        child: Neumorphic(
-                          child: Text(' Dance  ',
-                            style: TextStyle(
-                              color: Colors.brown,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
+                    child:Expanded(
+
+                      child: RaisedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Categories()));},
+                        child: Text('View All',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFFF5F7FA),), ),
+                        color: Color(0xFF52606D),
+
+                        padding: EdgeInsets.only(top:10,bottom: 10),
+                      ),
+                    ),
+                    padding: EdgeInsets.only(left: 40),
+                  ),
+                ],
+              ),
+
+
+              // genres
+              SingleChildScrollView(scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(width: 10,),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5.0),
+                            height: 135.0,
+                            width: 120.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: containercolor,
                             ),
-
-                          ),
-                          style: NeumorphicStyle(
-
-
-                            depth: 8,
-
-                            color: Colors.white,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
+                            child: Image.asset('assets/4.png'),
                           ),
                         ),
+                        SizedBox(height: 10),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+                          child: Container(
+                            width: 100.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: textboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('POP',
+
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 135.0,
+                            width: 120.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: containercolor,
+                            ),
+
+                            child: Image.asset('assets/4.png'),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+                          child: Container(
+                            width: 100.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: textboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('PARTY',
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
 
 
+                          ),
+                        ),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 135.0,
+                            width: 120.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: containercolor,
+                            ),
+                            child: Image.asset('assets/4.png'),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+                          child: Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: textboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('DANCE',
+
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 135.0,
+                            width: 120.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: containercolor,
+                            ),
+                            child: Image.asset('assets/4.png'),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+
+                          child: Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: textboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('HIP-HOP',
+
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 135.0,
+                            width: 120.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: containercolor,
+                            ),
+                            child: Image.asset('assets/4.png'),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+
+                          child: Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: textboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('ROCK',
+
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 135.0,
+                            width: 120.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: containercolor,
+                            ),
+                            child: Image.asset('assets/4.png'),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+
+                          child: Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: textboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('WORKOUT',
+
+                              style: TextStyle(
+
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 10,),
+                  ],
+                ),
+              ),
+
+
+              //playmusic bar(mad love)
+              SizedBox(height: 50.0,),
+              Container(
+                color: playmusiccolor,
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(left: 20.0),
+                      height: 70.0,
+                      width: 50.0,
+
+
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+
+                          image: AssetImage('assets/5.jpg'),
+                        ),
+
+                        border: Border.all(
+                          width: 4,
+                          color: Color(0xFF9AA5B1),
+                        ),
                       ),
                     ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: TextButton(
+                        onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Player()));},
+                        child: Text('Mad Love ',
+                          style: TextStyle(
+
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFFF5F7FA),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.only(left: 70.0),
+                      child: Icon(Icons.arrow_left,color: Color(0xFF9AA5B1),),
+                    ),
+                    ),
+                    Expanded(child:
+                    Padding(
+                      padding: const EdgeInsets.only(left: 50.0),
+                      child: Icon(Icons.pause,color: Color(0xFF9AA5B1),),
+                    ),
+                    ),
+
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.only(left: 30.0),
+                      child: Icon(Icons.arrow_right,color: Color(0xFF9AA5B1),),
+                    ),),
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.only(left: 5.0),
+                      child: Icon(Icons.close,color: Color(0xFF9AA5B1),),
+                    ),),
+
                   ],
                 ),
 
 
+              ),
 
-              ],
 
-            ),
-            SizedBox(height: 40.0,),
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: Container(
-                color: Colors.grey,
+              //navigation bar
+              SizedBox(height: 32.0,),
+              Container(
+                color: containercolor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -304,7 +549,7 @@ class Mainpagee extends StatelessWidget {
                       child: IconButton(
 
                         onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} ,
-                        color: Colors.white,
+                        color: navigationbarcolor,
                         icon: const Icon(Icons.home),
 
 
@@ -319,7 +564,7 @@ class Mainpagee extends StatelessWidget {
                       child: IconButton(
 
                         onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
-                        color: Colors.white,
+                        color: navigationbarcolor,
                         icon: const Icon(Icons.music_note),
 
 
@@ -334,7 +579,7 @@ class Mainpagee extends StatelessWidget {
                       child: IconButton(
 
                         onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Favorites()));} ,
-                        color: Colors.white,
+                        color: navigationbarcolor,
                         icon: const Icon(Icons.favorite),
 
 
@@ -348,7 +593,7 @@ class Mainpagee extends StatelessWidget {
                       child: IconButton(
 
                         onPressed: () {} ,
-                        color: Colors.white,
+                        color: navigationbarcolor,
                         icon: const Icon(Icons.person),
 
 
@@ -361,17 +606,13 @@ class Mainpagee extends StatelessWidget {
                 ),
 
               ),
-            ),
 
 
-
-
-          ],
-
-
+            ],
           ),
+        ),
       ),
-      );
+    );
 
   }
 }
