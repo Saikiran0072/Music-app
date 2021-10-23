@@ -1,0 +1,72 @@
+SizedBox(height: 40.0,), // edit sized box as per requirement so it doesnt overflow
+          Padding(
+             padding: const EdgeInsets.only(top: 30),
+                child: Container(
+                  color: naviationbarcolor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+
+                           height: 60,
+                            width: 60,
+                            child: IconButton(
+                              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} ,
+                               color: navigationbariconcolor,
+                                icon: const Icon(Icons.home),
+
+
+
+                  ),
+
+                ),
+                      Container(
+
+                           height: 60,
+                           width: 60,
+                           child: IconButton(
+
+                              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
+                              color: navigationbariconcolor,
+                              icon: const Icon(Icons.music_note),
+
+
+
+                  ),
+
+                ),
+                      Container(
+
+                          height: 60,
+                          width: 60,
+                          child: IconButton(
+
+                             onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Favorites()));} ,
+                             color: navigationbariconcolor,
+                             icon: const Icon(Icons.favorite),
+
+
+
+                  ),
+
+                ),
+                      Container(
+                          height: 60,
+                          width: 60,
+                          child: IconButton(
+
+                            onPressed: () {} ,
+                            color: navigationbariconcolor,
+                            icon: const Icon(Icons.person),
+
+
+
+                  ),
+
+                ),
+
+              ],
+            ),
+
+          ),
+        ),
