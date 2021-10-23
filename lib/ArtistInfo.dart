@@ -17,7 +17,7 @@ class Artist extends StatelessWidget {
                 Container(
                   width: 500,
                   height: 150,
-                  color: stackedcontainercolor,
+                  color: containercolor,
                   padding: EdgeInsets.only(left: 20, bottom: 20),
                   alignment: Alignment.bottomLeft,
                   child: Text("Artist Name",
@@ -68,7 +68,7 @@ class Artist extends StatelessWidget {
                       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
                       height: 80,
                       width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                       child: Column(
                         children: [
                           Text("album 1", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -88,7 +88,7 @@ class Artist extends StatelessWidget {
                       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
                       height: 80,
                       width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                       child: Column(
                         children: [
                           Text("album 2", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -108,7 +108,7 @@ class Artist extends StatelessWidget {
                       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
                       height: 80,
                       width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                       child: Column(
                         children: [
                           Text("album 3", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -128,7 +128,7 @@ class Artist extends StatelessWidget {
                       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
                       height: 80,
                       width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                       child: Column(
                         children: [
                           Text("album 4", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -148,7 +148,7 @@ class Artist extends StatelessWidget {
                       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
                       height: 80,
                       width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                       child: Column(
                         children: [
                           Text("album 5", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -168,7 +168,7 @@ class Artist extends StatelessWidget {
                       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
                       height: 80,
                       width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                       child: Column(
                         children: [
                           Text("album 6", style: TextStyle(fontSize: 15,color: darkfontcolor),),
@@ -188,7 +188,7 @@ class Artist extends StatelessWidget {
                       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
                       height: 80,
                       width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: stackedcontainercolor),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
                       child: Column(
                         children: [
                           Text("album 7", style: TextStyle(fontSize: 15,color: darkfontcolor),),
