@@ -73,7 +73,7 @@ class Options extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(width:200),
+              SizedBox(width:100),
               Container(
                   child:IconButton(
 
