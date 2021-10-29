@@ -20,7 +20,7 @@ class Options extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF3E4C59),
+      backgroundColor: scaffoldbgcolor,
       body:
 
 
