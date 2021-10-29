@@ -12,6 +12,7 @@ import 'songslist.dart';
 
 
 
+
 void main() {
   runApp(MaterialApp(
     home: Mainpagee(),
@@ -47,7 +48,7 @@ class Mainpagee extends StatelessWidget {
               shape: BoxShape.circle,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('assets/5.jpg'),
+                image: AssetImage('images/default_img.jpg'),
               ),
 
               border: Border.all(
@@ -224,11 +225,9 @@ class Mainpagee extends StatelessWidget {
                             padding: EdgeInsets.all(5.0),
                             height: 135.0,
                             width: 120.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: containercolor,
-                            ),
-                            child: Image.asset('assets/4.png'),
+
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
                           ),
                         ),
                         SizedBox(height: 10),
@@ -239,7 +238,7 @@ class Mainpagee extends StatelessWidget {
                             width: 100.0,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: textboxcolor,
+                              color: lighttextboxcolor,
                             ),
                             padding: EdgeInsets.all(1),
                             child: Text('POP',
@@ -263,12 +262,8 @@ class Mainpagee extends StatelessWidget {
                             padding: EdgeInsets.all(5),
                             height: 135.0,
                             width: 120.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: containercolor,
-                            ),
-
-                            child: Image.asset('assets/4.png'),
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
                           ),
                         ),
                         SizedBox(height: 10,),
@@ -279,7 +274,7 @@ class Mainpagee extends StatelessWidget {
                             width: 100.0,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: textboxcolor,
+                              color: lighttextboxcolor,
                             ),
                             padding: EdgeInsets.all(1),
                             child: Text('PARTY',
@@ -304,11 +299,8 @@ class Mainpagee extends StatelessWidget {
                             padding: EdgeInsets.all(5),
                             height: 135.0,
                             width: 120.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: containercolor,
-                            ),
-                            child: Image.asset('assets/4.png'),
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
                           ),
                         ),
                         SizedBox(height: 10,),
@@ -319,7 +311,7 @@ class Mainpagee extends StatelessWidget {
                             width: 100,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: textboxcolor,
+                              color: lighttextboxcolor,
                             ),
                             padding: EdgeInsets.all(1),
                             child: Text('DANCE',
@@ -344,11 +336,8 @@ class Mainpagee extends StatelessWidget {
                             padding: EdgeInsets.all(5),
                             height: 135.0,
                             width: 120.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: containercolor,
-                            ),
-                            child: Image.asset('assets/4.png'),
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
                           ),
                         ),
                         SizedBox(height: 10,),
@@ -360,7 +349,7 @@ class Mainpagee extends StatelessWidget {
                             width: 100,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: textboxcolor,
+                              color: lighttextboxcolor,
                             ),
                             padding: EdgeInsets.all(1),
                             child: Text('HIP-HOP',
@@ -385,11 +374,8 @@ class Mainpagee extends StatelessWidget {
                             padding: EdgeInsets.all(5),
                             height: 135.0,
                             width: 120.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: containercolor,
-                            ),
-                            child: Image.asset('assets/4.png'),
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
                           ),
                         ),
                         SizedBox(height: 10,),
@@ -401,7 +387,7 @@ class Mainpagee extends StatelessWidget {
                             width: 100,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: textboxcolor,
+                              color: lighttextboxcolor,
                             ),
                             padding: EdgeInsets.all(1),
                             child: Text('ROCK',
@@ -426,11 +412,8 @@ class Mainpagee extends StatelessWidget {
                             padding: EdgeInsets.all(5),
                             height: 135.0,
                             width: 120.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: containercolor,
-                            ),
-                            child: Image.asset('assets/4.png'),
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
                           ),
                         ),
                         SizedBox(height: 10,),
@@ -442,7 +425,7 @@ class Mainpagee extends StatelessWidget {
                             width: 100,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: textboxcolor,
+                              color: lighttextboxcolor,
                             ),
                             padding: EdgeInsets.all(1),
                             child: Text('WORKOUT',
@@ -484,7 +467,7 @@ class Mainpagee extends StatelessWidget {
                         image: DecorationImage(
                           fit: BoxFit.cover,
 
-                          image: AssetImage('assets/5.jpg'),
+                          image: AssetImage('images/default_img.jpg',),
                         ),
 
                         border: Border.all(
