@@ -2,10 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:musicappp/Otppage.dart';
-import 'package:musicappp/phonenumber.dart';
-import 'package:musicappp/profilepage.dart';
-import 'package:musicappp/signuppage.dart';
+import 'profilepage.dart';
+import 'signuppage.dart';
+import 'package:e_commerce/Player.dart';
+import 'colors.dart';
 
 
 
@@ -21,7 +21,7 @@ class Mainpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.cyan,
+        backgroundColor: scaffoldbgcolor,
 
         body: SingleChildScrollView(
           child: Padding(
@@ -33,36 +33,24 @@ class Mainpage extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    SizedBox(height:50,),
+                    SizedBox(height:80,),
                   ],
-                ),
-                Center(
-                    child: Neumorphic(
-                      child: Container(
-                        child: Image(
-                          image: AssetImage('assets/4.png'),
-                          height: 160,
-                          width: 160,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      style: NeumorphicStyle(
-                          shape: NeumorphicShape.flat,
-                          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                          depth: 10,
-                          lightSource: LightSource.topLeft,
-                          color: Colors.black
-                      ),
-                    )
                 ),
                 SizedBox(height:30,),
                 Center(
-                  child: Text('Welcome back', style: TextStyle(
+                  child: Text('Login', style: TextStyle(
                       fontSize: 30, fontWeight: FontWeight.bold,
-                      color: Colors.black87
+                      color: darkfontcolor
                   ),),
                 ),
-                SizedBox(height:50,),
+                SizedBox(height: 5,),
+                Center(
+                  child: Text('Welcome Back', style: TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.bold,
+                      color: Colors.white70,
+                  ),),
+                ),
+                SizedBox(height:80,),
 
 
                 Column(
@@ -70,151 +58,79 @@ class Mainpage extends StatelessWidget {
                     Container(
 
 
-                      child: Neumorphic(
-
-                        margin: EdgeInsets.fromLTRB(0, 0  , 30, 0),
-                        child: TextField(decoration: InputDecoration(
-                            hintText: 'Email',fillColor: Colors.cyan,
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.cyan)
-                            ),
-                            filled: true,
-
-                            border: UnderlineInputBorder(),
-                            labelStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,color: Colors.black
-                            ),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(bottom: 30),
+                        prefixIcon: Icon(Icons.email),
+                        hintText: 'Email',fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30)
                         ),
-                          cursorColor: Colors.black,
-
+                        filled: true,
+                        labelStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,color: Colors.black
                         ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                            depth: -8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.grey
-                        ),
+                      ),
+                        cursorColor: Colors.black,
 
                       ),
 
 
 
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 30),
 
                     Container(
 
 
-                      child: Neumorphic(
-
-                        margin: EdgeInsets.fromLTRB(0, 0  , 30, 0),
-                        child: TextField(decoration: InputDecoration(
-                            hintText: 'Password',
-                            enabledBorder: UnderlineInputBorder(
-
-                                borderSide: BorderSide(color: Colors.red)
-                            ),
-                            fillColor: Colors.cyan,
-                            filled: true,
-                            border: UnderlineInputBorder(),
-                            labelStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,color: Colors.yellow,
-                            ),
+                      child: TextFormField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(bottom: 30),
+                        prefixIcon: Icon(Icons.password_outlined),
+                        hintText: 'Password',fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30)
                         ),
-                          cursorColor: Colors.black,
-                          obscureText: true,
-
+                        filled: true,
+                        labelStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,color: Colors.black
                         ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                            depth: -8,
-                            lightSource: LightSource.topLeft,
-
-                        ),
+                      ),
+                        cursorColor: Colors.black,
 
                       ),
 
+
+
                     ),
-                    SizedBox(height: 20),
-
-
-
-
-                    Center(
-                      child: FlatButton(
-                        child: Text('Forgot Password?',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
+                    SizedBox(height: 80),
+                    Column(
+                      children: [
+                        Center(
+                          child: MaterialButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Player()));},child: Text("Sign Up",style: TextStyle(fontSize: 20),), padding: EdgeInsets.symmetric(horizontal: 80, vertical: 10),color: Colors.white70,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
                         ),
-                        ),
-                        onPressed: () {},
-                        color: Colors.cyan,
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Signuppage()));},
+                          child: Center(
+                            child: Center(
+                              child: Text(" Don't Have an account? ",
+                                style: TextStyle(
+                                  color: darkfontcolor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
 
+                                ),
 
-
-
-                      ),
-
-                    ),
-                    SizedBox(height: 40),
-
-                    Center(
-                        child: Container(
-                          height: 60,
-                          width: 60,
-                          child: Neumorphic(
-
-                            child: IconButton(
-
-                              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Otppage()));} ,
-                              color: Colors.white,
-                              icon: const Icon(Icons.arrow_forward_ios_sharp),
-
-
-
-                            ),
-                            style: NeumorphicStyle(
-                                shape: NeumorphicShape.concave,
-                                boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                                depth: 8,
-                                lightSource: LightSource.topLeft,
-                                color: Colors.cyan
-                            ),
-
-
-                          ),
-
-                        )
-
-                    ),
-                    SizedBox(height: 30),
-                    Center(
-                      child: Row(
-                        children: [
-                           Center(
-                             child: Text(" Don't Have an account? ",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
                               ),
+                            ),
 
                           ),
-                           ),
-                          FlatButton(onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Signuppage()));},
-                            child: Text('Sign up'),
-                            color: Colors.cyan,
-
-                          ),
-
-                        ],
-                      ),
-
-                    ),
+                        ),
+                      ],
+                    )
 
                   ],
                 ),
