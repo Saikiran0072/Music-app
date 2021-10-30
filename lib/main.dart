@@ -1,6 +1,8 @@
+import 'package:e_commerce/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:musicappp/2nd%20page.dart';
+import '2nd page.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -14,42 +16,70 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan,
-      body: Column(
-        children: [
-          SizedBox(height: 100.0,),
-          Center(
-            child: Container(
-              height: 150.0,
-              width: 150.0,
-              child: Neumorphic(child: Image.asset('assets/4.png'),
-                style: NeumorphicStyle(
-                shape: NeumorphicShape.flat,
-                boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                depth: 10,
-                lightSource: LightSource.topLeft,
-                color: Colors.cyan,
+      backgroundColor: scaffoldbgcolor,
+
+      body: SafeArea(
+        child: Expanded(
+          child: Column(
+            children: [
+              SizedBox(height: 100.0,),
+              Center(
+                child: Container(
+                  height: 300.0,
+                  width: 300.0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Image.asset('images/final_logo_mainpage.jpeg',
+                      height:200.0 ,
+                      width: 300.0,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
               ),
+
+
+
+              Column(
+                children: <Widget>[
+                  SizedBox(height: 50.0,),
+                  Center(
+                    child: IconButton(
+
+                        icon: Icon(Icons.music_note_outlined, color: arrowcolor, size: 30,),
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+
+                        },
+                    ),
+                  ),
+                    Container(
+                      child: Text('Welcome to SHUFFLE',
+                        style:  TextStyle(
+                          color: arrowcolor,
+                          fontSize: 10,
+                          fontStyle: FontStyle.italic,
+                        ),
+
+                      ),
+                    ),
+
+
+                ],
               ),
-            ),
+            ],
           ),
-          SizedBox(height: 50.0,),
-          Center(
-            child: IconButton( icon: Icon(Icons.music_note),
-              onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
-              }
-
-            ),
-
-          ),
-        ],
-      ) ,
-
-
+        ),
+      ),
 
     );
+
+
+
   }
 }
+
+
 
 
 
