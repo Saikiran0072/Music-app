@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:musicappp/Addsong.dart';
 import 'package:musicappp/Library.dart';
+import 'package:musicappp/colors.dart';
 
 import 'Mainpage.dart';
 
@@ -19,23 +20,23 @@ class Playlist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan,
+      backgroundColor:scaffoldbgcolor,
       appBar: AppBar(
-        backgroundColor: Colors.cyan,
+        backgroundColor: appbarcolor,
         elevation: 0,
         leading: IconButton(
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
           },
-          icon: Icon(Icons.arrow_back_ios_rounded),
+          icon: Icon(Icons.arrow_back_ios_rounded,color: Color(0xFF1CDFCB),),
         ),
         actions: [
           Container(
             height: 45,
             width: 45,
-            color: Colors.cyan.shade600,
+            color: appbarcolor,
             child: IconButton(
-              icon: Icon(Icons.more_vert ,color: Colors.white, ),
+              icon: Icon(Icons.more_vert ,color: Color(0xFF1CDFCB), ),
               onPressed: () {  },
             ),
           ),
@@ -48,16 +49,14 @@ class Playlist extends StatelessWidget {
               margin: EdgeInsets.only(top: 30.0),
               height: 200.0,
               width: 200.0,
-              child: Neumorphic(
-              child: Image.asset('assets/4.png'),
-                style: NeumorphicStyle(
-                    shape: NeumorphicShape.concave,
-                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                    depth: -8,
-                    lightSource: LightSource.topLeft,
-                    color: Colors.grey
-                ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(30),
+          child: Image.asset('images/default_img.jpg',
+              height:200.0 ,
+              width: 300.0,
+              fit: BoxFit.fill,
             ),
+        ),
             ),
             SizedBox(height: 30.0,),
             Container(
@@ -65,18 +64,18 @@ class Playlist extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40.0,
-                  color: Colors.white,
+                  color: darkfontcolor,
                 ),
 
               ),
             ),
             SizedBox(height: 10.0,),
             Container(
-              child: Text('By Suman',
+              child: Text(' Artist Name',
                 style: TextStyle(
 
                   fontSize: 15.0,
-                  color: Colors.white,
+                  color: darkfontcolor,
                 ),
 
 
@@ -88,43 +87,58 @@ class Playlist extends StatelessWidget {
                 style: TextStyle(
 
                   fontSize: 25.0,
-                  color: Colors.white,
+                  color: darkfontcolor,
                 ),
 
 
               ),
 
             ),
-            SizedBox(height:30.0),
+            SizedBox(height:50.0),
             Container(
+              height: 40.0,
+              width: 170.0,
 
-              child: Neumorphic(
-                child: RaisedButton(
-                  onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Addsong()));},
-                  color: Colors.cyan,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Text('Add Song',
+              decoration: BoxDecoration(
+                color: containercolor,
+                borderRadius: BorderRadius.circular(30),
 
+              ),
+
+              child: RaisedButton(
+                color: containercolor,
+                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Addsong()));},
+                child: Text('Add Songs',
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
-                    ),),
-                  ),
+                      color: darkfontcolor,
+                    )
                 ),
-                style: NeumorphicStyle(
-                    shape: NeumorphicShape.concave,
-                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                    depth: 8,
-                    lightSource: LightSource.topLeft,
-                    color: Colors.grey
-                ),
+
+
               ),
+
+
+
             ),
           ],
         ),
 
-      )
+      ),
+      bottomNavigationBar: Container(
+        color: Color(0xFF3E4C59),
+        height: 60.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(onPressed: (){}, icon: Icon(Icons.home,color: navigationbariconcolor,)),
+            IconButton(onPressed: (){}, icon: Icon(Icons.music_note,color: navigationbariconcolor,)),
+            IconButton(onPressed: (){}, icon: Icon(Icons.favorite,color: navigationbariconcolor,)),
+            IconButton(onPressed: (){}, icon: Icon(Icons.person,color: navigationbariconcolor,)),
+          ],
+        ),
+      ),
     );
   }
 }
