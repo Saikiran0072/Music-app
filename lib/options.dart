@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:musicappp/Downloads.dart';
+import 'package:musicappp/Library.dart';
 import 'package:musicappp/Mainpage.dart';
 import 'package:musicappp/favorites.dart';
 import 'package:musicappp/loginpage.dart';
@@ -20,7 +21,7 @@ class Options extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: scaffoldbgcolor,
+      backgroundColor: Color(0xFF3E4C59),
       body:
 
 
@@ -127,7 +128,7 @@ class Options extends StatelessWidget {
                 width: 60,
                 child: IconButton(
 
-                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
+                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Library()));} ,
                   color: navigationbariconcolor,
                   icon: const Icon(Icons.headset),
 
