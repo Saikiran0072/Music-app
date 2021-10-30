@@ -479,8 +479,8 @@ class Mainpagee extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(left: 10.0),
                       child: TextButton(
-                        onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Player()));},
-                        child: Text('Mad Love ',
+                        onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Song()));},
+                        child: Text('Infinity',
                           style: TextStyle(
 
                             fontSize: 18.0,
