@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:e_commerce/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,203 +9,366 @@ import 'songslist.dart';
 class Artist extends StatelessWidget {
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: scaffoldbgcolor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Column(
-              children: [
-                Container(
-                  width: 500,
-                  height: 150,
-                  color: containercolor,
-                  padding: EdgeInsets.only(left: 20, bottom: 20),
-                  alignment: Alignment.bottomLeft,
-                  child: Text("Artist Name",
-                  style: TextStyle(
-                    fontSize: 40,
-                    color: darkfontcolor
-                  ),),
-                ),
-                SizedBox(height: 10,),
-                Container(
-                  padding: EdgeInsets.only(left: 20, right: 20),
-                  alignment: Alignment.topLeft,
-                  child: Text("xxxxx followers",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: darkfontcolor
-                    ),),
-                ),
-                SizedBox(height: 10,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: scaffoldbgcolor,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    color: containercolor,
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist())); },
+                      icon: Icon(Icons.arrow_back_ios_rounded, color: darkfontcolor,),
+                    ),
+                  ),
+                  Container(
+                    width: 500,
+                    height: 130,
+                    color: containercolor,
+                    padding: EdgeInsets.only(left: 20, bottom: 20),
+                    alignment: Alignment.bottomLeft,
+                    child:
                     Padding(
-                      padding: const EdgeInsets.only(right: 130),
-                      child: MaterialButton(onPressed: (){},child: Text("FOLLOW"), color: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
-                    ),
-                    Icon(Icons.play_circle_fill_outlined, size: 40, color: navigationbariconcolor,)
-                  ],
-                ),
-                SizedBox(height: 10,),
-                Container(
-                  padding: EdgeInsets.only(left: 20, right: 20, bottom: 30,),
-                  alignment: Alignment.topLeft,
-                  child: Text("Albums",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: darkfontcolor,
-                      fontWeight: FontWeight.bold,
-                    ),),
-                ),
+                      padding: EdgeInsets.only(top: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Artist Name",
+                            style: TextStyle(
+                                fontSize: 40,
+                                color: darkfontcolor
+                            ),),
+                          Text("xxxxx followers",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: darkfontcolor,
+                            ),),
+                        ],
+                      ),
+                    )
+                  ),
+                  SizedBox(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 130),
+                        child: MaterialButton(onPressed: (){},child: Text("FOLLOW"), color: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
+                      ),
+                      Icon(Icons.play_circle_fill_outlined, size: 40, color: navigationbariconcolor,)
+                    ],
+                  ),
+                  SizedBox(height: 10,),
+                  Container(
+                    padding: EdgeInsets.only(left: 25, right: 20, bottom: 30,),
+                    alignment: Alignment.topLeft,
+                    child: Text("Albums",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: darkfontcolor,
+                        fontWeight: FontWeight.bold,
+                      ),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                        children: [
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            padding: EdgeInsets.only(left: 8),
+                            height: 80,
+                            width: 250,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  child: Image(
+                                    image: AssetImage("images/default_img.jpg"),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                      child: Text("album 1", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 20,),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            padding: EdgeInsets.only(left: 8),
+                            height: 80,
+                            width: 250,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  child: Image(
+                                    image: AssetImage("images/default_img.jpg"),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text("album 2", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 20,),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            padding: EdgeInsets.only(left: 8),
+                            height: 80,
+                            width: 250,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  child: Image(
+                                    image: AssetImage("images/default_img.jpg"),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text("album 3", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 20,),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            padding: EdgeInsets.only(left: 8),
+                            height: 80,
+                            width: 250,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  child: Image(
+                                    image: AssetImage("images/default_img.jpg"),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text("album 4", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 20,),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            padding: EdgeInsets.only(left: 8),
+                            height: 80,
+                            width: 250,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  child: Image(
+                                    image: AssetImage("images/default_img.jpg"),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text("album 5", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 20,),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            padding: EdgeInsets.only(left: 8),
+                            height: 80,
+                            width: 250,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  child: Image(
+                                    image: AssetImage("images/default_img.jpg"),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text("album 6", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
+                                ),
+                              ],
+                            ),
+                          ),
 
-                Padding(
-                  padding: const EdgeInsets.only(right: 50, bottom: 10),
-                  child: MaterialButton(
-                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
-                      height: 80,
-                      width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
-                      child: Column(
-                        children: [
-                          Text("album 1", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                          Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
                         ],
                       ),
                     ),
                   ),
-                ),
-                SizedBox(height: 10,),
-                Padding(
-                  padding: const EdgeInsets.only(right: 50, bottom: 10),
-                  child: MaterialButton(
-                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
-                      height: 80,
-                      width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
-                      child: Column(
-                        children: [
-                          Text("album 2", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                          Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Padding(
-                  padding: const EdgeInsets.only(right: 50, bottom: 10),
-                  child: MaterialButton(
-                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
-                      height: 80,
-                      width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
-                      child: Column(
-                        children: [
-                          Text("album 3", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                          Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Padding(
-                  padding: const EdgeInsets.only(right: 50, bottom: 10),
-                  child: MaterialButton(
-                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
-                      height: 80,
-                      width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
-                      child: Column(
-                        children: [
-                          Text("album 4", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                          Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Padding(
-                  padding: const EdgeInsets.only(right: 50, bottom: 10),
-                  child: MaterialButton(
-                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
-                      height: 80,
-                      width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
-                      child: Column(
-                        children: [
-                          Text("album 5", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                          Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Padding(
-                  padding: const EdgeInsets.only(right: 50, bottom: 10),
-                  child: MaterialButton(
-                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
-                      height: 80,
-                      width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
-                      child: Column(
-                        children: [
-                          Text("album 6", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                          Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Padding(
-                  padding: const EdgeInsets.only(right: 50, bottom: 10),
-                  child: MaterialButton(
-                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
-                      height: 80,
-                      width: 280,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
-                      child: Column(
-                        children: [
-                          Text("album 7", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                          Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10,),
 
-              ],
-            )
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 50, bottom: 10),
+                  //   child: MaterialButton(
+                  //     onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                  //     child: Container(
+                  //       alignment: Alignment.bottomLeft,
+                  //       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
+                  //       height: 80,
+                  //       width: 280,
+                  //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
+                  //       child: Column(
+                  //         children: [
+                  //           Text("album 1", style: TextStyle(fontSize: 15,color: darkfontcolor),),
+                  //           Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: 10,),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 50, bottom: 10),
+                  //   child: MaterialButton(
+                  //     onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                  //     child: Container(
+                  //       alignment: Alignment.bottomLeft,
+                  //       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
+                  //       height: 80,
+                  //       width: 280,
+                  //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
+                  //       child: Column(
+                  //         children: [
+                  //           Text("album 2", style: TextStyle(fontSize: 15,color: darkfontcolor),),
+                  //           Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: 10,),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 50, bottom: 10),
+                  //   child: MaterialButton(
+                  //     onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                  //     child: Container(
+                  //       alignment: Alignment.bottomLeft,
+                  //       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
+                  //       height: 80,
+                  //       width: 280,
+                  //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
+                  //       child: Column(
+                  //         children: [
+                  //           Text("album 3", style: TextStyle(fontSize: 15,color: darkfontcolor),),
+                  //           Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: 10,),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 50, bottom: 10),
+                  //   child: MaterialButton(
+                  //     onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                  //     child: Container(
+                  //       alignment: Alignment.bottomLeft,
+                  //       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
+                  //       height: 80,
+                  //       width: 280,
+                  //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
+                  //       child: Column(
+                  //         children: [
+                  //           Text("album 4", style: TextStyle(fontSize: 15,color: darkfontcolor),),
+                  //           Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: 10,),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 50, bottom: 10),
+                  //   child: MaterialButton(
+                  //     onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                  //     child: Container(
+                  //       alignment: Alignment.bottomLeft,
+                  //       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
+                  //       height: 80,
+                  //       width: 280,
+                  //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
+                  //       child: Column(
+                  //         children: [
+                  //           Text("album 5", style: TextStyle(fontSize: 15,color: darkfontcolor),),
+                  //           Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: 10,),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 50, bottom: 10),
+                  //   child: MaterialButton(
+                  //     onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                  //     child: Container(
+                  //       alignment: Alignment.bottomLeft,
+                  //       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
+                  //       height: 80,
+                  //       width: 280,
+                  //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
+                  //       child: Column(
+                  //         children: [
+                  //           Text("album 6", style: TextStyle(fontSize: 15,color: darkfontcolor),),
+                  //           Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: 10,),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 50, bottom: 10),
+                  //   child: MaterialButton(
+                  //     onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                  //     child: Container(
+                  //       alignment: Alignment.bottomLeft,
+                  //       padding: EdgeInsets.only(top: 15, left: 8, bottom: 10),
+                  //       height: 80,
+                  //       width: 280,
+                  //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: containercolor),
+                  //       child: Column(
+                  //         children: [
+                  //           Text("album 7", style: TextStyle(fontSize: 15,color: darkfontcolor),),
+                  //           Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor),),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: 10,),
 
-          ],
+                ],
+              )
+
+            ],
+          ),
         ),
       ),
     );
