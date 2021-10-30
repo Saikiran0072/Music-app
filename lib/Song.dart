@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 import 'Mainpage.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
+import 'catogory.dart';
 
 
 class Song extends StatefulWidget {
@@ -23,14 +24,14 @@ class _SongState extends State<Song> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios,),
           color: Color(0xFF1CDFCB),
-          onPressed: (){},
+          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee())); },
         ),
         backgroundColor: Color(0xFF323F4B),
         actions: [
           IconButton(
             icon: Icon(Icons.more_vert_outlined,),
             color: Color(0xFF1CDFCB),
-            onPressed: () {}, ),
+            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));}, ),
         ],
       ),
       body: Container(
@@ -81,7 +82,7 @@ class _SongState extends State<Song> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       image: DecorationImage(
-                        image: AssetImage("images/One_Direction-Infinity.png"),
+                        image: AssetImage("images/default_img.jpg"),
                       ),
                       color: Colors.white,
                     ),
@@ -135,7 +136,7 @@ class _SongState extends State<Song> {
                           child: Slider(
                             activeColor: Color(0xFF1CDFCB),
                             inactiveColor: Color(0xFF1F2933).withOpacity(0.3),
-                            thumbColor: Color(0xFF1F2933),
+                            //thumbColor: Color(0xFF1F2933),
                             value: sliderValue,
                             onChanged: (value) {
                               setState((){
@@ -152,33 +153,37 @@ class _SongState extends State<Song> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF323F4B),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFF323F4B),
+                                ),
+                                child: IconButton(
+                                  iconSize: 40.0,
+                                  color: Color(0xFF1CDFCB),
+                                  onPressed: (){},
+                                  icon: Icon(
+                                    Icons.repeat,
+                                  ),),
                               ),
-                              child: IconButton(
-                                iconSize: 40.0,
-                                color: Color(0xFF1CDFCB),
-                                onPressed: (){},
-                                icon: Icon(
-                                  Icons.repeat,
-                                ),),
                             ),
                             SizedBox(
                               width:15,),
-                            Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF323F4B),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFF323F4B),
+                                ),
+                                child: IconButton(
+                                  iconSize: 40.0,
+                                  color: Color(0xFF1CDFCB),
+                                  onPressed: (){},
+                                  icon: Icon(
+                                    Icons.skip_previous,
+                                  ),),
                               ),
-                              child: IconButton(
-                                iconSize: 40.0,
-                                color: Color(0xFF1CDFCB),
-                                onPressed: (){},
-                                icon: Icon(
-                                  Icons.skip_previous,
-                                ),),
                             ),
                             SizedBox(
                               width:15,),
@@ -209,34 +214,38 @@ class _SongState extends State<Song> {
                             ),
                             SizedBox(
                               width:15,),
-                            Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF323F4B),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFF323F4B),
+                                ),
+                                child:  IconButton(
+                                  iconSize: 40.0,
+                                  color: Color(0xFF1CDFCB),
+                                  onPressed: (){},
+                                  icon: Icon(
+                                    Icons.skip_next,
+                                  ),),
                               ),
-                              child:  IconButton(
-                                iconSize: 40.0,
-                                color: Color(0xFF1CDFCB),
-                                onPressed: (){},
-                                icon: Icon(
-                                  Icons.skip_next,
-                                ),),
                             ),
                             SizedBox(
                               width:15,),
-                            Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF323F4B),
-                              ),
-                              child:   IconButton(
-                                iconSize: 40.0,
-                                color: Color(0xFF1CDFCB),
-                                onPressed: (){},
-                                icon: Icon(
-                                  Icons.shuffle,
-                                ),),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFF323F4B),
+                                ),
+                                child:   IconButton(
+                                  iconSize: 40.0,
+                                  color: Color(0xFF1CDFCB),
+                                  onPressed: (){},
+                                  icon: Icon(
+                                    Icons.shuffle,
+                                  ),),
 
+                              ),
                             ),
                           ],
                         )
