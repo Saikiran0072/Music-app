@@ -1,9 +1,12 @@
+import 'package:e_commerce/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:musicappp/loginpage.dart';
-import 'package:musicappp/profilepage.dart';
-import 'package:musicappp/signuppage.dart';
+import 'loginpage.dart';
+import 'profilepage.dart';
+import 'signuppage.dart';
+import 'colors.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -17,84 +20,85 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan,
+      backgroundColor: scaffoldbgcolor,
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 50.0,),
-            Center(
-              child: Neumorphic(
 
+        child: SafeArea(
+          child: Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 50.0,),
+                Center(
                   child: Container(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.asset('images/final_logo_apppages.jpeg',
+                          height:200.0 ,
+                          width: 300.0,
+                          fit: BoxFit.fill,
 
 
-                    child: Image.asset('assets/4.png',
-                      height:200.0 ,
-                      width: 200.0,
-                      fit: BoxFit.fill,
+
+                      ),
                     ),
 
                   ),
-                style: NeumorphicStyle(
-                shape: NeumorphicShape.flat,
-                boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                depth: 10,
-                lightSource: LightSource.topLeft,
-                color: Colors.cyan,
-              ),
 
-            ),
-
-    ),
-            Container(
-              padding: EdgeInsets.fromLTRB(160.0, 200.0, 160.0, 20.0),
-              child: Neumorphic(
-
-                child: RaisedButton(
-                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpage()));},
-                  child: Text('Sign In',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                      )
+                ),
+                SizedBox(height: 140.0,),
+                Container(
+                    padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  decoration: BoxDecoration(
+                    color: containercolor,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  color: Colors.cyan,
 
-                ),
-                style: NeumorphicStyle(
-                  depth: 10,
-                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                ),
-              ),
+                    child: RaisedButton(
+                      color: containercolor,
+                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpage()));},
+                      child: Text('Sign In',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: darkfontcolor,
+                          )
+                      ),
 
-            ),
-            Container(
 
-              child: Neumorphic(
-                child: RaisedButton(
-                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Signuppage()));},
-                  child: Text('Sign Up',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                      )
+                    ),
+
                   ),
-                  color: Colors.cyan,
+                SizedBox(height: 30.0,),
+                Container(
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                    decoration: BoxDecoration(
+                      color: containercolor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: RaisedButton(
+                      color: containercolor,
+                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Signuppage()));},
+                      child: Text('Sign Up',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: darkfontcolor,
+                          ),
+                      ),
 
-                ),
-                style: NeumorphicStyle(
-                  depth: -10,
-                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                ),
-              ),
+
+                    ),
+
+                  ),
+
+
+
+              ],
 
             ),
-
-
-    ],
-
+          ),
         ),
 
       ),
