@@ -1,8 +1,9 @@
 
+import 'package:e_commerce/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:musicappp/options.dart';
+import 'options.dart';
 
 
 
@@ -18,7 +19,16 @@ class Profilepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.cyan,
+        backgroundColor: scaffoldbgcolor,
+        appBar: AppBar(
+          backgroundColor: appbarcolor,
+          title: Text("Edit Profile"),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Options())); },
+            icon: Icon(Icons.arrow_back_ios_rounded, color: darkfontcolor,),
+          ),
+        ),
 
         body: SingleChildScrollView(
           child: Padding(
@@ -29,14 +39,6 @@ class Profilepage extends StatelessWidget {
 
               children: [
 
-                SizedBox(height:30.0),
-                Center(
-                  child: Text('Edit Profile', style: TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold,
-                      color: Colors.white,
-
-                  ),),
-                ),
                 SizedBox(height:30.0),
 
                 Center(
@@ -79,7 +81,7 @@ class Profilepage extends StatelessWidget {
                               color: Theme.of(context).scaffoldBackgroundColor,
                             ),
 
-                            color: Colors.cyan,
+                            color: navigationbariconcolor,
                           ),
                           child: IconButton(
                             onPressed: (){},
@@ -93,7 +95,7 @@ class Profilepage extends StatelessWidget {
                       ],
                     ),
                 ),
-                SizedBox(height:30.0),
+                SizedBox(height:50.0),
 
 
                 Column(
@@ -101,32 +103,21 @@ class Profilepage extends StatelessWidget {
                     Container(
 
 
-                      child: Neumorphic(
-
-                        margin: EdgeInsets.fromLTRB(0, 0  , 30, 0),
-                        child: TextField(decoration: InputDecoration(
-                          hintText: 'Full Name',fillColor: Colors.cyan,
-                          enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.cyan)
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(bottom: 30),
+                          prefixIcon: Icon(Icons.person),
+                          hintText: 'Full name',fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)
                           ),
                           filled: true,
-
-                          border: UnderlineInputBorder(),
                           labelStyle: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 30,color: Colors.black
                           ),
                         ),
-                          cursorColor: Colors.black,
-
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                            depth: -8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.grey
-                        ),
+                        cursorColor: Colors.black,
 
                       ),
 
@@ -138,105 +129,75 @@ class Profilepage extends StatelessWidget {
                     Container(
 
 
-                      child: Neumorphic(
-
-                        margin: EdgeInsets.fromLTRB(0, 0  , 30, 0),
-                        child: TextField(decoration: InputDecoration(
-                            hintText: 'Email',
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.cyan)
-                            ),
-                            fillColor: Colors.cyan,
-                            filled: true,
-                            border: UnderlineInputBorder(),
-                            labelStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,color: Colors.black
-                            )
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(bottom: 30),
+                          prefixIcon: Icon(Icons.email),
+                          hintText: 'Email',fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)
+                          ),
+                          filled: true,
+                          labelStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,color: Colors.black
+                          ),
                         ),
-                          cursorColor: Colors.black,
-
-
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                            depth: -8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.grey
-                        ),
+                        cursorColor: Colors.black,
 
                       ),
+
+
 
                     ),
                     SizedBox(height: 20),
                     Container(
 
 
-                      child: Neumorphic(
-
-                        margin: EdgeInsets.fromLTRB(0, 0  , 30, 0),
-                        child: TextField(decoration: InputDecoration(
-                            hintText: 'Phone Number',
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.cyan)
-                            ),
-                            fillColor: Colors.cyan,
-                            filled: true,
-                            border: UnderlineInputBorder(),
-                            labelStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,color: Colors.black
-                            )
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(bottom: 30),
+                          prefixIcon: Icon(Icons.phone),
+                          hintText: 'Phone Number',fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)
+                          ),
+                          filled: true,
+                          labelStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,color: Colors.black
+                          ),
                         ),
-                          cursorColor: Colors.black,
-
-
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                            depth: -8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.grey
-                        ),
+                        cursorColor: Colors.black,
 
                       ),
+
+
 
                     ),
                     SizedBox(height:20.0,),
                     Container(
 
 
-                      child: Neumorphic(
-
-                        margin: EdgeInsets.fromLTRB(0, 0  , 30, 0),
-                        child: TextField(decoration: InputDecoration(
-                            hintText: 'Change Password',
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.cyan)
-                            ),
-                            fillColor: Colors.cyan,
-                            filled: true,
-                            border: UnderlineInputBorder(),
-                            labelStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,color: Colors.black
-                            ),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(bottom: 30),
+                          prefixIcon: Icon(Icons.password),
+                          hintText: 'Change Password',fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)
+                          ),
+                          filled: true,
+                          labelStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,color: Colors.black
+                          ),
                         ),
-                          cursorColor: Colors.black,
-
-
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                            depth: -8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.grey
-                        ),
+                        cursorColor: Colors.black,
 
                       ),
+
+
 
                     ),
 
@@ -247,47 +208,32 @@ class Profilepage extends StatelessWidget {
                         child: Container(
 
 
-                          child: Neumorphic(
-
-                            child: RaisedButton.icon(
-                              padding: EdgeInsets.fromLTRB(80.0, 30.0, 80.0, 30.0),
-
-
-
-                              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Options()));} ,
-                              color: Colors.cyan,
-
-                              icon: Icon(Icons.update),
-                              label: Text('Update',
-
-                                style: TextStyle(
-
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
+                          child: MaterialButton(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.update,
                                 ),
-                                  ),
+                                SizedBox(width: 10,),
+                                Text("Update", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)
 
-
-
+                              ],
                             ),
-                            style: NeumorphicStyle(
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
 
 
-                                depth: 8,
-                                lightSource: LightSource.topLeft,
-                                color: Colors.cyan,
-                              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                            ),
+                            onPressed: () {} ,
+                            color: lighttextboxcolor,
+
+                                ),
+
 
 
                           ),
 
                         )
-
-                    ),
-
-
-
 
                   ],
                 ),
