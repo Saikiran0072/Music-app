@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:musicappp/Library.dart';
+import 'package:musicappp/colors.dart';
 import 'package:musicappp/savedplaylist.dart';
 
 import 'Mainpage.dart';
@@ -19,35 +20,37 @@ class Createplaylist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan,
+      backgroundColor: Color(0xFF1F2933),
       body: Center(
         child: Column(
           children: [
             Container(
               margin: EdgeInsets.only(top: 150.0),
-              child: Text('Give Your Playlist a Name',
+              child: Text('Give Your Playlist a'
+                  ' Name',
               style:TextStyle(
-                color: Colors.white,
-                fontSize: 25.0,
+                color: darkfontcolor,
+                fontSize: 30.0,
                 fontWeight: FontWeight.bold,
 
 
               ),
               ),
             ),
+            SizedBox(height: 50.0,),
             Container(
 
-              margin: EdgeInsets.only(top: 20.0),
+              margin: EdgeInsets.only(top: 20.0,left: 20.0),
 
               child: Neumorphic(
 
                 margin: EdgeInsets.fromLTRB(0, 0  , 30, 0),
                 child: TextField(decoration: InputDecoration(
-                  hintText: 'Playlist Name',
+                  hintText: 'Playlist Name' ,
                   enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.cyan)
+                      borderSide: BorderSide(color:navigationbariconcolor),
                   ),
-                  fillColor: Colors.cyan,
+                  fillColor: Color(0xFF9AA5B1),
                   filled: true,
                   border: UnderlineInputBorder(),
                   labelStyle: TextStyle(
@@ -78,37 +81,26 @@ class Createplaylist extends StatelessWidget {
                   margin: EdgeInsets.only(top: 70.0),
 
 
-                  child: Neumorphic(
-
-                    child: RaisedButton.icon(
-                      padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 30.0),
+                  child: RaisedButton.icon(
+                    padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
 
 
 
-                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Library()));} ,
-                      color: Colors.cyan,
+                    onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Library()));} ,
+                    color: containercolor,
 
-                      icon: Icon(Icons.close),
-                      label: Text('Cancel',
 
-                        style: TextStyle(
+                    label: Text('Cancel',
 
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                        ),
+                      style: TextStyle(
+
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                        color: darkfontcolor,
                       ),
-
-
-
                     ),
-                    style: NeumorphicStyle(
+                    icon: Icon(Icons.close,color: navigationbariconcolor,),
 
-
-                      depth: 8,
-                      lightSource: LightSource.topLeft,
-                      color: Colors.cyan,
-                      boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                    ),
 
 
                   ),
@@ -119,37 +111,26 @@ class Createplaylist extends StatelessWidget {
                   margin: EdgeInsets.only(top: 70.0),
 
 
-                  child: Neumorphic(
-
-                    child: RaisedButton.icon(
-                      padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 30.0),
+                  child: RaisedButton.icon(
+                    padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
 
 
 
-                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
-                      color: Colors.cyan,
+                    onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
+                    color: containercolor,
 
-                      icon: Icon(Icons.arrow_forward_ios_sharp),
-                      label: Text('Enter',
 
-                        style: TextStyle(
+                    label: Text('Save',
 
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                        ),
+                      style: TextStyle(
+
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                        color: darkfontcolor,
                       ),
-
-
-
                     ),
-                    style: NeumorphicStyle(
+                    icon: Icon(Icons.check,color: navigationbariconcolor,),
 
-
-                      depth: 8,
-                      lightSource: LightSource.topLeft,
-                      color: Colors.cyan,
-                      boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                    ),
 
 
                   ),
