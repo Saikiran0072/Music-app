@@ -1,4 +1,5 @@
 import 'package:e_commerce/ArtistInfo.dart';
+import 'package:e_commerce/profilepage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -511,7 +512,7 @@ class Categories extends StatelessWidget {
                         width: 60,
                         child: IconButton(
 
-                          onPressed: () {} ,
+                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Profilepage()));} ,
                           color: navigationbariconcolor,
                           icon: const Icon(Icons.person),
 
