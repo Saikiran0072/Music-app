@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'profilepage.dart';
 import 'signuppage.dart';
-import 'package:e_commerce/Player.dart';
+import 'package:e_commerce/Mainpage.dart';
 import 'colors.dart';
 
 
@@ -110,7 +110,7 @@ class Mainpage extends StatelessWidget {
                     Column(
                       children: [
                         Center(
-                          child: MaterialButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Player()));},child: Text("Sign Up",style: TextStyle(fontSize: 20),), padding: EdgeInsets.symmetric(horizontal: 80, vertical: 10),color: Colors.white70,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
+                          child: MaterialButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));},child: Text("Login",style: TextStyle(fontSize: 20),), padding: EdgeInsets.symmetric(horizontal: 80, vertical: 10),color: Colors.white70,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
                         ),
                         MaterialButton(
                           onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Signuppage()));},
