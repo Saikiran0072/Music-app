@@ -44,39 +44,35 @@ class Categories extends StatelessWidget {
     padding: const EdgeInsets.fromLTRB(30, 25, 50, 0),
     child: Column(
     children:<Widget> [
-    Neumorphic(
-    child: Container(
-    height: 35,
-    width: 350,
-    color: Color(0xFF9AA5B1),
-    child: TextField(decoration: InputDecoration(
-    icon: Icon(Icons.search, color: Color(0xFF323F4B),),
-    hintText: 'Search for ...',
-    hintStyle: TextStyle(
-    fontSize:15,
-    color: Color(0xFFF5F7FA),
-    ),
-
-    fillColor: Color(0xFF9AA5B1),
-    enabledBorder: InputBorder.none,
-    focusedBorder: InputBorder.none,
-    filled: true,
-    border: UnderlineInputBorder(),
-    labelStyle: TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 25,
-    textBaseline: TextBaseline.alphabetic,
-    )
-
-    ),
-    ),
-    ),
-    style: NeumorphicStyle(
-    shape: NeumorphicShape.flat,
-    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(40)),
-    depth: 0,
-    color: Color(0xFF323F4B),
-    ),
+    Container(
+      child: Neumorphic(
+        margin: EdgeInsets.fromLTRB(30.0, 0  , 30, 0),
+        child: TextField(
+          decoration: InputDecoration(
+            icon: Icon(Icons.search),
+            hintText:'Search for ...',
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Color(0xFF9AA5B1)),
+            ),
+            fillColor: Color(0xFF9AA5B1),
+            filled: true,
+            border: UnderlineInputBorder(),
+            labelStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+              color: Color(0xFFF5F7FA),
+            ),
+          ),
+          cursorColor: Colors.black,
+        ),
+        style: NeumorphicStyle(
+          shape: NeumorphicShape.concave,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
+          depth: -8,
+          lightSource: LightSource.topLeft,
+          color: Color(0xFF9AA5B1),
+        ),
+      ),
     ),
     SizedBox(height: 30,),
 
