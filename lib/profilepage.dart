@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'options.dart';
+import 'catogories.dart';
 
 
 
@@ -26,7 +27,7 @@ class Profilepage extends StatelessWidget {
           leading: IconButton(
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>Options())); },
-            icon: Icon(Icons.arrow_back_ios_rounded, color: darkfontcolor,),
+            icon: Icon(Icons.arrow_back_ios_rounded, color: arrowcolor,),
           ),
         ),
 
@@ -42,36 +43,36 @@ class Profilepage extends StatelessWidget {
                 SizedBox(height:30.0),
 
                 Center(
-                    child: Stack(
-                      children: [
-                        Container(
-                          height: 130.0,
-                          width: 130.0,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 4,
-                              color: Theme.of(context).scaffoldBackgroundColor,
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 130.0,
+                        width: 130.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 4,
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              spreadRadius: 2,blurRadius: 10,
+                              color: Colors.black.withOpacity(0.1),
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                spreadRadius: 2,blurRadius: 10,
-                                color: Colors.black.withOpacity(0.1),
-                              ),
 
-                            ],
+                          ],
 
 
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                                image: AssetImage('assets/5.jpg'),
-                            ),
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage('assets/5.jpg'),
                           ),
                         ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
                           height: 40.0,
                           width: 40.0,
                           decoration: BoxDecoration(
@@ -90,10 +91,10 @@ class Profilepage extends StatelessWidget {
 
 
 
-                          ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height:50.0),
 
@@ -205,35 +206,36 @@ class Profilepage extends StatelessWidget {
                     SizedBox(height: 40),
 
                     Center(
-                        child: Container(
+                      child: Container(
 
 
-                          child: MaterialButton(
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.update,
-                                ),
-                                SizedBox(width: 10,),
-                                Text("Update", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)
+                        child: MaterialButton(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.update,
+                                color: arrowcolor,
+                              ),
+                              SizedBox(width: 10,),
+                              Text("Update", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: arrowcolor),)
 
-                              ],
-                            ),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-
-
-                            onPressed: () {} ,
-                            color: lighttextboxcolor,
-
-                                ),
-
-
-
+                            ],
                           ),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
 
-                        )
+
+                          onPressed: () {} ,
+                          color: containercolor,
+
+                        ),
+
+
+
+                      ),
+
+                    )
 
                   ],
                 ),
