@@ -469,7 +469,7 @@ class Categories extends StatelessWidget {
     children: [
     IconButton(onPressed: (){}, icon: Icon(Icons.home,color: navigationbariconcolor,)),
     IconButton(onPressed: (){}, icon: Icon(Icons.music_note,color: navigationbariconcolor,)),
-    IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border,color: navigationbariconcolor,)),
+    IconButton(onPressed: (){}, icon: Icon(Icons.favorite,color: navigationbariconcolor,)),
     IconButton(onPressed: (){}, icon: Icon(Icons.person,color: navigationbariconcolor,)),
     ],
     ),
