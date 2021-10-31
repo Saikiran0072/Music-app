@@ -133,7 +133,7 @@ class Categories extends StatelessWidget {
     shape: BoxShape.rectangle,
     image: new DecorationImage(
     fit: BoxFit.fill,
-    image: AssetImage('assets/4.png')) ,
+    image: AssetImage('images/default_img.jpg')) ,
     borderRadius: BorderRadius.circular(20),
 
     ),
@@ -193,7 +193,7 @@ class Categories extends StatelessWidget {
     shape: BoxShape.rectangle,
     image: new DecorationImage(
     fit: BoxFit.fill,
-    image: AssetImage('assets/4.png')) ,
+    image: AssetImage('images/default_img.jpg')) ,
     borderRadius: BorderRadius.circular(20),
 
     ),
@@ -255,7 +255,7 @@ class Categories extends StatelessWidget {
     shape: BoxShape.rectangle,
     image: new DecorationImage(
     fit: BoxFit.fill,
-    image: AssetImage('assets/4.png')) ,
+    image: AssetImage('images/default_img.jpg')) ,
     borderRadius: BorderRadius.circular(20),
 
     ),
@@ -316,7 +316,7 @@ class Categories extends StatelessWidget {
     shape: BoxShape.rectangle,
     image: new DecorationImage(
     fit: BoxFit.fill,
-    image: AssetImage('assets/4.png')) ,
+    image: AssetImage('images/default_img.jpg')) ,
     borderRadius: BorderRadius.circular(20),
 
     ),
@@ -377,7 +377,7 @@ class Categories extends StatelessWidget {
     shape: BoxShape.rectangle,
     image: new DecorationImage(
     fit: BoxFit.fill,
-    image: AssetImage('assets/4.png')) ,
+    image: AssetImage('images/default_img.jpg')) ,
     borderRadius: BorderRadius.circular(20),
 
     ),
@@ -438,7 +438,7 @@ class Categories extends StatelessWidget {
     shape: BoxShape.rectangle,
     image: new DecorationImage(
     fit: BoxFit.fill,
-    image: AssetImage('assets/4.png')) ,
+    image: AssetImage('images/default_img.jpg')) ,
     borderRadius: BorderRadius.circular(20),
 
     ),
@@ -455,12 +455,12 @@ class Categories extends StatelessWidget {
     ],
     ),
       ],
-    
+
     ),
     ),
     ),
-    
-    
+
+
     bottomNavigationBar: Container(
     color: navigationbarcolor,
     height: 60.0,
