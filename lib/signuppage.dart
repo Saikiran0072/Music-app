@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -58,7 +57,7 @@ class Signuppage extends StatelessWidget {
                         prefixIcon: Icon(Icons.person),
                         hintText: 'Full Name',fillColor: Colors.white,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30)
+                            borderRadius: BorderRadius.circular(30)
                         ),
                         filled: true,
                         labelStyle: TextStyle(
@@ -81,17 +80,17 @@ class Signuppage extends StatelessWidget {
                       child: TextFormField(
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(bottom: 30),
-                        prefixIcon: Icon(Icons.email),
-                        hintText: 'Email',fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30)
+                          prefixIcon: Icon(Icons.email),
+                          hintText: 'Email',fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)
+                          ),
+                          filled: true,
+                          labelStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,color: Colors.black
+                          ),
                         ),
-                        filled: true,
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,color: Colors.black
-                        ),
-                      ),
                         cursorColor: Colors.black,
 
                       ),
@@ -107,17 +106,17 @@ class Signuppage extends StatelessWidget {
                         obscureText: true,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(bottom: 30),
-                        prefixIcon: Icon(Icons.password),
-                        hintText: 'Password',fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30)
+                          prefixIcon: Icon(Icons.password),
+                          hintText: 'Password',fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)
+                          ),
+                          filled: true,
+                          labelStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,color: Colors.black
+                          ),
                         ),
-                        filled: true,
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,color: Colors.black
-                        ),
-                      ),
                         cursorColor: Colors.black,
 
                       ),
@@ -133,17 +132,17 @@ class Signuppage extends StatelessWidget {
                         obscureText: true,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(bottom: 30),
-                        prefixIcon: Icon(Icons.password_sharp),
-                        hintText: 'Confirm password',fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30)
+                          prefixIcon: Icon(Icons.password_sharp),
+                          hintText: 'Confirm password',fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)
+                          ),
+                          filled: true,
+                          labelStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,color: Colors.black
+                          ),
                         ),
-                        filled: true,
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,color: Colors.black
-                        ),
-                      ),
                         cursorColor: Colors.black,
 
                       ),
@@ -163,7 +162,7 @@ class Signuppage extends StatelessWidget {
 
                             onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpage()));} ,
                             color: Colors.white,
-                            icon: const Icon(Icons.arrow_forward_ios_sharp),
+                            icon: const Icon(Icons.arrow_forward_ios_sharp, color:arrowcolor),
 
 
 
