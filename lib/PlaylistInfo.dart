@@ -25,10 +25,10 @@ class PlaylistInfo extends StatelessWidget {
                       IconButton(
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Library())); },
-                        icon: Icon(Icons.arrow_back_ios_rounded, color: darkfontcolor,),
+                        icon: Icon(Icons.arrow_back_ios_rounded, color: arrowcolor,),
                       ),
                       IconButton(
-                        icon: Icon(Icons.more_vert ,color: Color(0xFF1CDFCB), ),
+                        icon: Icon(Icons.more_vert ,color: arrowcolor, ),
                         onPressed: () {  },
                       ),
                     ],
