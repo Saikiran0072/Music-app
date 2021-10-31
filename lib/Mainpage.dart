@@ -38,7 +38,7 @@ class Mainpagee extends StatelessWidget {
         leading: IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Options()));},
           icon: Icon(
             Icons.menu,
-            color: Color(0xFF9AA5B1),
+            color: arrowcolor,
 
           ),),
         actions: [
@@ -169,7 +169,7 @@ class Mainpagee extends StatelessWidget {
                   Container(
                       margin: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
                       child: Icon(Icons.format_list_bulleted_sharp,
-                        color: Color(0xFF9AA5B1),
+                        color: arrowcolor,
 
                       ),
                   ),
@@ -470,24 +470,24 @@ class Mainpagee extends StatelessWidget {
                    ),
                    Expanded(child: Padding(
                      padding: const EdgeInsets.only(left: 70.0),
-                     child: Icon(Icons.arrow_left,color: Color(0xFF9AA5B1),),
+                     child: Icon(Icons.arrow_left,color: arrowcolor,),
                    ),
                    ),
                    Expanded(child:
                    Padding(
                      padding: const EdgeInsets.only(left: 50.0),
-                     child: Icon(Icons.pause,color: Color(0xFF9AA5B1),),
+                     child: Icon(Icons.pause,color: arrowcolor,),
                    ),
                    ),
 
                    Expanded(child: Padding(
                      padding: const EdgeInsets.only(left: 30.0),
-                     child: Icon(Icons.arrow_right,color: Color(0xFF9AA5B1),),
+                     child: Icon(Icons.arrow_right,color: arrowcolor,),
                    ),
                    ),
                    Expanded(child: Padding(
                      padding: const EdgeInsets.only(left: 5.0),
-                     child: Icon(Icons.close,color: Color(0xFF9AA5B1),),
+                     child: Icon(Icons.close,color: arrowcolor,),
                    ),
                    ),
                  ],
