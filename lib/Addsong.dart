@@ -86,411 +86,309 @@ class Addsong extends StatelessWidget {
                 //music suggestions
                 SizedBox(height: 30.0,),
                 Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: containercolor,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 80,
-                            constraints: BoxConstraints(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          padding: EdgeInsets.only(left: 8),
+                          height: 80,
+                          constraints: BoxConstraints(
+                            maxWidth: double.infinity
+                          ),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 10.0),
+                                height: 50.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('images/default_img.jpg'),
+                                  ),
+
+                                  border: Border.all(
+                                    width: 4,
+                                    color: darkfontcolor,
+                                  ),
+
+                                ),
+                              ),
+                              SizedBox(width: 20,),
+                              Expanded(
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Vibez',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                      ),
+                                    )),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
+                                onPressed: () {},
+                                alignment: Alignment.topRight,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 20,),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          padding: EdgeInsets.only(left: 8),
+                          height: 80,
+                          constraints: BoxConstraints(
                               maxWidth: double.infinity
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 30.0),
-                                  height: 50.0,
-                                  width: 50.0,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage('images/default_img.jpg'),
-                                    ),
-
-                                    border: Border.all(
-                                      width: 4,
-                                      color: darkfontcolor,
-                                    ),
-
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 20.0),
-                                  child: Text('Vibez',
-                                    style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: darkfontcolor,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 120, right: 20),
-                                  child: IconButton(
-                                      icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                      onPressed: () {},
-                                    alignment: Alignment.topRight,
-                                  ),
-                                )
-                              ],
-
-                            ),
                           ),
-
-                        ],
-                      ),
-                      SizedBox(height: 15.0,),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: containercolor,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 80,
-                            constraints: BoxConstraints(
-                                maxWidth: double.infinity
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 30.0),
-                                  height: 50.0,
-                                  width: 50.0,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage('images/default_img.jpg'),
-                                    ),
-
-                                    border: Border.all(
-                                      width: 4,
-                                      color: darkfontcolor,
-                                    ),
-
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 10.0),
+                                height: 50.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('images/default_img.jpg'),
                                   ),
+
+                                  border: Border.all(
+                                    width: 4,
+                                    color: darkfontcolor,
+                                  ),
+
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 20.0),
-                                  child: Text('Vibez',
-                                    style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: darkfontcolor,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 120, right: 20),
-                                  child: IconButton(
-                                    icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                    onPressed: () {},
-                                    alignment: Alignment.topRight,
-                                  ),
-                                )
-                              ],
-
-                            ),
+                              ),
+                              SizedBox(width: 20,),
+                              Expanded(
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Vibez',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                      ),
+                                    )),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
+                                onPressed: () {},
+                                alignment: Alignment.topRight,
+                              ),
+                            ],
                           ),
-
-                        ],
-                      ),
-                      SizedBox(height: 15.0,),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: containercolor,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 80,
-                            constraints: BoxConstraints(
-                                maxWidth: double.infinity
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 30.0),
-                                  height: 50.0,
-                                  width: 50.0,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage('images/default_img.jpg'),
-                                    ),
-
-                                    border: Border.all(
-                                      width: 4,
-                                      color: darkfontcolor,
-                                    ),
-
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 20.0),
-                                  child: Text('Vibez',
-                                    style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: darkfontcolor,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 120, right: 20),
-                                  child: IconButton(
-                                    icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                    onPressed: () {},
-                                    alignment: Alignment.topRight,
-                                  ),
-                                )
-                              ],
-
-                            ),
+                        ),
+                        SizedBox(height: 20,),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          padding: EdgeInsets.only(left: 8),
+                          height: 80,
+                          constraints: BoxConstraints(
+                              maxWidth: double.infinity
                           ),
-
-                        ],
-                      ),
-                      SizedBox(height: 15.0,),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: containercolor,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 80,
-                            constraints: BoxConstraints(
-                                maxWidth: double.infinity
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 30.0),
-                                  height: 50.0,
-                                  width: 50.0,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage('images/default_img.jpg'),
-                                    ),
-
-                                    border: Border.all(
-                                      width: 4,
-                                      color: darkfontcolor,
-                                    ),
-
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 10.0),
+                                height: 50.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('images/default_img.jpg'),
                                   ),
+
+                                  border: Border.all(
+                                    width: 4,
+                                    color: darkfontcolor,
+                                  ),
+
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 20.0),
-                                  child: Text('Vibez',
-                                    style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: darkfontcolor,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 120, right: 20),
-                                  child: IconButton(
-                                    icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                    onPressed: () {},
-                                    alignment: Alignment.topRight,
-                                  ),
-                                )
-                              ],
-
-                            ),
+                              ),
+                              SizedBox(width: 20,),
+                              Expanded(
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Vibez',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                      ),
+                                    )),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
+                                onPressed: () {},
+                                alignment: Alignment.topRight,
+                              ),
+                            ],
                           ),
-
-                        ],
-                      ),
-                      SizedBox(height: 15.0,),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: containercolor,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 80,
-                            constraints: BoxConstraints(
-                                maxWidth: double.infinity
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 30.0),
-                                  height: 50.0,
-                                  width: 50.0,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage('images/default_img.jpg'),
-                                    ),
-
-                                    border: Border.all(
-                                      width: 4,
-                                      color: darkfontcolor,
-                                    ),
-
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 20.0),
-                                  child: Text('Vibez',
-                                    style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: darkfontcolor,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 120, right: 20),
-                                  child: IconButton(
-                                    icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                    onPressed: () {},
-                                    alignment: Alignment.topRight,
-                                  ),
-                                )
-                              ],
-
-                            ),
+                        ),
+                        SizedBox(height: 20,),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          padding: EdgeInsets.only(left: 8),
+                          height: 80,
+                          constraints: BoxConstraints(
+                              maxWidth: double.infinity
                           ),
-
-                        ],
-                      ),
-                      SizedBox(height: 15.0,),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: containercolor,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 80,
-                            constraints: BoxConstraints(
-                                maxWidth: double.infinity
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 30.0),
-                                  height: 50.0,
-                                  width: 50.0,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage('images/default_img.jpg'),
-                                    ),
-
-                                    border: Border.all(
-                                      width: 4,
-                                      color: darkfontcolor,
-                                    ),
-
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 10.0),
+                                height: 50.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('images/default_img.jpg'),
                                   ),
+
+                                  border: Border.all(
+                                    width: 4,
+                                    color: darkfontcolor,
+                                  ),
+
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 20.0),
-                                  child: Text('Vibez',
-                                    style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: darkfontcolor,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 120, right: 20),
-                                  child: IconButton(
-                                    icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                    onPressed: () {},
-                                    alignment: Alignment.topRight,
-                                  ),
-                                )
-                              ],
-
-                            ),
+                              ),
+                              SizedBox(width: 20,),
+                              Expanded(
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Vibez',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                      ),
+                                    )),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
+                                onPressed: () {},
+                                alignment: Alignment.topRight,
+                              ),
+                            ],
                           ),
-
-                        ],
-                      ),
-                      SizedBox(height: 15.0,),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: containercolor,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 80,
-                            constraints: BoxConstraints(
-                                maxWidth: double.infinity
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: 30.0),
-                                  height: 50.0,
-                                  width: 50.0,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage('images/default_img.jpg'),
-                                    ),
-
-                                    border: Border.all(
-                                      width: 4,
-                                      color: darkfontcolor,
-                                    ),
-
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 20.0),
-                                  child: Text('Vibez',
-                                    style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: darkfontcolor,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 120, right: 20),
-                                  child: IconButton(
-                                    icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                    onPressed: () {},
-                                    alignment: Alignment.topRight,
-                                  ),
-                                )
-                              ],
-
-                            ),
+                        ),
+                        SizedBox(height: 20,),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          padding: EdgeInsets.only(left: 8),
+                          height: 80,
+                          constraints: BoxConstraints(
+                              maxWidth: double.infinity
                           ),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 10.0),
+                                height: 50.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('images/default_img.jpg'),
+                                  ),
 
-                        ],
-                      ),
-                    ],
+                                  border: Border.all(
+                                    width: 4,
+                                    color: darkfontcolor,
+                                  ),
+
+                                ),
+                              ),
+                              SizedBox(width: 20,),
+                              Expanded(
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Vibez',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                      ),
+                                    )),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
+                                onPressed: () {},
+                                alignment: Alignment.topRight,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 20,),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          padding: EdgeInsets.only(left: 8),
+                          height: 80,
+                          constraints: BoxConstraints(
+                              maxWidth: double.infinity
+                          ),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 10.0),
+                                height: 50.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('images/default_img.jpg'),
+                                  ),
+
+                                  border: Border.all(
+                                    width: 4,
+                                    color: darkfontcolor,
+                                  ),
+
+                                ),
+                              ),
+                              SizedBox(width: 20,),
+                              Expanded(
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Vibez',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                      ),
+                                    )),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
+                                onPressed: () {},
+                                alignment: Alignment.topRight,
+                              ),
+                            ],
+                          ),
+                        ),
+
+                      ],
+                    ),
                   ),
-                )
+                ),
               ],
             ),
 
