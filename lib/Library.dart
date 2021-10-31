@@ -1,12 +1,14 @@
+import 'package:e_commerce/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:musicappp/favorites.dart';
-import 'package:musicappp/playlist.dart';
-import 'package:musicappp/savedplaylist.dart';
-
+import 'favorites.dart';
+import 'playlist.dart';
+import 'savedplaylist.dart';
+import 'profilepage.dart';
 import 'Mainpage.dart';
-
+import 'songslist.dart';
+import 'PlaylistInfo.dart';
 
 
 void main() {
@@ -20,7 +22,7 @@ class Library extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan,
+      backgroundColor: scaffoldbgcolor,
 
       appBar: AppBar(
         elevation: 0,
@@ -32,194 +34,165 @@ class Library extends StatelessWidget {
         ),
         title: Text('Your Library'),
         centerTitle: true,
-        backgroundColor: Colors.cyan,
-
-        actions: [
-          Container(
-            height: 45,
-            width: 45,
-            color: Colors.cyan.shade600,
-            child: IconButton(
-              icon: Icon(Icons.add ,color: Colors.white, ),
-              onPressed: () {  Navigator.push(context, MaterialPageRoute(builder: (context)=>Createplaylist()));},
-            ),
-          ),
-
-        ],
+        backgroundColor: appbarcolor,
 
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              margin: EdgeInsets.only(top: 250.0),
-              child: Text(
-                'Add Music',
-              style:TextStyle(
-                color: Colors.white,
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
-
-              ),
+            GestureDetector(
+              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>PlaylistInfo()));},
+              child: Row(
+                children: [
+                  Container(
+                    alignment: Alignment.bottomLeft,
+                    padding: EdgeInsets.only(left: 8),
+                    height: 80,
+                    width: 320,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding:EdgeInsets.symmetric(vertical: 5),
+                          child: Image(
+                            image: AssetImage("images/default_img.jpg"),
+                          ),
+                        ),
+                        SizedBox(width: 20,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text("Playlist 1", style: TextStyle(fontSize: 15,color: darkfontcolor),),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 10.0),
-
-              child: Text(
-                'collect you favorite Music',
-                style:TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-
-
-                ),
+            SizedBox(height: 20,),
+            GestureDetector(
+              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>PlaylistInfo()));},
+              child: Row(
+                children: [
+                  Container(
+                    alignment: Alignment.bottomLeft,
+                    padding: EdgeInsets.only(left: 8),
+                    height: 80,
+                    width: 320,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding:EdgeInsets.symmetric(vertical: 5),
+                          child: Image(
+                            image: AssetImage("images/default_img.jpg"),
+                          ),
+                        ),
+                        SizedBox(width: 20,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text("Playlist 2", style: TextStyle(fontSize: 15,color: darkfontcolor),),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-            Container(
-
-
-              child: Text(
-                'Whenever you want ',
-                style:TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-
-
-                ),
+            SizedBox(height: 20,),
+            GestureDetector(
+              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));},
+              child: Row(
+                children: [
+                  Container(
+                    alignment: Alignment.bottomLeft,
+                    padding: EdgeInsets.only(left: 8),
+                    height: 80,
+                    width: 320,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding:EdgeInsets.symmetric(vertical: 5),
+                          child: Image(
+                            image: AssetImage("images/default_img.jpg"),
+                          ),
+                        ),
+                        SizedBox(width: 20,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text("Playlist 3", style: TextStyle(fontSize: 15,color: darkfontcolor),),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 260.0),
-              child: Neumorphic(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
 
-                      height: 60,
-                      width: 60,
-                      child: Neumorphic(
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Createplaylist()));},
+        child: Icon(Icons.add),
+        backgroundColor: navigationbariconcolor,
 
-                        child: IconButton(
-
-                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} ,
-                          color: Colors.white,
-                          icon: const Icon(Icons.home),
-
+      ),
+      bottomNavigationBar: Container(
+        color: navigationbarcolor,
+        height: 60.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
 
 
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                            depth: 8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.cyan
-                        ),
+            IconButton(
+
+              icon: Icon(Icons.home, color: navigationbariconcolor),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Mainpagee()));
+
+              },
+            ),
 
 
-                      ),
+            IconButton(
 
-                    ),
-                    Container(
+              icon: Icon(Icons.music_note, color: navigationbariconcolor),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Library()));
 
-                      height: 60,
-                      width: 60,
-                      child: Neumorphic(
+              },
+            ),
+            IconButton(
 
-                        child: IconButton(
+              icon: Icon(Icons.favorite, color: navigationbariconcolor),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Favorites()));
 
-                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
-                          color: Colors.white,
-                          icon: const Icon(Icons.music_note),
+              },
+            ),
 
+            IconButton(
 
+              icon: Icon(Icons.person, color: navigationbariconcolor),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Profilepage()));
 
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                            depth: 8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.cyan
-                        ),
-
-
-                      ),
-
-                    ),
-                    Container(
-
-                      height: 60,
-                      width: 60,
-                      child: Neumorphic(
-
-                        child: IconButton(
-
-                          onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Favorites()));} ,
-                          color: Colors.white,
-                          icon: const Icon(Icons.favorite),
-
-
-
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                            depth: 8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.cyan
-                        ),
-
-
-                      ),
-
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(left: 20.0),
-                      height: 60,
-                      width: 60,
-                      child: Neumorphic(
-
-                        child: IconButton(
-
-                          onPressed: () {} ,
-                          color: Colors.white,
-                          icon: const Icon(Icons.person),
-
-
-
-                        ),
-                        style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                            depth: 8,
-                            lightSource: LightSource.topLeft,
-                            color: Colors.cyan
-                        ),
-
-
-                      ),
-
-                    ),
-
-                  ],
-                ),
-                style: NeumorphicStyle(
-                    shape: NeumorphicShape.concave,
-                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                    depth: 8,
-                    lightSource: LightSource.topLeft,
-                    color: Colors.cyan
-                ),
-              ),
-
+              },
             ),
           ],
-        )
+        ),
       ),
-
     );
   }
 }
