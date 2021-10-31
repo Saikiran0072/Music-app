@@ -2,7 +2,6 @@ import 'package:e_commerce/ArtistInfo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:e_commerce/Downloads.dart';
 import 'favorites.dart';
 import 'package:e_commerce/savedplaylist.dart';
 import 'catogories.dart';
@@ -24,7 +23,7 @@ class Category extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context)=>Categories())); },
-          icon: Icon(Icons.arrow_back_ios_rounded),
+          icon: Icon(Icons.arrow_back_ios_rounded, color: arrowcolor,),
         ),
         centerTitle: true,
         backgroundColor: appbarcolor,
@@ -53,7 +52,7 @@ class Category extends StatelessWidget {
                   Text('Dance Song ', style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                    color: darkfontcolor
+                      color: darkfontcolor
                   ),),
 
                   SizedBox(height: 5,),
@@ -156,4 +155,3 @@ class Category extends StatelessWidget {
     );
   }
 }
-
