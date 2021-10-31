@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:musicappp/Library.dart';
-import 'package:musicappp/colors.dart';
-import 'package:musicappp/savedplaylist.dart';
-
+import 'Library.dart';
+import 'colors.dart';
+import 'savedplaylist.dart';
 import 'Mainpage.dart';
 
 
@@ -28,13 +27,13 @@ class Createplaylist extends StatelessWidget {
               margin: EdgeInsets.only(top: 150.0),
               child: Text('Give Your Playlist a'
                   ' Name',
-              style:TextStyle(
-                color: darkfontcolor,
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
+                style:TextStyle(
+                  color: darkfontcolor,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
 
 
-              ),
+                ),
               ),
             ),
             SizedBox(height: 50.0,),
@@ -48,7 +47,7 @@ class Createplaylist extends StatelessWidget {
                 child: TextField(decoration: InputDecoration(
                   hintText: 'Playlist Name' ,
                   enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color:navigationbariconcolor),
+                    borderSide: BorderSide(color:navigationbariconcolor),
                   ),
                   fillColor: Color(0xFF9AA5B1),
                   filled: true,
