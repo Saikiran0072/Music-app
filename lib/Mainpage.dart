@@ -63,156 +63,147 @@ class Mainpagee extends StatelessWidget {
 
 
       body: SingleChildScrollView(
-        child: SafeArea(
+      child: SafeArea(
 
-          child:Column(
-            children: [
+         child:Column(
+           children: [
 
               SizedBox(height: 30.0,),
-
-
-              //search bar
+//search bar
               Container(
-
-                child: Neumorphic(
-                  margin: EdgeInsets.fromLTRB(30.0, 0  , 30, 0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        icon: Icon(Icons.search),
-                        hintText:'Search for ...',
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF9AA5B1)),
-                        ),
-                        fillColor: Color(0xFF9AA5B1),
-                        filled: true,
-                        border: UnderlineInputBorder(
-                        ),
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,color: Color(0xFFF5F7FA),
-                        )
-                    ),
-                    cursorColor: Colors.black,
+                  child: Neumorphic(
+                    margin: EdgeInsets.fromLTRB(30.0, 0  , 30, 0),
+                     child: TextField(
+                       decoration: InputDecoration(
+                       icon: Icon(Icons.search),
+                       hintText:'Search for ...',
+                       enabledBorder: UnderlineInputBorder(
+                       borderSide: BorderSide(color: Color(0xFF9AA5B1)),
+                          ),
+                       fillColor: Color(0xFF9AA5B1),
+                       filled: true,
+                       border: UnderlineInputBorder(),
+                       labelStyle: TextStyle(
+                       fontWeight: FontWeight.bold,
+                       fontSize: 30,
+                       color: Color(0xFFF5F7FA),
+                                ),
+                       ),
+                     cursorColor: Colors.black,
+                          ),
+                     style: NeumorphicStyle(
+                     shape: NeumorphicShape.concave,
+                     boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
+                     depth: -8,
+                     lightSource: LightSource.topLeft,
+                     color: Color(0xFF9AA5B1),
+                           ),
                   ),
-                  style: NeumorphicStyle(
-                    shape: NeumorphicShape.concave,
-                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
-                    depth: -8,
-                    lightSource: LightSource.topLeft,
-                    color: Color(0xFF9AA5B1),
-                  ),
-                ),
               ),
               SizedBox(height: 30.0,),
 
-
-              //top containers
+ //top containers
               SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    SizedBox(width: 10,),
-                    Stack(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          height: 150.0,
-                          width: 350.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: containercolor,
-                          ),
-                          child: Image.asset(''),
+                 scrollDirection: Axis.horizontal,
+                 child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                       SizedBox(width: 10,),
+                       Stack(
+                          children: [
+                            Container(
+                                padding: EdgeInsets.all(10),
+                                height: 150.0,
+                                width: 350.0,
+                                decoration: BoxDecoration(
+                                   borderRadius: BorderRadius.circular(50),
+                                   color: containercolor,
+                                ),
+                                child: Image.asset(''),
 
-                        ),
-                      ],
-                    ),
-                    SizedBox(width:15,),
-                    Stack(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          height: 150.0,
-                          width: 350.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: containercolor,
-                          ),
-                          child: Image.asset('assets/4.png'),
+                            ),
+                          ],
+                       ),
+                       SizedBox(width:15,),
+                       Stack(
+                          children: [
+                             Container(
+                                 padding: EdgeInsets.all(10),
+                                 height: 150.0,
+                                 width: 350.0,
+                                 decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: containercolor,
+                                 ),
+                                 child: Image.asset('assets/4.png'),
 
-                        ),
-                      ],
-                    ),
-                    SizedBox(width:15,),
-                    Stack(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          height: 150.0,
-                          width: 350.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: containercolor,
-                          ),
-                          child: Image.asset('assets/4.png'),
+                             ),
+                          ],
+                       ),
+                       SizedBox(width:15,),
+                       Stack(
+                          children: [
+                             Container(
+                                 padding: EdgeInsets.all(10),
+                                 height: 150.0,
+                                  width: 350.0,
+                                  decoration: BoxDecoration(
+                                     borderRadius: BorderRadius.circular(50),
+                                     color: containercolor,
+                                  ),
+                                  child: Image.asset('assets/4.png'),
 
-                        ),
-                      ],
-                    ),
-                    SizedBox(width:15,),
-                  ],
-                ),
+                             ),
+                          ],
+                       ),
+                       SizedBox(width:15,),
+                    ],
+                 ),
               ),
 
 
-              //categories and view all buttons
+    //categories and view all buttons
               Row(
                 children: [
                   SizedBox(height: 120.0,),
                   Container(
-                    margin: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
-                    child: Icon(Icons.format_list_bulleted_sharp,
-                      color: Color(0xFF9AA5B1),
+                      margin: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
+                      child: Icon(Icons.format_list_bulleted_sharp,
+                        color: Color(0xFF9AA5B1),
 
-                    ),
+                      ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 20.0),
-                    child: Text('Categories',
-                      style: TextStyle(
+                      padding: EdgeInsets.only(left: 20.0),
+                      child: Text('Categories',
+                        style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFFF5F7FA),
 
+                         ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width:60,
-                  ),
+                   ),
+                  SizedBox(width:60,),
                   Container(
-
-                    child:Expanded(
-
-                      child: RaisedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Categories()));},
-                        child: Text('View All',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFF5F7FA),), ),
-                        color: Color(0xFF52606D),
-
-                        padding: EdgeInsets.only(top:10,bottom: 10),
+                      child:Expanded(
+                         child: RaisedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Categories()));},
+                           child: Text('View All',
+                             style: TextStyle(
+                               fontSize: 17,
+                               fontWeight: FontWeight.bold,
+                               color: Color(0xFFF5F7FA),), ),
+                           color: Color(0xFF52606D),
+                           padding: EdgeInsets.only(top:10,bottom: 10),
+                         ),
                       ),
-                    ),
                     padding: EdgeInsets.only(left: 40),
                   ),
                 ],
               ),
 
 
-              // genres
+    // genres
               SingleChildScrollView(scrollDirection: Axis.horizontal,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -226,7 +217,6 @@ class Mainpagee extends StatelessWidget {
                             padding: EdgeInsets.all(5.0),
                             height: 135.0,
                             width: 120.0,
-
                             child: Image.asset('images/default_img.jpg',height: 135.0,
                               width: 120.0,),
                           ),
@@ -345,7 +335,6 @@ class Mainpagee extends StatelessWidget {
                         Positioned(
                           left: 25,
                           bottom: 0,
-
                           child: Container(
                             width: 100,
                             decoration: BoxDecoration(
@@ -383,7 +372,6 @@ class Mainpagee extends StatelessWidget {
                         Positioned(
                           left: 25,
                           bottom: 0,
-
                           child: Container(
                             width: 100,
                             decoration: BoxDecoration(
@@ -392,7 +380,6 @@ class Mainpagee extends StatelessWidget {
                             ),
                             padding: EdgeInsets.all(1),
                             child: Text('ROCK',
-
                               style: TextStyle(
                                 color: lightfontcolor,
                                 fontWeight: FontWeight.bold,
@@ -421,7 +408,6 @@ class Mainpagee extends StatelessWidget {
                         Positioned(
                           left: 25,
                           bottom: 0,
-
                           child: Container(
                             width: 100,
                             decoration: BoxDecoration(
@@ -430,15 +416,12 @@ class Mainpagee extends StatelessWidget {
                             ),
                             padding: EdgeInsets.all(1),
                             child: Text('WORKOUT',
-
                               style: TextStyle(
-
                                 color: lightfontcolor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18.0,
                               ),
                               textAlign: TextAlign.center,
-
                             ),
                           ),
                         ),
@@ -449,153 +432,87 @@ class Mainpagee extends StatelessWidget {
                 ),
               ),
 
+//playmusic bar(mad love)
+             SizedBox(height: 50.0,),
+             Container(
+               color: playmusiccolor,
+               child: Row(
+                 children: [
+                   Container(
+                     padding: EdgeInsets.only(left: 20.0),
+                     height: 70.0,
+                     width: 50.0,
+                     decoration: BoxDecoration(
+                       shape: BoxShape.circle,
+                       image: DecorationImage(
+                         fit: BoxFit.cover,
+                         image: AssetImage('images/default_img.jpg',),
+                       ),
+                       border: Border.all(
+                         width: 4,
+                         color: Color(0xFF9AA5B1),
+                       ),
+                     ),
+                   ),
+                   Padding(
+                     padding: EdgeInsets.only(left: 10.0),
+                     child: TextButton(
+                       onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Song()));},
+                       child: Text('Infinity',
+                         style: TextStyle(
 
-              //playmusic bar(mad love)
-              SizedBox(height: 50.0,),
-              Container(
-                color: playmusiccolor,
-                child: Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(left: 20.0),
-                      height: 70.0,
-                      width: 50.0,
+                           fontSize: 18.0,
+                           fontWeight: FontWeight.bold,
+                           color: Color(0xFFF5F7FA),
+                         ),
+                       ),
+                     ),
+                   ),
+                   Expanded(child: Padding(
+                     padding: const EdgeInsets.only(left: 70.0),
+                     child: Icon(Icons.arrow_left,color: Color(0xFF9AA5B1),),
+                   ),
+                   ),
+                   Expanded(child:
+                   Padding(
+                     padding: const EdgeInsets.only(left: 50.0),
+                     child: Icon(Icons.pause,color: Color(0xFF9AA5B1),),
+                   ),
+                   ),
 
-
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-
-                          image: AssetImage('images/default_img.jpg',),
-                        ),
-
-                        border: Border.all(
-                          width: 4,
-                          color: Color(0xFF9AA5B1),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10.0),
-                      child: TextButton(
-                        onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Song()));},
-                        child: Text('Infinity',
-                          style: TextStyle(
-
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFF5F7FA),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.only(left: 70.0),
-                      child: Icon(Icons.arrow_left,color: Color(0xFF9AA5B1),),
-                    ),
-                    ),
-                    Expanded(child:
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50.0),
-                      child: Icon(Icons.pause,color: Color(0xFF9AA5B1),),
-                    ),
-                    ),
-
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
-                      child: Icon(Icons.arrow_right,color: Color(0xFF9AA5B1),),
-                    ),),
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: Icon(Icons.close,color: Color(0xFF9AA5B1),),
-                    ),),
-
-                  ],
-                ),
-
-
-              ),
-
-
-              //navigation bar
-              SizedBox(height: 32.0,),
-              Container(
-                color: containercolor,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-
-                      height: 60,
-                      width: 60,
-                      child: IconButton(
-
-                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} ,
-                        color: navigationbariconcolor,
-                        icon: const Icon(Icons.home),
-
-
-
-                      ),
-
-                    ),
-                    Container(
-
-                      height: 60,
-                      width: 60,
-                      child: IconButton(
-
-                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
-                        color: navigationbariconcolor,
-                        icon: const Icon(Icons.music_note),
-
-
-
-                      ),
-
-                    ),
-                    Container(
-
-                      height: 60,
-                      width: 60,
-                      child: IconButton(
-
-                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Favorites()));} ,
-                        color: navigationbariconcolor,
-                        icon: const Icon(Icons.favorite),
-
-
-
-                      ),
-
-                    ),
-                    Container(
-                      height: 60,
-                      width: 60,
-                      child: IconButton(
-
-                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Profilepage()));} ,
-                        color: navigationbariconcolor,
-                        icon: const Icon(Icons.person),
-
-
-
-                      ),
-
-                    ),
-
-                  ],
-                ),
-
-              ),
-
-
-            ],
-          ),
-        ),
+                   Expanded(child: Padding(
+                     padding: const EdgeInsets.only(left: 30.0),
+                     child: Icon(Icons.arrow_right,color: Color(0xFF9AA5B1),),
+                   ),
+                   ),
+                   Expanded(child: Padding(
+                     padding: const EdgeInsets.only(left: 5.0),
+                     child: Icon(Icons.close,color: Color(0xFF9AA5B1),),
+                   ),
+                   ),
+                 ],
+               ),
+             ),
+           ],
+         ),
       ),
+      ),
+
+      //bottom navigation bar
+      bottomNavigationBar: Container(
+          color: navigationbarcolor,
+          height: 60.0,
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(onPressed: (){}, icon: Icon(Icons.home,color: navigationbariconcolor,)),
+                IconButton(onPressed: (){}, icon: Icon(Icons.music_note,color: navigationbariconcolor,)),
+                IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border,color: navigationbariconcolor,)),
+                IconButton(onPressed: (){}, icon: Icon(Icons.person,color: navigationbariconcolor,)),
+              ],
+          ),
+      ),
+
     );
 
   }
