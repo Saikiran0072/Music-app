@@ -26,7 +26,7 @@ class Categories extends StatelessWidget {
     onPressed: () {
     Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
     },
-    icon: Icon(Icons.arrow_back_ios_rounded),
+    icon: Icon(Icons.arrow_back_ios_rounded, color: arrowcolor,),
     ),
     title: Text('Categories',),
 
@@ -444,6 +444,7 @@ class Categories extends StatelessWidget {
     ],
     )
     ),
+      SizedBox(height: 40,),
 
 
 
