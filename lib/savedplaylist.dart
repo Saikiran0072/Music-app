@@ -4,7 +4,8 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'Addsong.dart';
 import 'Library.dart';
 import 'colors.dart';
-
+import 'favorites.dart';
+import 'profilepage.dart';
 import 'Mainpage.dart';
 
 
@@ -127,15 +128,48 @@ class Playlist extends StatelessWidget {
 
       ),
       bottomNavigationBar: Container(
-        color: Color(0xFF3E4C59),
+        color: navigationbarcolor,
         height: 60.0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.home,color: navigationbariconcolor,)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.music_note,color: navigationbariconcolor,)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.favorite,color: navigationbariconcolor,)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.person,color: navigationbariconcolor,)),
+
+
+            IconButton(
+
+              icon: Icon(Icons.home, color: navigationbariconcolor),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Mainpagee()));
+
+              },
+            ),
+
+
+            IconButton(
+
+              icon: Icon(Icons.music_note, color: navigationbariconcolor),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Library()));
+
+              },
+            ),
+            IconButton(
+
+              icon: Icon(Icons.favorite, color: navigationbariconcolor),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Favorites()));
+
+              },
+            ),
+
+            IconButton(
+
+              icon: Icon(Icons.person, color: navigationbariconcolor),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Profilepage()));
+
+              },
+            ),
           ],
         ),
       ),
