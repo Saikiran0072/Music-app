@@ -96,55 +96,6 @@ class Addsong extends StatelessWidget {
                           padding: EdgeInsets.only(left: 8),
                           height: 80,
                           constraints: BoxConstraints(
-                            maxWidth: double.infinity
-                          ),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 10.0),
-                                height: 50.0,
-                                width: 50.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage('images/default_img.jpg'),
-                                  ),
-
-                                  border: Border.all(
-                                    width: 4,
-                                    color: darkfontcolor,
-                                  ),
-
-                                ),
-                              ),
-                              SizedBox(width: 20,),
-                              Expanded(
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text('Vibez',
-                                      style: TextStyle(
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: darkfontcolor,
-                                      ),
-                                    )),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                onPressed: () {},
-                                alignment: Alignment.topRight,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 20,),
-                        Container(
-                          alignment: Alignment.bottomLeft,
-                          padding: EdgeInsets.only(left: 8),
-                          height: 80,
-                          constraints: BoxConstraints(
                               maxWidth: double.infinity
                           ),
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
@@ -384,6 +335,106 @@ class Addsong extends StatelessWidget {
                             ],
                           ),
                         ),
+                        SizedBox(height: 20,),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          padding: EdgeInsets.only(left: 8),
+                          height: 80,
+                          constraints: BoxConstraints(
+                              maxWidth: double.infinity
+                          ),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 10.0),
+                                height: 50.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('images/default_img.jpg'),
+                                  ),
+
+                                  border: Border.all(
+                                    width: 4,
+                                    color: darkfontcolor,
+                                  ),
+
+                                ),
+                              ),
+                              SizedBox(width: 20,),
+                              Expanded(
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Vibez',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                      ),
+                                    )),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
+                                onPressed: () {},
+                                alignment: Alignment.topRight,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 20,),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          padding: EdgeInsets.only(left: 8),
+                          height: 80,
+                          constraints: BoxConstraints(
+                              maxWidth: double.infinity
+                          ),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 10.0),
+                                height: 50.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('images/default_img.jpg'),
+                                  ),
+
+                                  border: Border.all(
+                                    width: 4,
+                                    color: darkfontcolor,
+                                  ),
+
+                                ),
+                              ),
+                              SizedBox(width: 20,),
+                              Expanded(
+                                child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Vibez',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: darkfontcolor,
+                                      ),
+                                    )),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
+                                onPressed: () {},
+                                alignment: Alignment.topRight,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 40,),
+
 
                       ],
                     ),
