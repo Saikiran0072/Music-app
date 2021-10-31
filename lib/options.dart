@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:musicappp/Downloads.dart';
-import 'package:musicappp/Library.dart';
-import 'package:musicappp/Mainpage.dart';
-import 'package:musicappp/favorites.dart';
-import 'package:musicappp/loginpage.dart';
-import 'package:musicappp/profilepage.dart';
-import 'package:musicappp/savedplaylist.dart';
-import 'package:musicappp/colors.dart';
+import 'Library.dart';
+import 'Mainpage.dart';
+import 'favorites.dart';
+import 'loginpage.dart';
+import 'profilepage.dart';
+import 'savedplaylist.dart';
+import 'colors.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -48,40 +47,44 @@ class Options extends StatelessWidget {
                   ),
                 ),
               ),
-              Column(
+              Expanded(
+                child: Column(
 
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 30.0,top: 40.0),
-                    child: Text('User Name',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                        color: darkfontcolor,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 30.0,top: 40.0),
+                      child: Text('User Name',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                          color: darkfontcolor,
+
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 0.0),
+                      child: Text('........',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: darkfontcolor,
+                        ),
 
                       ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 0.0),
-                    child: Text('........',
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        color: darkfontcolor,
-                      ),
-
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              SizedBox(width:100),
-              Container(
-                  child:IconButton(
+              Expanded(
+                child: Container(
+                    child:IconButton(
 
-                    onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));},
-                    color: Colors.white,
-                    icon: const Icon(Icons.close),
-                  ))
+                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));},
+                      color: Colors.white,
+                      icon: const Icon(Icons.close),
+                      alignment: Alignment.topRight,
+                    )),
+              )
 
             ],
           ),
@@ -221,32 +224,32 @@ class Options extends StatelessWidget {
 
 
 
-            Container(height: 40,
-              width: 160,
-              margin: EdgeInsets.only(left: 30.0),
+          Container(height: 40,
+            width: 160,
+            margin: EdgeInsets.only(left: 30.0),
 
 
-                child: RaisedButton(
-                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpage()));},
-                  child: Text('Log Out',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: darkfontcolor,
+            child: RaisedButton(
+              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpage()));},
+              child: Text('Log Out',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: darkfontcolor,
 
-                      )
-                  ),
-                  color: containercolor,
-
-
-
-                ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-
+                  )
               ),
+              color: containercolor,
 
-                ),
+
+
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(40),
+
+            ),
+
+          ),
 
 
 
@@ -260,9 +263,9 @@ class Options extends StatelessWidget {
 
 
 
-          
 
-      );
+
+    );
 
   }
 }
