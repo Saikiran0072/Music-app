@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:musicappp/Addsong.dart';
-import 'package:musicappp/Library.dart';
-import 'package:musicappp/colors.dart';
+import 'Addsong.dart';
+import 'Library.dart';
+import 'colors.dart';
 
 import 'Mainpage.dart';
 
@@ -26,7 +26,7 @@ class Playlist extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>Library()));
           },
           icon: Icon(Icons.arrow_back_ios_rounded,color: Color(0xFF1CDFCB),),
         ),
@@ -49,14 +49,14 @@ class Playlist extends StatelessWidget {
               margin: EdgeInsets.only(top: 30.0),
               height: 200.0,
               width: 200.0,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: Image.asset('images/default_img.jpg',
-              height:200.0 ,
-              width: 300.0,
-              fit: BoxFit.fill,
-            ),
-        ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: Image.asset('images/default_img.jpg',
+                  height:200.0 ,
+                  width: 300.0,
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
             SizedBox(height: 30.0,),
             Container(
