@@ -2,9 +2,14 @@ import 'package:e_commerce/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import '2nd page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
+void main() async{
 
-void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     home: Home(),
   ));
@@ -78,6 +83,9 @@ class Home extends StatelessWidget {
 
   }
 }
+
+
+
 
 
 
