@@ -1,4 +1,6 @@
 
+import 'package:e_commerce/Song.dart';
+import 'package:e_commerce/trypage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -6,6 +8,13 @@ import 'profilepage.dart';
 import 'signuppage.dart';
 import 'package:e_commerce/Mainpage.dart';
 import 'colors.dart';
+import 'main.dart';
+import 'Mainpage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'Song.dart';
+import 'signuppage.dart';
 
 
 
@@ -15,78 +24,98 @@ void main() {
   ));
 }
 
-class Mainpage extends StatelessWidget {
-  const Mainpage({Key? key}) : super(key: key);
+class Mainpage extends StatefulWidget {
+
+
+  @override
+  State<Mainpage> createState() => _MainpageState();
+}
+
+class _MainpageState extends State<Mainpage> {
+
+  final  _auth = FirebaseAuth.instance;
+  String email= '';
+  String password ='';
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: scaffoldbgcolor,
+      backgroundColor: scaffoldbgcolor,
 
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+      body: SingleChildScrollView(
+        child: Padding(
 
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
 
-              children: [
-                Column(
-                  children: [
-                    SizedBox(height:80,),
-                  ],
-                ),
-                SizedBox(height:30,),
-                Center(
-                  child: Text('Login', style: TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold,
-                      color: darkfontcolor
-                  ),),
-                ),
-                SizedBox(height: 5,),
-                Center(
-                  child: Text('Welcome Back', style: TextStyle(
-                      fontSize: 25, fontWeight: FontWeight.bold,
-                      color: Colors.white70,
-                  ),),
-                ),
-                SizedBox(height:80,),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
 
-
-                Column(
-                  children:<Widget> [
-                    Container(
+            children: [
+              Column(
+                children: [
+                  SizedBox(height:80,),
+                ],
+              ),
+              SizedBox(height:30,),
+//title fields
+              Center(
+                child: Text('Login', style: TextStyle(
+                    fontSize: 30, fontWeight: FontWeight.bold,
+                    color: darkfontcolor
+                ),),
+              ),
+              SizedBox(height: 5,),
+              Center(
+                child: Text('Welcome Back', style: TextStyle(
+                  fontSize: 25, fontWeight: FontWeight.bold,
+                  color: Colors.white70,
+                ),),
+              ),
+              SizedBox(height:80,),
 
 
-                      child: TextFormField(
-                        decoration: InputDecoration(
+              Column(
+                children:<Widget> [
+//email text field
+                  Container(
+
+
+                    child: TextFormField(
+                      decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(bottom: 30),
                         prefixIcon: Icon(Icons.email),
                         hintText: 'Email',fillColor: Colors.white,
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30)
                         ),
+
                         filled: true,
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,color: Colors.black
                         ),
                       ),
-                        cursorColor: Colors.black,
+                      onChanged: (value) {
+                        email = value;
 
-                      ),
+
+                      },
+                      cursorColor: Colors.black,
 
 
 
                     ),
-                    SizedBox(height: 30),
-
-                    Container(
 
 
-                      child: TextFormField(
-                        obscureText: true,
-                        decoration: InputDecoration(
+
+                  ),
+                  SizedBox(height: 30),
+//password text field
+                  Container(
+                    child: TextFormField(
+                      obscureText: true,
+                      decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(bottom: 30),
                         prefixIcon: Icon(Icons.password_outlined),
                         hintText: 'Password',fillColor: Colors.white,
@@ -99,45 +128,72 @@ class Mainpage extends StatelessWidget {
                             fontSize: 30,color: Colors.black
                         ),
                       ),
-                        cursorColor: Colors.black,
+                      cursorColor: Colors.black,
+                      onChanged: (value) {
+                        password = value;
 
-                      ),
-
-
+                      },
 
                     ),
-                    SizedBox(height: 80),
-                    Column(
-                      children: [
-                        Center(
-                          child: MaterialButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));},child: Text("Login",style: TextStyle(fontSize: 20),), padding: EdgeInsets.symmetric(horizontal: 80, vertical: 10),color: Colors.white70,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
-                        ),
-                        MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Signuppage()));},
+
+
+
+                  ),
+                  SizedBox(height: 80),
+                  Column(
+                    children: [
+                      Center(
+                        child: MaterialButton(
+
+                          onPressed: ()  {
+
+                          },
+
+                          child: Text("Login",style: TextStyle(fontSize: 20),),
+                          padding: EdgeInsets.symmetric(horizontal: 80, vertical: 10),
+                          color: Colors.white70,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
+                      ),
+                      MaterialButton(
+                        onPressed: () async {
+                          try {
+                            final user1 = await _auth.signInWithEmailAndPassword(
+
+                            email: email, password: password);
+                            print('successful');
+                            if (user1 != null) {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Song()));} }
+                              catch (e) {
+                            print('SATVIKAAAAAAAAA');
+                            print(e);
+                          }
+
+                        },
+                        //Navigator.push(context, MaterialPageRoute(builder: (context)=>Signuppage()));},
+                        child: Center(
                           child: Center(
-                            child: Center(
-                              child: Text(" Don't Have an account? ",
-                                style: TextStyle(
+                            child: Text(" Don't Have an account? ",
+                              style: TextStyle(
                                   color: darkfontcolor,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold
 
-                                ),
-
                               ),
+
                             ),
-
                           ),
-                        ),
-                      ],
-                    )
 
-                  ],
-                ),
-              ],
-            ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                ],
+              ),
+            ],
           ),
-        )
+        ),
+      ),
 
     );
 
