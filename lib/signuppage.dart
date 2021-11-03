@@ -1,10 +1,15 @@
+import 'dart:core';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'loginpage.dart';
 import 'colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-
+final  _auth = FirebaseAuth.instance;
 
 void main() {
   runApp(MaterialApp(
@@ -12,8 +17,23 @@ void main() {
   ));
 }
 
-class Signuppage extends StatelessWidget {
-  const Signuppage({Key? key}) : super(key: key);
+class Signuppage extends StatefulWidget {
+  @override
+  State<Signuppage> createState() => _SignuppageState();
+}
+
+class _SignuppageState extends State<Signuppage> {
+
+
+  final  _auth = FirebaseAuth.instance;
+
+  String fullName ='';
+
+  String email='';
+
+  String password ='';
+
+  String confirm_password ='';
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +52,7 @@ class Signuppage extends StatelessWidget {
                   padding: EdgeInsets.only(top: 100),
                 ),
                 SizedBox(height:30,),
+ //title texts
                 Center(
                   child: Text('Sign Up', style: TextStyle(
                       fontSize: 30, fontWeight: FontWeight.bold,
@@ -49,6 +70,7 @@ class Signuppage extends StatelessWidget {
 
                 Column(
                   children:<Widget> [
+ //full name text field
                     Container(
 
 
@@ -66,6 +88,12 @@ class Signuppage extends StatelessWidget {
                         ),
                       ),
                         cursorColor: Colors.black,
+                        onChanged: (value) {
+                          fullName = value;
+
+
+
+                        },
 
                       ),
 
@@ -73,7 +101,7 @@ class Signuppage extends StatelessWidget {
 
                     ),
                     SizedBox(height: 20),
-
+//email text field
                     Container(
 
 
@@ -92,6 +120,9 @@ class Signuppage extends StatelessWidget {
                           ),
                         ),
                         cursorColor: Colors.black,
+                        onChanged: (value) {
+                          email = value;
+                        },
 
                       ),
 
@@ -99,6 +130,7 @@ class Signuppage extends StatelessWidget {
 
                     ),
                     SizedBox(height: 20),
+ //password text field
                     Container(
 
 
@@ -118,6 +150,9 @@ class Signuppage extends StatelessWidget {
                           ),
                         ),
                         cursorColor: Colors.black,
+                        onChanged: (value) {
+                          password = value;
+                        },
 
                       ),
 
@@ -125,6 +160,7 @@ class Signuppage extends StatelessWidget {
 
                     ),
                     SizedBox(height:20.0,),
+ //confirm password text field
                     Container(
 
 
@@ -144,6 +180,9 @@ class Signuppage extends StatelessWidget {
                           ),
                         ),
                         cursorColor: Colors.black,
+                        onChanged: (value) {
+                          confirm_password = value;
+                        },
 
                       ),
 
@@ -153,14 +192,27 @@ class Signuppage extends StatelessWidget {
                     SizedBox(height: 20.0,),
 
                     SizedBox(height: 40),
-
+// next arrow
                     Center(
                         child: Container(
                           height: 60,
                           width: 60,
                           child: IconButton(
 
-                            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpage()));} ,
+                            onPressed: () async {
+                              try {
+                                final user = await _auth.createUserWithEmailAndPassword(
+
+                                    email: email, password: password);
+                                print('successful');
+                                if (user != null) {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpage()));
+                                } }
+                              catch (e) {
+                                print(e);
+                              }
+
+                              } ,
                             color: Colors.white,
                             icon: const Icon(Icons.arrow_forward_ios_sharp, color:arrowcolor),
 
