@@ -8,6 +8,7 @@ import 'colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:e_commerce/Mainpage.dart';
 
 final  _auth = FirebaseAuth.instance;
 
@@ -24,6 +25,8 @@ class Signuppage extends StatefulWidget {
 
 class _SignuppageState extends State<Signuppage> {
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _autoValidate = false;
 
   final  _auth = FirebaseAuth.instance;
 
@@ -52,7 +55,7 @@ class _SignuppageState extends State<Signuppage> {
                   padding: EdgeInsets.only(top: 100),
                 ),
                 SizedBox(height:30,),
- //title texts
+                //title texts
                 Center(
                   child: Text('Sign Up', style: TextStyle(
                       fontSize: 30, fontWeight: FontWeight.bold,
@@ -68,171 +71,231 @@ class _SignuppageState extends State<Signuppage> {
                 SizedBox(height:70,),
 
 
-                Column(
-                  children:<Widget> [
- //full name text field
-                    Container(
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children:<Widget> [
+                      //full name text field
+                      Container(
 
 
-                      child: TextFormField(decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(bottom: 30),
-                        prefixIcon: Icon(Icons.person),
-                        hintText: 'Full Name',fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30)
+                        child: TextFormField(
+                          validator: (value){
+                            if(value!.isEmpty){
+                              return "*Required";
+                            }
+                            if(value.contains(RegExp(r'[0-9]'))){
+                              return "This field takes in only characters";
+                            }
+                          },
+                          decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(bottom: 30),
+                          prefixIcon: Icon(Icons.person),
+                          hintText: 'Full Name',fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)
+                          ),
+                          filled: true,
+                          labelStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,color: Colors.black
+                          ),
                         ),
-                        filled: true,
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,color: Colors.black
+                          cursorColor: Colors.black,
+                          onChanged: (value) {
+                            fullName = value;
+
+
+
+                          },
+
                         ),
-                      ),
-                        cursorColor: Colors.black,
-                        onChanged: (value) {
-                          fullName = value;
 
 
-
-                        },
 
                       ),
-
-
-
-                    ),
-                    SizedBox(height: 20),
+                      SizedBox(height: 20),
 //email text field
-                    Container(
+                      Container(
 
 
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(bottom: 30),
-                          prefixIcon: Icon(Icons.email),
-                          hintText: 'Email',fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30)
+                        child: TextFormField(
+                          validator: (value){
+                            if(value!.isEmpty){
+                              return "*Required";
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(bottom: 30),
+                            prefixIcon: Icon(Icons.email),
+                            hintText: 'Email',fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30)
+                            ),
+                            filled: true,
+                            labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,color: Colors.black
+                            ),
                           ),
-                          filled: true,
-                          labelStyle: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,color: Colors.black
-                          ),
+                          cursorColor: Colors.black,
+                          onChanged: (value) {
+                            email = value;
+                          },
+
                         ),
-                        cursorColor: Colors.black,
-                        onChanged: (value) {
-                          email = value;
-                        },
+
+
 
                       ),
+                      SizedBox(height: 20),
+                      //password text field
+                      Container(
 
 
-
-                    ),
-                    SizedBox(height: 20),
- //password text field
-                    Container(
-
-
-                      child: TextFormField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(bottom: 30),
-                          prefixIcon: Icon(Icons.password),
-                          hintText: 'Password',fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30)
+                        child: TextFormField(
+                          validator: (value){
+                            if(value!.isEmpty){
+                              return "*Required";
+                            }
+                            if(value.length<6){
+                              return "This field needs atleast 6 characters";
+                            }
+                          },
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(bottom: 30),
+                            prefixIcon: Icon(Icons.password),
+                            hintText: 'Password',fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30)
+                            ),
+                            filled: true,
+                            labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,color: Colors.black
+                            ),
                           ),
-                          filled: true,
-                          labelStyle: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,color: Colors.black
-                          ),
+                          cursorColor: Colors.black,
+                          onChanged: (value) {
+                            setState(() {
+                              password = value;
+                            });
+
+                          },
+
                         ),
-                        cursorColor: Colors.black,
-                        onChanged: (value) {
-                          password = value;
-                        },
+
+
 
                       ),
+                      SizedBox(height:20.0,),
+                      //confirm password text field
+                      Container(
 
 
-
-                    ),
-                    SizedBox(height:20.0,),
- //confirm password text field
-                    Container(
-
-
-                      child: TextFormField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(bottom: 30),
-                          prefixIcon: Icon(Icons.password_sharp),
-                          hintText: 'Confirm password',fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30)
+                        child: TextFormField(
+                          validator: (value){
+                            if(value!.isEmpty){
+                              return "*Required";
+                            }
+                            if(value.length<6){
+                              return "This field needs atleast 6 characters";
+                            }
+                            if(password != confirm_password){
+                              return "Password doesn't match";
+                            }
+                          },
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(bottom: 30),
+                            prefixIcon: Icon(Icons.password_sharp),
+                            hintText: 'Confirm password',fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30)
+                            ),
+                            filled: true,
+                            labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,color: Colors.black
+                            ),
                           ),
-                          filled: true,
-                          labelStyle: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,color: Colors.black
-                          ),
+                          cursorColor: Colors.black,
+                          onChanged: (value) {
+                            setState(() {
+                              confirm_password = value;
+                            });
+                          },
+
                         ),
-                        cursorColor: Colors.black,
-                        onChanged: (value) {
-                          confirm_password = value;
-                        },
+
+
 
                       ),
+                      SizedBox(height: 20.0,),
 
-
-
-                    ),
-                    SizedBox(height: 20.0,),
-
-                    SizedBox(height: 40),
+                      SizedBox(height: 40),
 // next arrow
-                    Center(
-                        child: Container(
-                          height: 60,
-                          width: 60,
-                          child: IconButton(
+                      Center(
+                          child: Container(
+                            height: 60,
+                            width: 60,
+                            child: IconButton(
 
-                            onPressed: () async {
-                              try {
-                                final user = await _auth.createUserWithEmailAndPassword(
+                              onPressed: () async {
+                                setState(() {
+                                  if (_formKey.currentState!.validate()) {
+                                    _autoValidate = true;
+                                  }
+                                });
+                                if(password == confirm_password){
+                                  try {
+                                    final user = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                                    print('successful');
+                                    if (user != null) {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
+                                    } }
+                                  catch (e) {
+                                    print(e);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          content: Text('An account is already associated with this email', style: TextStyle(color: lightfontcolor),),
+                                          backgroundColor: darkfontcolor,
+                                        )
+                                    );
+                                  }
+                                }
+                                else{
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text('Try Again! The Passwords dont match', style: TextStyle(color: lightfontcolor),),
+                                        backgroundColor: darkfontcolor,
 
-                                    email: email, password: password);
-                                print('successful');
-                                if (user != null) {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpage()));
-                                } }
-                              catch (e) {
-                                print(e);
-                              }
-
+                                      )
+                                  );
+                                }
                               } ,
-                            color: Colors.white,
-                            icon: const Icon(Icons.arrow_forward_ios_sharp, color:arrowcolor),
+                              color: Colors.white,
+                              icon: const Icon(Icons.arrow_forward_ios_sharp, color:arrowcolor),
 
 
 
-                          ),
+                            ),
 
-                        )
+                          )
 
-                    ),
-                    SizedBox(height: 30),
+                      ),
+                      SizedBox(height: 30),
 
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
-        )
-
+        ),
     );
+
 
 
 
