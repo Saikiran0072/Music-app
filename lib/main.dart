@@ -5,6 +5,7 @@ import '2nd page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:e_commerce/Mainpage.dart';
 
 void main() async{
 
@@ -15,8 +16,15 @@ void main() async{
   ));
 }
 
-class Home extends StatelessWidget {
-  const Home ({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final  _auth = FirebaseAuth.instance;
+  late User loggedInUser;
 
   @override
   Widget build(BuildContext context) {
@@ -51,23 +59,31 @@ class Home extends StatelessWidget {
                   Center(
                     child: IconButton(
 
-                        icon: Icon(Icons.music_note_outlined, color: arrowcolor, size: 30,),
-                        onPressed: () {
+                      icon: Icon(Icons.music_note_outlined, color: arrowcolor, size: 30,),
+                      onPressed: () async {
+                        final user = await _auth.currentUser;
+                        if (user != null) {
+                          loggedInUser = user;
+                          print(user.email);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Mainpagee()));
+                          
+                        }
+                        else{
                           Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
-
-                        },
+                        }
+                      }
                     ),
                   ),
-                    Container(
-                      child: Text('Welcome to SHUFFLE',
-                        style:  TextStyle(
-                          color: arrowcolor,
-                          fontSize: 10,
-                          fontStyle: FontStyle.italic,
-                        ),
-
+                  Container(
+                    child: Text('Welcome to SHUFFLE',
+                      style:  TextStyle(
+                        color: arrowcolor,
+                        fontSize: 10,
+                        fontStyle: FontStyle.italic,
                       ),
+
                     ),
+                  ),
 
 
                 ],
