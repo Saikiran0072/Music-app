@@ -8,15 +8,26 @@ import 'loginpage.dart';
 import 'profilepage.dart';
 import 'savedplaylist.dart';
 import 'colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'main.dart';
 
 void main() {
   runApp(MaterialApp(
     home: Options(),
   ));
 }
-class Options extends StatelessWidget {
+class Options extends StatefulWidget {
   const Options({Key? key}) : super(key: key);
 
+  @override
+  _OptionsState createState() => _OptionsState();
+}
+
+class _OptionsState extends State<Options> {
+
+  final  _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -230,7 +241,12 @@ class Options extends StatelessWidget {
 
 
             child: RaisedButton(
-              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpage()));},
+              onPressed: () {
+                _auth.signOut();
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+
+
+                },
               child: Text('Log Out',
                   style: TextStyle(
                     fontSize: 20.0,
