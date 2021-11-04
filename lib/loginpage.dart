@@ -185,6 +185,12 @@ class _MainpageState extends State<Mainpage> {
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} }
                               catch (e) {
                                 print(e);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Incorrect email/password', style: TextStyle(color: lightfontcolor),),
+                                      backgroundColor: darkfontcolor,
+                                    )
+                                );
                               }
                             },
                             child: Text("Login",style: TextStyle(fontSize: 20),),
