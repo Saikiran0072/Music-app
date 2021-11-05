@@ -44,15 +44,6 @@ class _MainpageState extends State<Mainpage> {
   String password ='';
   String loggedInUser = '';
 
-  void getCurrentUser() async{
-    final user = await _auth.currentUser;
-    if (user != null){
-      loggedInUser = user as String;
-      print(user.email);
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Mainpagee()));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return loading ? Loading(): Scaffold(
