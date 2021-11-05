@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:e_commerce/Song.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +45,7 @@ class _MainpageState extends State<Mainpage> {
   String email= '';
   String password ='';
   String loggedInUser = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -171,27 +174,35 @@ class _MainpageState extends State<Mainpage> {
                                 if (_formKey.currentState!.validate()) {
                                   _autoValidate = true;
                                 }
-                              setState(() {
-                                loading =true;
-
-                              });
                               });
                               try {
                                 final user1 = await _auth.signInWithEmailAndPassword(email: email, password: password);
                                 print('successful');
                                 if (user1 != null) {
                                   setState(() {
-                                    loading =false;
+                                    loading =true;
                                   });
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} }
+                                  on FirebaseAuthException
                               catch (e) {
-                                print(e);
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text('Incorrect email/password', style: TextStyle(color: lightfontcolor),),
-                                      backgroundColor: darkfontcolor,
-                                    )
-                                );
+                                error = e.code;
+                                if (error == "invalid-email"){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text('Invalid Email! Try Again', style: TextStyle(color: lightfontcolor),),
+                                        backgroundColor: darkfontcolor,
+                                      )
+                                  );
+                                }
+                                else if(email.isNotEmpty && password.isNotEmpty){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text('Incorrect email/password', style: TextStyle(color: lightfontcolor),),
+                                        backgroundColor: darkfontcolor,
+                                      )
+                                  );
+                                }
+
                               }
                             },
                             child: Text("Login",style: TextStyle(fontSize: 20),),
