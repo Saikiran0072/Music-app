@@ -3,6 +3,7 @@ import 'package:e_commerce/Song.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'loading.dart';
 import 'profilepage.dart';
 import 'signuppage.dart';
 import 'package:e_commerce/Mainpage.dart';
@@ -37,6 +38,8 @@ class _MainpageState extends State<Mainpage> {
   bool _autoValidate = false;
 
   final  _auth = FirebaseAuth.instance;
+
+  bool loading = false;
   String email= '';
   String password ='';
   String loggedInUser = '';
@@ -52,7 +55,7 @@ class _MainpageState extends State<Mainpage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading(): Scaffold(
       backgroundColor: scaffoldbgcolor,
 
       body: SingleChildScrollView(
@@ -138,7 +141,7 @@ class _MainpageState extends State<Mainpage> {
                             return "*Required";
                           }
                           if(value.length <6){
-                              return "this field requires atleast 6 characters";
+                            return "this field requires atleast 6 characters";
                           }
                         },
                         obscureText: true,
@@ -177,11 +180,18 @@ class _MainpageState extends State<Mainpage> {
                                 if (_formKey.currentState!.validate()) {
                                   _autoValidate = true;
                                 }
+                              setState(() {
+                                loading =true;
+
+                              });
                               });
                               try {
                                 final user1 = await _auth.signInWithEmailAndPassword(email: email, password: password);
                                 print('successful');
                                 if (user1 != null) {
+                                  setState(() {
+                                    loading =false;
+                                  });
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} }
                               catch (e) {
                                 print(e);
@@ -202,7 +212,7 @@ class _MainpageState extends State<Mainpage> {
                         Center(
                           child: GestureDetector(
                             onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Signuppage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Signuppage()));
                             },
                             child: Text(" Don't Have an account? ",
                               style: TextStyle(
