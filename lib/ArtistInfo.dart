@@ -1,12 +1,47 @@
 import 'dart:ui';
-
 import 'package:e_commerce/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'loginpage.dart';
 import 'songslist.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-class Artist extends StatelessWidget {
+
+class Artist extends StatefulWidget {
+
+  @override
+  State<Artist> createState() => _ArtistState();
+}
+
+class _ArtistState extends State<Artist> {
+
+  int followers= 0;
+
+  Future senddatatodb() async {
+    print('H E L L OOOOOOOOOO');
+    http.Response response = await http.post(Uri.parse('http://localhost/insertdata.php'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body:json.encode({
+
+          "Artist_id": 1,
+          "followers": followers,
+
+
+        }));
+
+
+    print(response.statusCode);
+    print(response.body);
+
+  }
+
+
+
 
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,34 +58,34 @@ class Artist extends StatelessWidget {
                     child: IconButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist())); },
-                      icon: Icon(Icons.arrow_back_ios_rounded, color: darkfontcolor,),
+                      icon: Icon(Icons.arrow_back_ios_rounded, color: arrowcolor,),
                     ),
                   ),
                   Container(
-                    width: 500,
-                    height: 130,
-                    color: containercolor,
-                    padding: EdgeInsets.only(left: 20, bottom: 20),
-                    alignment: Alignment.bottomLeft,
-                    child:
-                    Padding(
-                      padding: EdgeInsets.only(top: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Artist Name",
-                            style: TextStyle(
-                                fontSize: 40,
-                                color: darkfontcolor
-                            ),),
-                          Text("xxxxx followers",
-                            style: TextStyle(
+                      width: 500,
+                      height: 130,
+                      color: containercolor,
+                      padding: EdgeInsets.only(left: 20, bottom: 20),
+                      alignment: Alignment.bottomLeft,
+                      child:
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Artist Name",
+                              style: TextStyle(
+                                  fontSize: 40,
+                                  color: darkfontcolor
+                              ),),
+                            Text("xxxxx followers",
+                              style: TextStyle(
                                 fontSize: 18,
                                 color: darkfontcolor,
-                            ),),
-                        ],
-                      ),
-                    )
+                              ),),
+                          ],
+                        ),
+                      )
                   ),
                   SizedBox(height: 10,),
                   Row(
@@ -58,7 +93,19 @@ class Artist extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 130),
-                        child: MaterialButton(onPressed: (){},child: Text("FOLLOW"), color: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
+                        child: MaterialButton(onPressed: (){
+
+                            followers= followers+1;
+
+                            senddatatodb();
+
+                        },
+                          child: Text("FOLLOW",
+                            style: TextStyle(
+                              color: lightfontcolor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                        ), color: arrowcolor,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
                       ),
                       Icon(Icons.play_circle_fill_outlined, size: 40, color: navigationbariconcolor,)
                     ],
@@ -69,8 +116,8 @@ class Artist extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: Text("Albums",
                       style: TextStyle(
-                          fontSize: 25,
-                          color: darkfontcolor,
+                        fontSize: 25,
+                        color: darkfontcolor,
                         fontWeight: FontWeight.bold,
                       ),),
                   ),
@@ -96,7 +143,7 @@ class Artist extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: Container(
-                                    alignment: Alignment.center,
+                                      alignment: Alignment.center,
                                       child: Text("album 1", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
                                 ),
                               ],
@@ -223,7 +270,6 @@ class Artist extends StatelessWidget {
                     ),
                   ),
 
-                  
 
                 ],
               )
