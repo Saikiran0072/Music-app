@@ -22,7 +22,7 @@ class _ArtistState extends State<Artist> {
 
   Future senddatatodb() async {
     print('H E L L OOOOOOOOOO');
-    http.Response response = await http.post(Uri.parse('http://localhost/insertdata.php'),
+    http.Response response = await http.post(Uri.parse('http://192.168.0.102/insertdata.php'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
