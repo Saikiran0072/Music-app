@@ -2,11 +2,11 @@
 	include "test-connect.php";
 	// REGISTER USER
 	echo 'H E L L O';
-	echo 'gfgchvhyvhccgcgcgjcgcg'
+	echo 'gfgchvhyvhccgcgcgjcgcg';
 
 	  
-	    $Artist_id = mysqli_real_escape_string($connect, $_POST['Artist_id']);
-	    $followers = mysqli_real_escape_string($connect, $_POST['followers']);
+	    $Artist_id = mysqli_real_escape_string($connect, $_POST['Artist_id'] ?? "");
+	    $followers = mysqli_real_escape_string($connect, $_POST['followers'] ?? "");
 	   
 	  
 	 
