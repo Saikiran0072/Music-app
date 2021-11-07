@@ -1,20 +1,53 @@
-<?php 
-	include "test-connect.php";
-	// REGISTER USER
-	echo 'H E L L O';
-	echo 'gfgchvhyvhccgcgcgjcgcg';
-
-	  
-	    $Artist_id = mysqli_real_escape_string($connect, $_POST['Artist_id'] ?? "");
-	    $followers = mysqli_real_escape_string($connect, $_POST['followers'] ?? "");
-	   
-	  
+<?php
+echo "HELLO";
+ 
+//Define your Server host name here.
+$HostName = "localhost";
+ 
+//Define your MySQL Database Name here.
+$DatabaseName = "artist info";
+ 
+//Define your Database User Name here.
+$HostUser = "root";
+ 
+//Define your Database Password here.
+$HostPass = ""; 
+ 
+// Creating MySQL Connection.
+$con = mysqli_connect($HostName,$HostUser,$HostPass,$DatabaseName);
+ 
+// Storing the received JSON into $json variable.
+$json = file_get_contents('php://input');
+ 
+// Decode the received JSON and Store into $obj variable.
+$obj = json_decode($json,true);
+ 
+// Getting name from $obj object.
+$Artist_id = $obj['Artist_id'] ?? "";
+ 
+// Getting Email from $obj object.
+$followers = $obj['followers'] ?? "";
+ 
+// Creating SQL query and insert the record into MySQL database table.
+$Sql_Query = "update artist set followers = ('$followers') where Artist_id=1";
 	 
-	        $query = "INSERT INTO artist (Artist_id, followers)
-	  			  VALUES('$Artist_id', '$followers')";
-	    $results = mysqli_query($connect, $query);
-	    if($results>0)
-	    {
-		echo "user added successfully"; }
-			?>
-			
+if(mysqli_query($con,$Sql_Query)){
+	 
+	// If the record inserted successfully then show the message.
+	$MSG = 'User Registered Successfully' ;
+		 
+	// Converting the message into JSON format.
+	$json = json_encode($MSG);
+		 
+	// Echo the message.
+	echo $json ;
+	 
+	 }
+else{
+	 
+	echo 'Try Again';
+	 
+	}
+
+ mysqli_close($con);
+?>
