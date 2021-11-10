@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:core';
 
 import 'package:flutter/cupertino.dart';
@@ -5,13 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'loginpage.dart';
 import 'colors.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:e_commerce/Mainpage.dart';
 import 'loading.dart';
-
-final  _auth = FirebaseAuth.instance;
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MaterialApp(
@@ -27,17 +24,29 @@ class Signuppage extends StatefulWidget {
 class _SignuppageState extends State<Signuppage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final fullNameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwdController = TextEditingController();
+  final confirmpasswdController = TextEditingController();
+
+  Future register() async{
+    print('H E L L OOOOOOOOO');
+    http.Response response = await http.post(Uri.parse('http://192.168.0.102/register.php'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body:json.encode({
+
+          "FullName": fullNameController.text,
+          "Email": emailController.text,
+          "Password": passwdController.text,
+          "Confirmpswd": confirmpasswdController.text,
+
+        }));
+    print("success");
+    print(response.statusCode);
+  }
   bool _autoValidate = false;
-
-  final  _auth = FirebaseAuth.instance;
-
-  String fullName ='';
-
-  String email='';
-
-  String password ='';
-
-  String confirm_password ='';
   bool loading = false;
 
   @override
@@ -104,12 +113,8 @@ class _SignuppageState extends State<Signuppage> {
                           ),
                         ),
                         cursorColor: Colors.black,
-                        onChanged: (value) {
-                          fullName = value;
+                        controller: fullNameController,
 
-
-
-                        },
 
                       ),
 
@@ -141,9 +146,7 @@ class _SignuppageState extends State<Signuppage> {
                           ),
                         ),
                         cursorColor: Colors.black,
-                        onChanged: (value) {
-                          email = value;
-                        },
+                        controller: emailController,
 
                       ),
 
@@ -179,12 +182,7 @@ class _SignuppageState extends State<Signuppage> {
                           ),
                         ),
                         cursorColor: Colors.black,
-                        onChanged: (value) {
-                          setState(() {
-                            password = value;
-                          });
-
-                        },
+                        controller: passwdController,
 
                       ),
 
@@ -204,7 +202,7 @@ class _SignuppageState extends State<Signuppage> {
                           if(value.length<6){
                             return "This field needs atleast 6 characters";
                           }
-                          if(password != confirm_password){
+                          if( passwdController.text!= confirmpasswdController.text){
                             return "Password doesn't match";
                           }
                         },
@@ -223,11 +221,7 @@ class _SignuppageState extends State<Signuppage> {
                           ),
                         ),
                         cursorColor: Colors.black,
-                        onChanged: (value) {
-                          setState(() {
-                            confirm_password = value;
-                          });
-                        },
+                        controller: confirmpasswdController,
 
                       ),
 
@@ -249,39 +243,9 @@ class _SignuppageState extends State<Signuppage> {
                                 if (_formKey.currentState!.validate()) {
                                   _autoValidate = true;
                                 }
+                                register();
                               });
-                              if(password == confirm_password && fullName.isNotEmpty){
-                                try {
-                                  final user = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-                                  print('successful');
-                                  if (user != null) {
-                                    setState(() {
-                                      loading = true;
-                                    });
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
-                                  } }
-                                on FirebaseAuthException
-                                catch (e) {
-                                  print(e.code);
-                                  if (e.code  == 'invalid-email'){
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content: Text('Invalid Email! Try Again', style: TextStyle(color: lightfontcolor),),
-                                          backgroundColor: darkfontcolor,
-                                        )
-                                    );
-                                  }
-                                  else if (e.code == "email-already-in-use"){
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content: Text('An account is already associated with this mail', style: TextStyle(color: lightfontcolor),),
-                                          backgroundColor: darkfontcolor,
 
-                                        )
-                                    );
-                                  }
-                                }
-                              }
                             } ,
                             color: Colors.white,
                             icon: const Icon(Icons.arrow_forward_ios_sharp, color:arrowcolor),
