@@ -3,7 +3,8 @@ import 'main.dart';
 import 'Mainpage.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'catogory.dart';
-
+import 'package:audioplayers/audioplayers.dart';
+import 'colors.dart';
 
 class Song extends StatefulWidget {
 
@@ -12,9 +13,58 @@ class Song extends StatefulWidget {
 }
 class _SongState extends State<Song> {
 
-  double sliderValue=2;
+  final audioPlayer = AudioPlayer();
+  Duration position = new Duration();
+  Duration music_length = new Duration();
+
   bool playing = false;
-  IconData playButton = Icons.play_arrow;
+  @override
+  void initState() {
+    super.initState();
+
+    audioPlayer.onDurationChanged.listen((d) {
+      setState(() {
+        music_length = d;
+      });
+    }) ;
+    audioPlayer.onAudioPositionChanged.listen((p) {
+      setState(() {
+        position =p;
+      });
+    });
+    audioPlayer.onPlayerCompletion.listen((event) {
+      setState(() {
+        position = Duration(seconds: 0);
+        playing = false;
+      });
+    });
+  }
+
+  void playSound(){
+    AudioCache cache = new AudioCache(fixedPlayer: audioPlayer);
+    cache.play('infinity.mp3');
+  }
+
+  void pauseSound(){
+    audioPlayer.pause();
+  }
+
+
+  void seekToSec( int sec){
+    Duration newPos = Duration(seconds: sec);
+    audioPlayer.seek(newPos);
+  }
+
+  Widget slider(){
+    return Slider.adaptive(
+        activeColor: navigationbariconcolor,
+        inactiveColor: navigationbarcolor,
+        value: position.inSeconds.toDouble(),
+        max: music_length.inSeconds.toDouble(),
+        onChanged:(value){
+          seekToSec(value.toInt());
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,127 +177,124 @@ class _SongState extends State<Song> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SliderTheme(
-                          data: SliderThemeData(
-                            trackHeight: 5,
-                            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 9, ),
-
-                          ),
-                          child: Slider(
-                            activeColor: Color(0xFF1CDFCB),
-                            inactiveColor: Color(0xFF1F2933).withOpacity(0.3),
-                            //thumbColor: Color(0xFF1F2933),
-                            value: sliderValue,
-                            onChanged: (value) {
-                              setState((){
-                                sliderValue=value;
-                              });
-                            }
-                            ,min: 0,
-                            max: 20,
+                        slider(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("${position.inMinutes}:${position.inSeconds.remainder(60).toString().padLeft(2,"0")}",style: TextStyle(
+                                color: Colors.white
+                              ),),
+                              Text("${music_length.inMinutes}:${position.inSeconds.remainder(60).toString().padLeft(2,"0")}",style: TextStyle(
+                                  color: Colors.white
+                              ),),
+                            ],
                           ),
                         ),
                         SizedBox(height: 30,),
 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Container(
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFF323F4B),
+                                  ),
+                                  child: IconButton(
+                                    iconSize: 40.0,
+                                    color: Color(0xFF1CDFCB),
+                                    onPressed: (){},
+                                    icon: Icon(
+                                      Icons.repeat,
+                                    ),),
+                                ),
+                              ),
+                              SizedBox(
+                                width:15,),
+                              Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFF323F4B),
+                                  ),
+                                  child: IconButton(
+                                    iconSize: 40.0,
+                                    color: Color(0xFF1CDFCB),
+                                    onPressed: (){},
+                                    icon: Icon(
+                                      Icons.skip_previous,
+                                    ),),
+                                ),
+                              ),
+                              SizedBox(
+                                width:15,),
+                              Container(
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color(0xFF323F4B),
                                 ),
                                 child: IconButton(
-                                  iconSize: 40.0,
+                                  iconSize: 62.0,
                                   color: Color(0xFF1CDFCB),
-                                  onPressed: (){},
-                                  icon: Icon(
-                                    Icons.repeat,
+                                  onPressed: (){
+                                    if(!playing){
+                                      setState((){
+                                        playSound();
+                                        playing =true;
+                                      });
+                                    }else{
+                                      setState(() {
+                                        pauseSound();
+                                        playing =false;
+                                      });
+                                    }
+                                  },
+                                  icon: Icon(playing?Icons.pause:Icons.play_arrow
                                   ),),
                               ),
-                            ),
-                            SizedBox(
-                              width:15,),
-                            Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xFF323F4B),
+                              SizedBox(
+                                width:15,),
+                              Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFF323F4B),
+                                  ),
+                                  child:  IconButton(
+                                    iconSize: 40.0,
+                                    color: Color(0xFF1CDFCB),
+                                    onPressed: (){},
+                                    icon: Icon(
+                                      Icons.skip_next,
+                                    ),),
                                 ),
-                                child: IconButton(
-                                  iconSize: 40.0,
-                                  color: Color(0xFF1CDFCB),
-                                  onPressed: (){},
-                                  icon: Icon(
-                                    Icons.skip_previous,
-                                  ),),
                               ),
-                            ),
-                            SizedBox(
-                              width:15,),
-                            Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF323F4B),
-                              ),
-                              child: IconButton(
-                                iconSize: 62.0,
-                                color: Color(0xFF1CDFCB),
-                                onPressed: (){
-                                  if(!playing){
-                                    setState((){
-                                      playButton = Icons.pause;
-                                      playing =true;
-                                    });
-                                  }else{
-                                    setState(() {
-                                      playButton = Icons.play_arrow;
-                                      playing =false;
-                                    });
-                                  }
-                                },
-                                icon: Icon(
-                                  playButton,
-                                ),),
-                            ),
-                            SizedBox(
-                              width:15,),
-                            Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xFF323F4B),
-                                ),
-                                child:  IconButton(
-                                  iconSize: 40.0,
-                                  color: Color(0xFF1CDFCB),
-                                  onPressed: (){},
-                                  icon: Icon(
-                                    Icons.skip_next,
-                                  ),),
-                              ),
-                            ),
-                            SizedBox(
-                              width:15,),
-                            Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xFF323F4B),
-                                ),
-                                child:   IconButton(
-                                  iconSize: 40.0,
-                                  color: Color(0xFF1CDFCB),
-                                  onPressed: (){},
-                                  icon: Icon(
-                                    Icons.shuffle,
-                                  ),),
+                              SizedBox(
+                                width:15,),
+                              Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFF323F4B),
+                                  ),
+                                  child:   IconButton(
+                                    iconSize: 40.0,
+                                    color: Color(0xFF1CDFCB),
+                                    onPressed: (){},
+                                    icon: Icon(
+                                      Icons.shuffle,
+                                    ),),
 
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         )
                       ],
                     ),
