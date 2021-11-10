@@ -5,19 +5,23 @@ import 'package:cupertino_icons/cupertino_icons.dart';
 import 'catogory.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-
 class Song extends StatefulWidget {
 
   @override
   _SongState createState() => _SongState();
 }
 class _SongState extends State<Song> {
+  final audioPlayer = AudioPlayer();
   void playSound(){
-    final player = AudioCache();
-    player.play('songs/Infinity.mp3');
+    AudioCache cache = new AudioCache(fixedPlayer: audioPlayer);
+    cache.play('infinity.mp3');
   }
 
-  double sliderValue=0;
+  void pauseSound(){
+    audioPlayer.stop();
+  }
+
+  double sliderValue=2;
   bool playing = false;
   IconData playButton = Icons.play_arrow;
 
@@ -205,12 +209,13 @@ class _SongState extends State<Song> {
                                     setState((){
                                       playSound();
                                       playButton = Icons.pause;
-                                      playing =false;
+                                      playing =true;
                                     });
                                   }else{
                                     setState(() {
+                                      pauseSound();
                                       playButton = Icons.play_arrow;
-                                      playing =true;
+                                      playing =false;
                                     });
                                   }
                                 },
@@ -268,3 +273,4 @@ class _SongState extends State<Song> {
     );
   }
 }
+
