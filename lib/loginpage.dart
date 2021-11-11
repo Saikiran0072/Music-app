@@ -1,6 +1,5 @@
-
+import 'dart:convert';
 import 'dart:io';
-
 import 'package:e_commerce/Song.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +11,9 @@ import 'package:e_commerce/Mainpage.dart';
 import 'colors.dart';
 import 'main.dart';
 import 'Mainpage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'Song.dart';
 import 'signuppage.dart';
+import 'package:http/http.dart' as http;
 
 
 
@@ -37,15 +34,25 @@ class Mainpage extends StatefulWidget {
 class _MainpageState extends State<Mainpage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwdController = TextEditingController();
+  Future login() async{
+    http.Response response = await http.post(Uri.parse('http://192.168.0.102/win.php'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body:json.encode({
+
+          "Email": emailController.text,
+          "Password": passwdController.text,
+
+        }));
+    print("success");
+    print(response.statusCode);
+  }
   bool _autoValidate = false;
-
-  final  _auth = FirebaseAuth.instance;
-
   bool loading = false;
-  String email= '';
-  String password ='';
-  String loggedInUser = '';
-  String error = '';
+
 
   @override
   Widget build(BuildContext context) {
@@ -112,11 +119,7 @@ class _MainpageState extends State<Mainpage> {
                               fontSize: 30,color: Colors.black
                           ),
                         ),
-                        onChanged: (value) {
-                          email = value;
-
-
-                        },
+                        controller: emailController,
                         cursorColor: Colors.black,
 
 
@@ -153,10 +156,7 @@ class _MainpageState extends State<Mainpage> {
                           ),
                         ),
                         cursorColor: Colors.black,
-                        onChanged: (value) {
-                          password = value;
-
-                        },
+                        controller: passwdController,
 
                       ),
 
@@ -174,36 +174,9 @@ class _MainpageState extends State<Mainpage> {
                                 if (_formKey.currentState!.validate()) {
                                   _autoValidate = true;
                                 }
+                                login();
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
                               });
-                              try {
-                                final user1 = await _auth.signInWithEmailAndPassword(email: email, password: password);
-                                print('successful');
-                                if (user1 != null) {
-                                  setState(() {
-                                    loading =true;
-                                  });
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));} }
-                                  on FirebaseAuthException
-                              catch (e) {
-                                error = e.code;
-                                if (error == "invalid-email"){
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text('Invalid Email! Try Again', style: TextStyle(color: lightfontcolor),),
-                                        backgroundColor: darkfontcolor,
-                                      )
-                                  );
-                                }
-                                else if(email.isNotEmpty && password.isNotEmpty){
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text('Incorrect email/password', style: TextStyle(color: lightfontcolor),),
-                                        backgroundColor: darkfontcolor,
-                                      )
-                                  );
-                                }
-
-                              }
                             },
                             child: Text("Login",style: TextStyle(fontSize: 20),),
                             padding: EdgeInsets.symmetric(horizontal: 80, vertical: 10),
