@@ -26,7 +26,6 @@ class _ProfilepageState extends State<Profilepage> {
   String name = "";
   String text = "Update";
   bool enable = false;
-  bool loading = false;
 
   Future updateData() async{
     http.Response response = await http.post(Uri.parse('http://192.168.0.6/update.php'),
@@ -51,7 +50,7 @@ class _ProfilepageState extends State<Profilepage> {
   @override
   Widget build(BuildContext context) {
 
-    return loading? Loading() : Scaffold(
+    return Scaffold(
         backgroundColor: scaffoldbgcolor,
         appBar: AppBar(
           backgroundColor: appbarcolor,
@@ -276,13 +275,9 @@ class _ProfilepageState extends State<Profilepage> {
 
 
                             onPressed: () async {
-                              setState(() {
-                                loading = true;
-                              });
                               await updateData();
                               Provider.of<Data>(context, listen: false).getData();
                               setState(() {
-                                loading = false;
                                 enable = !enable;
                               });
                             } ,
