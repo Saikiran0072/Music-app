@@ -1,11 +1,10 @@
+
 import 'dart:convert';
 import 'dart:io';
-import 'package:e_commerce/Song.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'loading.dart';
-import 'profilepage.dart';
 import 'signuppage.dart';
 import 'package:e_commerce/Mainpage.dart';
 import 'colors.dart';
@@ -14,30 +13,31 @@ import 'Mainpage.dart';
 import 'Song.dart';
 import 'signuppage.dart';
 import 'package:http/http.dart' as http;
-
-
-
-void main() {
-  runApp(MaterialApp(
-    home: Mainpage(),
-  ));
-}
+import 'package:provider/provider.dart';
+import 'user.dart';
 
 
 class Mainpage extends StatefulWidget {
+  static const String id = "login_screen";
+
 
 
   @override
   State<Mainpage> createState() => _MainpageState();
+
 }
 
 class _MainpageState extends State<Mainpage> {
 
+  var message="";
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwdController = TextEditingController();
+  bool _autoValidate = false;
+  bool loading = false;
+
   Future login() async{
-    http.Response response = await http.post(Uri.parse('http://192.168.0.102/win.php'),
+    http.Response response = await http.post(Uri.parse('http://192.168.0.6/new.php'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -48,11 +48,9 @@ class _MainpageState extends State<Mainpage> {
 
         }));
     print("success");
+    message = response.body;
     print(response.statusCode);
   }
-  bool _autoValidate = false;
-  bool loading = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +59,6 @@ class _MainpageState extends State<Mainpage> {
 
       body: SingleChildScrollView(
         child: Padding(
-
           padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
 
           child: Column(
@@ -103,6 +100,9 @@ class _MainpageState extends State<Mainpage> {
                         validator: (value){
                           if(value!.isEmpty ){
                             return "*Required";
+                          }
+                          if(!value.contains(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"))){
+                            return "Enter valid email";
                           }
                         },
                         decoration: InputDecoration(
@@ -174,9 +174,21 @@ class _MainpageState extends State<Mainpage> {
                                 if (_formKey.currentState!.validate()) {
                                   _autoValidate = true;
                                 }
-                                login();
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
                               });
+                              await login();
+                              if(message != "\"Logged\""){
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Incorrect Email/Password', style: TextStyle(color: lightfontcolor),),
+                                      backgroundColor: darkfontcolor,
+                                    )
+                                );
+                              }
+                              else{
+                                Provider.of<Data>(context, listen: false).Email = emailController.text;
+                                Provider.of<Data>(context, listen: false).getData();
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
+                              }
                             },
                             child: Text("Login",style: TextStyle(fontSize: 20),),
                             padding: EdgeInsets.symmetric(horizontal: 80, vertical: 10),
@@ -211,8 +223,9 @@ class _MainpageState extends State<Mainpage> {
           ),
         ),
       ),
-
     );
+
+
 
 
 
