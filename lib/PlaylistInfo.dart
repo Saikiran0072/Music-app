@@ -5,8 +5,10 @@ import 'package:e_commerce/Library.dart';
 import 'Song.dart';
 import 'ArtistInfo.dart';
 import 'Addsong.dart';
+import 'Extract.dart';
 
 class PlaylistInfo extends StatelessWidget {
+  static const String id = "playlistinfo_screen";
   const PlaylistInfo({Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -24,11 +26,11 @@ class PlaylistInfo extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Library())); },
-                        icon: Icon(Icons.arrow_back_ios_rounded, color: arrowcolor,),
+                          Navigator.pushNamed(context, Library.id);},
+                        icon: Icon(Icons.arrow_back_ios_rounded, color: darkfontcolor,),
                       ),
                       IconButton(
-                        icon: Icon(Icons.more_vert ,color: arrowcolor, ),
+                        icon: Icon(Icons.more_vert ,color: Color(0xFF1CDFCB), ),
                         onPressed: () {  },
                       ),
                     ],
@@ -67,7 +69,7 @@ class PlaylistInfo extends StatelessWidget {
                             padding: EdgeInsets.only(left: 10),
 
                           ),
-                          FloatingActionButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Addsong())); }, child: Icon(Icons.add, color:darkfontcolor,size: 30,),backgroundColor: navigationbariconcolor,)
+                          FloatingActionButton(onPressed: (){Navigator.pushNamed(context, Addsong.id); }, child: Icon(Icons.add, color:darkfontcolor,size: 30,),backgroundColor: navigationbariconcolor,)
 
                         ],
                       ),
@@ -79,190 +81,15 @@ class PlaylistInfo extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      GestureDetector(
-                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Song()));},
-                        child: Row(
-                          children: [
-                            Container(
-                              alignment: Alignment.bottomLeft,
-                              padding: EdgeInsets.only(left: 8),
-                              height: 80,
-                              width: 250,
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    padding:EdgeInsets.symmetric(vertical: 5),
-                                    child: Image(
-                                      image: AssetImage("images/default_img.jpg"),
-                                    ),
-                                  ),
-                                  SizedBox(width: 20,),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text("song 1", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                                      GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},child: Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor, fontWeight: FontWeight.bold),)),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: 10,),
-                            Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
-                            SizedBox(width: 10,),
-                            Icon(Icons.remove_circle_outline, color: navigationbariconcolor,size: 30,)
-                          ],
-                        ),
-                      ),
+                      buildSong(image: "images/default_img.jpg", song_name: "song1", artist_names: "Artist names",),
                       SizedBox(height: 20,),
-                      GestureDetector(
-                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Song()));},
-                        child: Row(
-                          children: [
-                            Container(
-                              alignment: Alignment.bottomLeft,
-                              padding: EdgeInsets.only(left: 8),
-                              height: 80,
-                              width: 250,
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    padding:EdgeInsets.symmetric(vertical: 5),
-                                    child: Image(
-                                      image: AssetImage("images/default_img.jpg"),
-                                    ),
-                                  ),
-                                  SizedBox(width: 20,),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text("song 2", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                                      GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},child: Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor, fontWeight: FontWeight.bold),)),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: 10,),
-                            Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
-                            SizedBox(width: 10,),
-                            Icon(Icons.remove_circle_outline, color: navigationbariconcolor,size: 30,)
-                          ],
-                        ),
-                      ),
+                      buildSong(image: "images/default_img.jpg", song_name: "song2", artist_names: "Artist names",),
                       SizedBox(height: 20,),
-                      GestureDetector(
-                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Song()));},
-                        child: Row(
-                          children: [
-                            Container(
-                              alignment: Alignment.bottomLeft,
-                              padding: EdgeInsets.only(left: 8),
-                              height: 80,
-                              width: 250,
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    padding:EdgeInsets.symmetric(vertical: 5),
-                                    child: Image(
-                                      image: AssetImage("images/default_img.jpg"),
-                                    ),
-                                  ),
-                                  SizedBox(width: 20,),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text("song 3", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                                      GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},child: Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor, fontWeight: FontWeight.bold),)),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: 10,),
-                            Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
-                            SizedBox(width: 10,),
-                            Icon(Icons.remove_circle_outline, color: navigationbariconcolor,size: 30,)
-                          ],
-                        ),
-                      ),
+                      buildSong(image: "images/default_img.jpg", song_name: "song3", artist_names: "Artist names",),
                       SizedBox(height: 20,),
-                      GestureDetector(
-                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Song()));},
-                        child: Row(
-                          children: [
-                            Container(
-                              alignment: Alignment.bottomLeft,
-                              padding: EdgeInsets.only(left: 8),
-                              height: 80,
-                              width: 250,
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    padding:EdgeInsets.symmetric(vertical: 5),
-                                    child: Image(
-                                      image: AssetImage("images/default_img.jpg"),
-                                    ),
-                                  ),
-                                  SizedBox(width: 20,),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text("song 4", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                                      GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},child: Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor, fontWeight: FontWeight.bold),)),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: 10,),
-                            Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
-                            SizedBox(width: 10,),
-                            Icon(Icons.remove_circle_outline, color: navigationbariconcolor,size: 30,)
-                          ],
-                        ),
-                      ),
+                      buildSong(image: "images/default_img.jpg", song_name: "song4", artist_names: "Artist names",),
                       SizedBox(height: 20,),
-                      GestureDetector(
-                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Song()));},
-                        child: Row(
-                          children: [
-                            Container(
-                              alignment: Alignment.bottomLeft,
-                              padding: EdgeInsets.only(left: 8),
-                              height: 80,
-                              width: 250,
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    padding:EdgeInsets.symmetric(vertical: 5),
-                                    child: Image(
-                                      image: AssetImage("images/default_img.jpg"),
-                                    ),
-                                  ),
-                                  SizedBox(width: 20,),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text("song 5", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                                      GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist()));},child: Text("Artist names", style: TextStyle(fontSize: 15, color: darkfontcolor, fontWeight: FontWeight.bold),)),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: 10,),
-                            Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 30,),
-                            SizedBox(width: 10,),
-                            Icon(Icons.remove_circle_outline, color: navigationbariconcolor,size: 30,)
-                          ],
-                        ),
-                      ),
+                      buildSong(image: "images/default_img.jpg", song_name: "song5", artist_names: "Artist names",),
                       SizedBox(height: 20,),
                     ],
                   ),
