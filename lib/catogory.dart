@@ -6,12 +6,14 @@ import 'favorites.dart';
 import 'package:e_commerce/savedplaylist.dart';
 import 'catogories.dart';
 import 'colors.dart';
+import 'Song.dart';
 
 
 
 
 
 class Category extends StatelessWidget {
+  static const String id = "category_screen";
   const Category({Key? key}) : super(key: key);
 
   @override
@@ -22,8 +24,8 @@ class Category extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>Categories())); },
-          icon: Icon(Icons.arrow_back_ios_rounded, color: arrowcolor,),
+            Navigator.pushNamed(context, Song.id);},
+          icon: Icon(Icons.arrow_back_ios_rounded),
         ),
         centerTitle: true,
         backgroundColor: appbarcolor,
@@ -49,14 +51,14 @@ class Category extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Text('Dance Song ', style: TextStyle(
+                  Text('Infinity ', style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: darkfontcolor
+                    color: darkfontcolor
                   ),),
 
                   SizedBox(height: 5,),
-                  Text('BTS',style: TextStyle(
+                  Text('One Direction',style: TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold, color: darkfontcolor
                   ),
 
@@ -92,7 +94,7 @@ class Category extends StatelessWidget {
                         Container(
                           child: IconButton(
                             icon: Icon(Icons.album ,color: navigationbariconcolor, ),
-                            onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context)=>Artist())); },
+                            onPressed: () { Navigator.pushNamed(context, Artist.id);},
                           ),
                         ),
                         SizedBox(width: 30,),
@@ -129,7 +131,7 @@ class Category extends StatelessWidget {
                         Container(
                           child: IconButton(
                             icon: Icon(Icons.headset,color: navigationbariconcolor, ),
-                            onPressed: () {  Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));},
+                            onPressed: () {  Navigator.pushNamed(context, Playlist.id);},
                           ),
                         ),
                         SizedBox(width: 30,),
@@ -155,3 +157,4 @@ class Category extends StatelessWidget {
     );
   }
 }
+
