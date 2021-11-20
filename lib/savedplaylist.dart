@@ -16,6 +16,7 @@ void main() {
   ));
 }
 class Playlist extends StatelessWidget {
+  static const String id = "savedplaylist_screen";
   const Playlist({Key? key}) : super(key: key);
 
   @override
@@ -27,7 +28,7 @@ class Playlist extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>Library()));
+            Navigator.pushNamed(context, Library.id);
           },
           icon: Icon(Icons.arrow_back_ios_rounded,color: Color(0xFF1CDFCB),),
         ),
@@ -108,7 +109,7 @@ class Playlist extends StatelessWidget {
 
               child: RaisedButton(
                 color: containercolor,
-                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Addsong()));},
+                onPressed: () {Navigator.pushNamed(context, Addsong.id);},
                 child: Text('Add Songs',
                     style: TextStyle(
                       fontSize: 18.0,
@@ -139,7 +140,7 @@ class Playlist extends StatelessWidget {
 
               icon: Icon(Icons.home, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Mainpagee()));
+                Navigator.pushNamed(context, Mainpagee.id);
 
               },
             ),
@@ -149,7 +150,7 @@ class Playlist extends StatelessWidget {
 
               icon: Icon(Icons.music_note, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Library()));
+                Navigator.pushNamed(context, Library.id);
 
               },
             ),
@@ -157,7 +158,7 @@ class Playlist extends StatelessWidget {
 
               icon: Icon(Icons.favorite, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Favorites()));
+                Navigator.pushNamed(context, Favorites.id);
 
               },
             ),
@@ -166,7 +167,7 @@ class Playlist extends StatelessWidget {
 
               icon: Icon(Icons.person, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Profilepage()));
+                Navigator.pushNamed(context, Profilepage.id);
 
               },
             ),
