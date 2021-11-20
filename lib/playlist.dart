@@ -14,6 +14,7 @@ void main() {
   ));
 }
 class Createplaylist extends StatelessWidget {
+  static const String id = "playlist_screen";
   const Createplaylist({Key? key}) : super(key: key);
 
   @override
@@ -85,7 +86,7 @@ class Createplaylist extends StatelessWidget {
 
 
 
-                    onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Library()));} ,
+                    onPressed: () {Navigator.pushNamed(context, Library.id);} ,
                     color: containercolor,
 
 
@@ -115,7 +116,7 @@ class Createplaylist extends StatelessWidget {
 
 
 
-                    onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));} ,
+                    onPressed: () {Navigator.pushNamed(context, Playlist.id);} ,
                     color: containercolor,
 
 
