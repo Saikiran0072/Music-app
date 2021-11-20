@@ -4,7 +4,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'Library.dart';
 import 'Mainpage.dart';
 import 'colors.dart';
-
+import 'Extract.dart';
 
 
 void main() {
@@ -13,6 +13,7 @@ void main() {
   ));
 }
 class Addsong extends StatelessWidget {
+  static const String id = "addsong_screen";
   const Addsong({Key? key}) : super(key: key);
 
   @override
@@ -24,8 +25,7 @@ class Addsong extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Library()));
+            Navigator.pushNamed(context, Library.id);
           },
           icon: Icon(Icons.arrow_back_ios_rounded,color: arrowcolor,),
         ),
@@ -91,348 +91,19 @@ class Addsong extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Column(
                       children: [
-                        Container(
-                          alignment: Alignment.bottomLeft,
-                          padding: EdgeInsets.only(left: 8),
-                          height: 80,
-                          constraints: BoxConstraints(
-                              maxWidth: double.infinity
-                          ),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 10.0),
-                                height: 50.0,
-                                width: 50.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage('images/default_img.jpg'),
-                                  ),
-
-                                  border: Border.all(
-                                    width: 4,
-                                    color: darkfontcolor,
-                                  ),
-
-                                ),
-                              ),
-                              SizedBox(width: 20,),
-                              Expanded(
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text('Vibez',
-                                      style: TextStyle(
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: darkfontcolor,
-                                      ),
-                                    )),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                onPressed: () {},
-                                alignment: Alignment.topRight,
-                              ),
-                            ],
-                          ),
-                        ),
+                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
                         SizedBox(height: 20,),
-                        Container(
-                          alignment: Alignment.bottomLeft,
-                          padding: EdgeInsets.only(left: 8),
-                          height: 80,
-                          constraints: BoxConstraints(
-                              maxWidth: double.infinity
-                          ),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 10.0),
-                                height: 50.0,
-                                width: 50.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage('images/default_img.jpg'),
-                                  ),
-
-                                  border: Border.all(
-                                    width: 4,
-                                    color: darkfontcolor,
-                                  ),
-
-                                ),
-                              ),
-                              SizedBox(width: 20,),
-                              Expanded(
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text('Vibez',
-                                      style: TextStyle(
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: darkfontcolor,
-                                      ),
-                                    )),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                onPressed: () {},
-                                alignment: Alignment.topRight,
-                              ),
-                            ],
-                          ),
-                        ),
+                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
                         SizedBox(height: 20,),
-                        Container(
-                          alignment: Alignment.bottomLeft,
-                          padding: EdgeInsets.only(left: 8),
-                          height: 80,
-                          constraints: BoxConstraints(
-                              maxWidth: double.infinity
-                          ),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 10.0),
-                                height: 50.0,
-                                width: 50.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage('images/default_img.jpg'),
-                                  ),
-
-                                  border: Border.all(
-                                    width: 4,
-                                    color: darkfontcolor,
-                                  ),
-
-                                ),
-                              ),
-                              SizedBox(width: 20,),
-                              Expanded(
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text('Vibez',
-                                      style: TextStyle(
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: darkfontcolor,
-                                      ),
-                                    )),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                onPressed: () {},
-                                alignment: Alignment.topRight,
-                              ),
-                            ],
-                          ),
-                        ),
+                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
                         SizedBox(height: 20,),
-                        Container(
-                          alignment: Alignment.bottomLeft,
-                          padding: EdgeInsets.only(left: 8),
-                          height: 80,
-                          constraints: BoxConstraints(
-                              maxWidth: double.infinity
-                          ),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 10.0),
-                                height: 50.0,
-                                width: 50.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage('images/default_img.jpg'),
-                                  ),
-
-                                  border: Border.all(
-                                    width: 4,
-                                    color: darkfontcolor,
-                                  ),
-
-                                ),
-                              ),
-                              SizedBox(width: 20,),
-                              Expanded(
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text('Vibez',
-                                      style: TextStyle(
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: darkfontcolor,
-                                      ),
-                                    )),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                onPressed: () {},
-                                alignment: Alignment.topRight,
-                              ),
-                            ],
-                          ),
-                        ),
+                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
                         SizedBox(height: 20,),
-                        Container(
-                          alignment: Alignment.bottomLeft,
-                          padding: EdgeInsets.only(left: 8),
-                          height: 80,
-                          constraints: BoxConstraints(
-                              maxWidth: double.infinity
-                          ),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 10.0),
-                                height: 50.0,
-                                width: 50.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage('images/default_img.jpg'),
-                                  ),
-
-                                  border: Border.all(
-                                    width: 4,
-                                    color: darkfontcolor,
-                                  ),
-
-                                ),
-                              ),
-                              SizedBox(width: 20,),
-                              Expanded(
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text('Vibez',
-                                      style: TextStyle(
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: darkfontcolor,
-                                      ),
-                                    )),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                onPressed: () {},
-                                alignment: Alignment.topRight,
-                              ),
-                            ],
-                          ),
-                        ),
+                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
                         SizedBox(height: 20,),
-                        Container(
-                          alignment: Alignment.bottomLeft,
-                          padding: EdgeInsets.only(left: 8),
-                          height: 80,
-                          constraints: BoxConstraints(
-                              maxWidth: double.infinity
-                          ),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 10.0),
-                                height: 50.0,
-                                width: 50.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage('images/default_img.jpg'),
-                                  ),
-
-                                  border: Border.all(
-                                    width: 4,
-                                    color: darkfontcolor,
-                                  ),
-
-                                ),
-                              ),
-                              SizedBox(width: 20,),
-                              Expanded(
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text('Vibez',
-                                      style: TextStyle(
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: darkfontcolor,
-                                      ),
-                                    )),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                onPressed: () {},
-                                alignment: Alignment.topRight,
-                              ),
-                            ],
-                          ),
-                        ),
+                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
                         SizedBox(height: 20,),
-                        Container(
-                          alignment: Alignment.bottomLeft,
-                          padding: EdgeInsets.only(left: 8),
-                          height: 80,
-                          constraints: BoxConstraints(
-                              maxWidth: double.infinity
-                          ),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 10.0),
-                                height: 50.0,
-                                width: 50.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage('images/default_img.jpg'),
-                                  ),
-
-                                  border: Border.all(
-                                    width: 4,
-                                    color: darkfontcolor,
-                                  ),
-
-                                ),
-                              ),
-                              SizedBox(width: 20,),
-                              Expanded(
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text('Vibez',
-                                      style: TextStyle(
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: darkfontcolor,
-                                      ),
-                                    )),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.add_circle_outline ,color: arrowcolor, ),
-                                onPressed: () {},
-                                alignment: Alignment.topRight,
-                              ),
-                            ],
-                          ),
-                        ),
+                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
                         SizedBox(height: 40,),
 
 
