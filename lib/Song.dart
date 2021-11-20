@@ -7,6 +7,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'colors.dart';
 
 class Song extends StatefulWidget {
+  static const String id = "song_screen";
 
   @override
   _SongState createState() => _SongState();
@@ -74,14 +75,14 @@ class _SongState extends State<Song> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios,),
           color: Color(0xFF1CDFCB),
-          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee())); },
+          onPressed: (){Navigator.pushNamed(context, Mainpagee.id);},
         ),
         backgroundColor: Color(0xFF323F4B),
         actions: [
           IconButton(
             icon: Icon(Icons.more_vert_outlined,),
             color: Color(0xFF1CDFCB),
-            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));}, ),
+            onPressed: () {Navigator.pushNamed(context, Category.id);}, ),
         ],
       ),
       body: Container(
