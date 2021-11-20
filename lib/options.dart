@@ -9,8 +9,6 @@ import 'profilepage.dart';
 import 'savedplaylist.dart';
 import 'colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'main.dart';
 
 void main() {
@@ -19,6 +17,7 @@ void main() {
   ));
 }
 class Options extends StatefulWidget {
+  static const String id = "options_screen";
   const Options({Key? key}) : super(key: key);
 
   @override
@@ -26,8 +25,6 @@ class Options extends StatefulWidget {
 }
 
 class _OptionsState extends State<Options> {
-
-  final  _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +87,7 @@ class _OptionsState extends State<Options> {
                 child: Container(
                     child:IconButton(
 
-                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));},
+                      onPressed: () {Navigator.pushNamed(context, Mainpagee.id);},
                       color: Colors.white,
                       icon: const Icon(Icons.close),
                       alignment: Alignment.topRight,
@@ -108,7 +105,7 @@ class _OptionsState extends State<Options> {
                 width: 60,
                 child: IconButton(
 
-                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Profilepage()));} ,
+                  onPressed: () {Navigator.pushNamed(context, Profilepage.id);} ,
                   color: navigationbariconcolor,
                   icon: const Icon(Icons.edit),
 
@@ -142,7 +139,7 @@ class _OptionsState extends State<Options> {
                 width: 60,
                 child: IconButton(
 
-                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Library()));} ,
+                  onPressed: () {Navigator.pushNamed(context, Library.id);} ,
                   color: navigationbariconcolor,
                   icon: const Icon(Icons.headset),
 
@@ -175,7 +172,7 @@ class _OptionsState extends State<Options> {
                 width: 60,
                 child: IconButton(
 
-                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Favorites()));} ,
+                  onPressed: () {Navigator.pushNamed(context, Favorites.id);} ,
                   color: navigationbariconcolor,
                   icon: const Icon(Icons.favorite),
 
@@ -242,8 +239,7 @@ class _OptionsState extends State<Options> {
 
             child: RaisedButton(
               onPressed: () {
-                _auth.signOut();
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+
 
 
                 },
