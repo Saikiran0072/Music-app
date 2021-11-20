@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:core';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -9,6 +8,9 @@ import 'colors.dart';
 import 'package:e_commerce/Mainpage.dart';
 import 'loading.dart';
 import 'package:http/http.dart' as http;
+import 'loginpage.dart';
+
+
 
 void main() {
   runApp(MaterialApp(
@@ -17,6 +19,7 @@ void main() {
 }
 
 class Signuppage extends StatefulWidget {
+  static const String id = "signup_screen";
   @override
   State<Signuppage> createState() => _SignuppageState();
 }
@@ -28,10 +31,14 @@ class _SignuppageState extends State<Signuppage> {
   final emailController = TextEditingController();
   final passwdController = TextEditingController();
   final confirmpasswdController = TextEditingController();
+  var message="";
+  var check_pattern = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+
+  bool _autoValidate = false;
+  bool loading = false;
 
   Future register() async{
-    print('H E L L OOOOOOOOO');
-    http.Response response = await http.post(Uri.parse('http://192.168.0.102/register.php'),
+    http.Response response = await http.post(Uri.parse('http://192.168.0.6/register.php'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -40,14 +47,13 @@ class _SignuppageState extends State<Signuppage> {
           "FullName": fullNameController.text,
           "Email": emailController.text,
           "Password": passwdController.text,
-          "Confirmpswd": confirmpasswdController.text,
+          "Confirmpswd": confirmpasswdController.text
 
         }));
     print("success");
+    message = "success";
     print(response.statusCode);
   }
-  bool _autoValidate = false;
-  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -130,6 +136,9 @@ class _SignuppageState extends State<Signuppage> {
                         validator: (value){
                           if(value!.isEmpty){
                             return "*Required";
+                          }
+                          if(!value.contains(check_pattern)){
+                            return "Enter valid email";
                           }
                         },
                         decoration: InputDecoration(
@@ -243,8 +252,31 @@ class _SignuppageState extends State<Signuppage> {
                                 if (_formKey.currentState!.validate()) {
                                   _autoValidate = true;
                                 }
-                                register();
                               });
+                              if (passwdController.text == confirmpasswdController.text && (passwdController.text.length >=6 && confirmpasswdController.text.length >=6) && emailController.text.contains(check_pattern)){
+                                await register();
+                                if(message != "success"){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text('An account is already associated with this mail', style: TextStyle(color: lightfontcolor),),
+                                        backgroundColor: darkfontcolor,
+                                      )
+                                  );
+                                }
+                                else{
+                                  Navigator.pushNamed(context, Mainpagee.id);
+                                }
+                              }
+                              else{
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          content: Text('Try Again', style: TextStyle(color: lightfontcolor),),
+                                          backgroundColor: darkfontcolor,
+                                        )
+                                    );
+                                  }
+
+
 
                             } ,
                             color: Colors.white,
