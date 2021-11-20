@@ -9,6 +9,7 @@ import 'profilepage.dart';
 import 'Mainpage.dart';
 import 'songslist.dart';
 import 'PlaylistInfo.dart';
+import 'Extract.dart';
 
 
 void main() {
@@ -17,6 +18,7 @@ void main() {
   ));
 }
 class Library extends StatelessWidget {
+  static const String id = "library_screen";
   const Library({Key? key}) : super(key: key);
 
   @override
@@ -28,7 +30,7 @@ class Library extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
+            Navigator.pushNamed(context, Mainpagee.id);
           },
           icon: Icon(Icons.arrow_back_ios_rounded),
         ),
@@ -42,107 +44,17 @@ class Library extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            GestureDetector(
-              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>PlaylistInfo()));},
-              child: Row(
-                children: [
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    padding: EdgeInsets.only(left: 8),
-                    height: 80,
-                    width: 320,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding:EdgeInsets.symmetric(vertical: 5),
-                          child: Image(
-                            image: AssetImage("images/default_img.jpg"),
-                          ),
-                        ),
-                        SizedBox(width: 20,),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text("Playlist 1", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            buildPlaylist(image: "images/default_img.jpg", playlist_name: "playlist1"),
             SizedBox(height: 20,),
-            GestureDetector(
-              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>PlaylistInfo()));},
-              child: Row(
-                children: [
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    padding: EdgeInsets.only(left: 8),
-                    height: 80,
-                    width: 320,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding:EdgeInsets.symmetric(vertical: 5),
-                          child: Image(
-                            image: AssetImage("images/default_img.jpg"),
-                          ),
-                        ),
-                        SizedBox(width: 20,),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text("Playlist 2", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            buildPlaylist(image: "images/default_img.jpg", playlist_name: "playlist2"),
             SizedBox(height: 20,),
-            GestureDetector(
-              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Playlist()));},
-              child: Row(
-                children: [
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    padding: EdgeInsets.only(left: 8),
-                    height: 80,
-                    width: 320,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding:EdgeInsets.symmetric(vertical: 5),
-                          child: Image(
-                            image: AssetImage("images/default_img.jpg"),
-                          ),
-                        ),
-                        SizedBox(width: 20,),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text("Playlist 3", style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            buildPlaylist(image: "images/default_img.jpg", playlist_name: "playlist3"),
 
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Createplaylist()));},
+        onPressed: () {Navigator.pushNamed(context, Createplaylist.id);},
         child: Icon(Icons.add),
         backgroundColor: navigationbariconcolor,
 
@@ -159,7 +71,7 @@ class Library extends StatelessWidget {
 
               icon: Icon(Icons.home, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Mainpagee()));
+                Navigator.pushNamed(context, Mainpagee.id);
 
               },
             ),
@@ -169,7 +81,7 @@ class Library extends StatelessWidget {
 
               icon: Icon(Icons.music_note, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Library()));
+                Navigator.pushNamed(context, Library.id);
 
               },
             ),
@@ -177,7 +89,7 @@ class Library extends StatelessWidget {
 
               icon: Icon(Icons.favorite, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Favorites()));
+                Navigator.pushNamed(context, Favorites.id);
 
               },
             ),
@@ -186,7 +98,7 @@ class Library extends StatelessWidget {
 
               icon: Icon(Icons.person, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Profilepage()));
+                Navigator.pushNamed(context, Profilepage.id);
 
               },
             ),
