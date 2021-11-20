@@ -8,9 +8,11 @@ import 'songslist.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'Extract.dart';
 
 
 class Artist extends StatefulWidget {
+  static const String id = "artistinfo_screen";
 
   @override
   State<Artist> createState() => _ArtistState();
@@ -18,30 +20,32 @@ class Artist extends StatefulWidget {
 
 class _ArtistState extends State<Artist> {
 
-  int followers= 0;
+  int followers = 0;
 
   Future senddatatodb() async {
     print('H E L L OOOOOOOOOO');
-    http.Response response = await http.post(Uri.parse('http://192.168.0.102/insertdata.php'),
+    http.Response response = await http.post(
+        Uri.parse('http://192.168.0.6/insertdata.php'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body:json.encode({
+        body: json.encode({
 
           "Artist_id": 1,
           "followers": followers,
 
 
         }));
-
-
     print(response.statusCode);
-    print(response.body);
-
   }
 
-
-
+  Future getData() async {
+    http.Response response = await http.get(
+        Uri.parse("http://192.168.0.6/insertdata.php"));
+    var data = jsonDecode(response.body);
+    print(response.statusCode);
+    print(data.toString());
+  }
 
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,8 +61,10 @@ class _ArtistState extends State<Artist> {
                     alignment: Alignment.topLeft,
                     child: IconButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist())); },
-                      icon: Icon(Icons.arrow_back_ios_rounded, color: arrowcolor,),
+                        Navigator.pushNamed(context, Songlist.id);
+                      },
+                      icon: Icon(
+                        Icons.arrow_back_ios_rounded, color: arrowcolor,),
                     ),
                   ),
                   Container(
@@ -93,21 +99,22 @@ class _ArtistState extends State<Artist> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 130),
-                        child: MaterialButton(onPressed: (){
-
-                            followers= followers+1;
-
-                            senddatatodb();
-
+                        child: MaterialButton(onPressed: () {
+                          followers++;
+                          senddatatodb();
                         },
                           child: Text("FOLLOW",
                             style: TextStyle(
                               color: lightfontcolor,
                               fontWeight: FontWeight.bold,
                             ),
-                        ), color: arrowcolor,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
+                          ),
+                          color: arrowcolor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),),
                       ),
-                      Icon(Icons.play_circle_fill_outlined, size: 40, color: navigationbariconcolor,)
+                      Icon(Icons.play_circle_fill_outlined, size: 40,
+                        color: navigationbariconcolor,)
                     ],
                   ),
                   SizedBox(height: 10,),
@@ -127,143 +134,23 @@ class _ArtistState extends State<Artist> {
                       alignment: Alignment.centerLeft,
                       child: Column(
                         children: [
-                          Container(
-                            alignment: Alignment.bottomLeft,
-                            padding: EdgeInsets.only(left: 8),
-                            height: 80,
-                            width: 250,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                            child: Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  child: Image(
-                                    image: AssetImage("images/default_img.jpg"),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                      alignment: Alignment.center,
-                                      child: Text("album 1", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
-                                ),
-                              ],
-                            ),
-                          ),
+                          buildContainer(image: "images/default_img.jpg",
+                              album_name: "album1"),
                           SizedBox(height: 20,),
-                          Container(
-                            alignment: Alignment.bottomLeft,
-                            padding: EdgeInsets.only(left: 8),
-                            height: 80,
-                            width: 250,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                            child: Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  child: Image(
-                                    image: AssetImage("images/default_img.jpg"),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                      alignment: Alignment.center,
-                                      child: Text("album 2", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
-                                ),
-                              ],
-                            ),
-                          ),
+                          buildContainer(image: "images/default_img.jpg",
+                              album_name: "album2"),
                           SizedBox(height: 20,),
-                          Container(
-                            alignment: Alignment.bottomLeft,
-                            padding: EdgeInsets.only(left: 8),
-                            height: 80,
-                            width: 250,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                            child: Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  child: Image(
-                                    image: AssetImage("images/default_img.jpg"),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                      alignment: Alignment.center,
-                                      child: Text("album 3", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
-                                ),
-                              ],
-                            ),
-                          ),
+                          buildContainer(image: "images/default_img.jpg",
+                              album_name: "album3"),
                           SizedBox(height: 20,),
-                          Container(
-                            alignment: Alignment.bottomLeft,
-                            padding: EdgeInsets.only(left: 8),
-                            height: 80,
-                            width: 250,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                            child: Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  child: Image(
-                                    image: AssetImage("images/default_img.jpg"),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                      alignment: Alignment.center,
-                                      child: Text("album 4", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
-                                ),
-                              ],
-                            ),
-                          ),
+                          buildContainer(image: "images/default_img.jpg",
+                              album_name: "album4"),
                           SizedBox(height: 20,),
-                          Container(
-                            alignment: Alignment.bottomLeft,
-                            padding: EdgeInsets.only(left: 8),
-                            height: 80,
-                            width: 250,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                            child: Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  child: Image(
-                                    image: AssetImage("images/default_img.jpg"),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                      alignment: Alignment.center,
-                                      child: Text("album 5", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
-                                ),
-                              ],
-                            ),
-                          ),
+                          buildContainer(image: "images/default_img.jpg",
+                              album_name: "album5"),
                           SizedBox(height: 20,),
-                          Container(
-                            alignment: Alignment.bottomLeft,
-                            padding: EdgeInsets.only(left: 8),
-                            height: 80,
-                            width: 250,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-                            child: Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  child: Image(
-                                    image: AssetImage("images/default_img.jpg"),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                      alignment: Alignment.center,
-                                      child: Text("album 6", style: TextStyle(fontSize: 15,color: darkfontcolor),)),
-                                ),
-                              ],
-                            ),
-                          ),
+                          buildContainer(image: "images/default_img.jpg",
+                              album_name: "album6"),
 
                         ],
                       ),
@@ -281,3 +168,4 @@ class _ArtistState extends State<Artist> {
     );
   }
 }
+
