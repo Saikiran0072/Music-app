@@ -13,6 +13,8 @@ import 'savedplaylist.dart';
 import 'colors.dart';
 import 'songslist.dart';
 import 'Song.dart';
+import 'package:provider/provider.dart';
+import 'loginpage.dart';
 
 
 void main() {
@@ -21,6 +23,7 @@ void main() {
   ));
 }
 class Mainpagee extends StatefulWidget {
+  static const String id = "mainpage_screen";
 
   @override
   State<Mainpagee> createState() => _MainpageeState();
@@ -32,12 +35,9 @@ class _MainpageeState extends State<Mainpagee> {
   void changebanner() async {
     while(true){
       await new Future.delayed(Duration(seconds: 8));
-
         setState(() {
           i = Random().nextInt(7)+1;
         });
-
-
     }
   }
 
@@ -45,7 +45,6 @@ class _MainpageeState extends State<Mainpagee> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print("dlfjasd");
     changebanner();
   }
 
@@ -62,7 +61,7 @@ class _MainpageeState extends State<Mainpagee> {
             color: Color(0xFFF5F7FA),
           ),
         ),
-        leading: IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Options()));},
+        leading: IconButton(onPressed: (){Navigator.pushNamed(context, Options.id);},
           icon: Icon(
             Icons.menu,
             color: Color(0xFF9AA5B1),
@@ -95,7 +94,7 @@ class _MainpageeState extends State<Mainpagee> {
           child:Column(
             children: [
 
-              SizedBox(height: 25.0,),
+              SizedBox(height: 30.0,),
 //search bar
               Container(
                 child: Neumorphic(
@@ -127,7 +126,7 @@ class _MainpageeState extends State<Mainpagee> {
                   ),
                 ),
               ),
-              SizedBox(height: 25.0,),
+              SizedBox(height: 30.0,),
 
               //top containers
               SingleChildScrollView(
@@ -138,18 +137,17 @@ class _MainpageeState extends State<Mainpagee> {
                     SizedBox(width: 10,),
                     Stack(
                       children: [
-                        Container(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: Image.asset('images/banner $i.jpeg',
-                              height:240.0 ,
-                              width: 390.0,
-                              fit: BoxFit.fill,
-
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: Container(
+                            height: 200.0,
+                            width: 350.0,
+                            color: containercolor,
+                            child: Image.asset('images/banner $i.jpg', fit: BoxFit.fill,height:200.0 ,
+                              width: 300.0,
                             ),
+
                           ),
-
-
                         ),
                       ],
                     ),
@@ -184,7 +182,7 @@ class _MainpageeState extends State<Mainpagee> {
                   SizedBox(width:60,),
                   Container(
                     child:Expanded(
-                      child: RaisedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Categories()));},
+                      child: RaisedButton(onPressed: (){Navigator.pushNamed(context, Categories.id);},
                         child: Text('View All',
                           style: TextStyle(
                             fontSize: 17,
@@ -198,6 +196,8 @@ class _MainpageeState extends State<Mainpagee> {
                   ),
                 ],
               ),
+
+
               // genres
               SingleChildScrollView(scrollDirection: Axis.horizontal,
                 child: Row(
@@ -207,7 +207,7 @@ class _MainpageeState extends State<Mainpagee> {
                     Stack(
                       children: [
                         MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          onPressed: (){Navigator.pushNamed(context, Songlist.id);},
                           child: Container(
                             padding: EdgeInsets.all(5.0),
                             height: 135.0,
@@ -244,9 +244,9 @@ class _MainpageeState extends State<Mainpagee> {
                       children: [
                         MaterialButton(
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));
+                            Navigator.pushNamed(context, Songlist.id);
                             print(i);
-                          },
+                            },
                           child: Container(
                             padding: EdgeInsets.all(5),
                             height: 135.0,
@@ -283,7 +283,7 @@ class _MainpageeState extends State<Mainpagee> {
                     Stack(
                       children: [
                         MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          onPressed: (){Navigator.pushNamed(context, Songlist.id);},
                           child: Container(
                             padding: EdgeInsets.all(5),
                             height: 135.0,
@@ -320,7 +320,7 @@ class _MainpageeState extends State<Mainpagee> {
                     Stack(
                       children: [
                         MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          onPressed: (){Navigator.pushNamed(context, Songlist.id);},
                           child: Container(
                             padding: EdgeInsets.all(5),
                             height: 135.0,
@@ -357,7 +357,7 @@ class _MainpageeState extends State<Mainpagee> {
                     Stack(
                       children: [
                         MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          onPressed: (){Navigator.pushNamed(context, Songlist.id);},
                           child: Container(
                             padding: EdgeInsets.all(5),
                             height: 135.0,
@@ -393,7 +393,7 @@ class _MainpageeState extends State<Mainpagee> {
                     Stack(
                       children: [
                         MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          onPressed: (){Navigator.pushNamed(context, Songlist.id);},
                           child: Container(
                             padding: EdgeInsets.all(5),
                             height: 135.0,
@@ -429,357 +429,87 @@ class _MainpageeState extends State<Mainpagee> {
                   ],
                 ),
               ),
-              SizedBox(height:25.0),
-              Row(
-                children: [
-                  SizedBox(height: 120.0,),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
-                    child: Icon(Icons.format_list_bulleted_sharp,
-                      color: Color(0xFF9AA5B1),
 
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: 20.0),
-                    child: Text('Songs',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFF5F7FA),
-
-                      ),
-                    ),
-                  ),
-                  SizedBox(width:105,),
-                  Container(
-                    child:Expanded(
-                      child: RaisedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Categories()));},
-                        child: Text('View All',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFF5F7FA),), ),
-                        color: Color(0xFF52606D),
-                        padding: EdgeInsets.only(top:10,bottom: 10),
-                      ),
-                    ),
-                    padding: EdgeInsets.only(left: 40),
-                  ),
-                ],
-              ),
-
-              SingleChildScrollView(scrollDirection: Axis.horizontal,
+//playmusic bar(mad love)
+              SizedBox(height: 50.0,),
+              Container(
+                color: playmusiccolor,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(width: 10,),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
+                    Container(
+                      padding: EdgeInsets.only(left: 20.0),
+                      height: 70.0,
+                      width: 50.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('images/default_img.jpg',),
                         ),
-                        SizedBox(height: 10),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('SONG1',
-
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
+                        border: Border.all(
+                          width: 4,
+                          color: Color(0xFF9AA5B1),
                         ),
-                      ],
+                      ),
                     ),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));
-                            print(i);
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: TextButton(
+                        onPressed: (){Navigator.pushNamed(context, Song.id);},
+                        child: Text('Infinity',
+                          style: TextStyle(
+
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFFF5F7FA),
                           ),
                         ),
-                        SizedBox(height: 10,),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('SONG2',
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-
-
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
-                        ),
-                        SizedBox(height: 10,),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('SONG3',
-
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-
-                            ),
-                          ),
-                        ),
-                      ],
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.only(left: 70.0),
+                      child: Icon(Icons.arrow_left,color: Color(0xFF9AA5B1),),
                     ),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
-                        ),
-                        SizedBox(height: 10,),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('SONG4',
-
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
-                        ),
-                        SizedBox(height: 10,),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('SONG5',
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
+                    Expanded(child:
+                    Padding(
+                      padding: const EdgeInsets.only(left: 50.0),
+                      child: Icon(Icons.pause,color: Color(0xFF9AA5B1),),
+                    ),
+                    ),
 
-                            ),
-                          ),
-                        ),
-                      ],
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.only(left: 30.0),
+                      child: Icon(Icons.arrow_right,color: Color(0xFF9AA5B1),),
                     ),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
-                        ),
-                        SizedBox(height: 10,),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('SONG6',
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
-                    SizedBox(width: 10,),
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.only(left: 5.0),
+                      child: Icon(Icons.close,color: Color(0xFF9AA5B1),),
+                    ),
+                    ),
                   ],
                 ),
               ),
-
-//playmusic bar(mad love)
-            SizedBox(height: 100),
-
-
             ],
           ),
         ),
       ),
 
-      bottomSheet: Container(
-        color: playmusiccolor,
-        child: Row(
-          children: [
-            Container(
-              padding: EdgeInsets.only(left: 20.0),
-              height: 60.0,
-              width: 50.0,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('images/default_img.jpg',),
-                ),
-                border: Border.all(
-                  width: 4,
-                  color: Color(0xFF9AA5B1),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 10.0),
-              child: TextButton(
-                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Song()));},
-                child: Text('Infinity',
-                  style: TextStyle(
-
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFF5F7FA),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(child: Padding(
-              padding: const EdgeInsets.only(left: 70.0),
-              child: Icon(Icons.arrow_left,color: Color(0xFF9AA5B1),),
-            ),
-            ),
-            Expanded(child:
-            Padding(
-              padding: const EdgeInsets.only(left: 50.0),
-              child: Icon(Icons.pause,color: Color(0xFF9AA5B1),),
-            ),
-            ),
-
-            Expanded(child: Padding(
-              padding: const EdgeInsets.only(left: 30.0),
-              child: Icon(Icons.arrow_right,color: Color(0xFF9AA5B1),),
-            ),
-            ),
-            Expanded(child: Padding(
-              padding: const EdgeInsets.only(left: 5.0),
-              child: Icon(Icons.close,color: Color(0xFF9AA5B1),),
-            ),
-            ),
-          ],
-        ),
-      ),
       //bottom navigation bar
       bottomNavigationBar: Container(
-        color: naviationbarcolor,
+        color: navigationbarcolor,
         height: 60.0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+
+
             IconButton(
 
               icon: Icon(Icons.home, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Mainpagee()));
+                Navigator.pushNamed(context, Mainpagee.id);
 
               },
             ),
@@ -789,7 +519,7 @@ class _MainpageeState extends State<Mainpagee> {
 
               icon: Icon(Icons.music_note, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Library()));
+                Navigator.pushNamed(context, Library.id);
 
               },
             ),
@@ -797,7 +527,7 @@ class _MainpageeState extends State<Mainpagee> {
 
               icon: Icon(Icons.favorite, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Favorites()));
+                Navigator.pushNamed(context, Favorites.id);
 
               },
             ),
@@ -806,7 +536,7 @@ class _MainpageeState extends State<Mainpagee> {
 
               icon: Icon(Icons.person, color: navigationbariconcolor),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Profilepage()));
+                Navigator.pushNamed(context, Profilepage.id);
 
               },
             ),
