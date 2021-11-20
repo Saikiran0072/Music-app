@@ -6,6 +6,8 @@ import 'colors.dart';
 import 'package:e_commerce/Mainpage.dart';
 import 'Song.dart';
 import 'Extract.dart';
+import 'package:provider/provider.dart';
+import 'user.dart';
 
 class Songlist extends StatefulWidget {
   static const String id = "songlist_screen";
@@ -16,6 +18,10 @@ class Songlist extends StatefulWidget {
 
 class _SonglistState extends State<Songlist> {
 
+  Future songData() async{
+    Provider.of<Data>(context).getData();
+  }
+  
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
