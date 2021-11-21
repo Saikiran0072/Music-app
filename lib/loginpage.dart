@@ -37,7 +37,7 @@ class _MainpageState extends State<Mainpage> {
   bool loading = false;
 
   Future login() async{
-    http.Response response = await http.post(Uri.parse('http://192.168.0.6/new.php'),
+    http.Response response = await http.post(Uri.parse('http://192.168.0.102/login.php'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -187,6 +187,8 @@ class _MainpageState extends State<Mainpage> {
                               else{
                                 Provider.of<Data>(context, listen: false).Email = emailController.text;
                                 Provider.of<Data>(context, listen: false).getData();
+                                Provider.of<Data>(context,listen:false).getsongData();
+                                Provider.of<Data>(context, listen: false).getalbumData();
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
                               }
                             },
