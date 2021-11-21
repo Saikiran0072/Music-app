@@ -3,7 +3,12 @@ import 'colors.dart';
 import 'Song.dart';
 import 'ArtistInfo.dart';
 import 'PlaylistInfo.dart';
+import 'songslist.dart';
+import 'package:provider/provider.dart';
+import 'user.dart';
 
+
+//create song extracted widget
 class buildSong extends StatelessWidget {
   const buildSong({required this.image, required this.song_name, required this.artist_names});
   final String image;
@@ -51,6 +56,8 @@ class buildSong extends StatelessWidget {
   }
 }
 
+
+//create album extracted widget
 class buildContainer extends StatelessWidget {
   const buildContainer({required this.image, required this.album_name});
   final String image;
@@ -83,6 +90,8 @@ class buildContainer extends StatelessWidget {
   }
 }
 
+
+//create playlist extracted widget
 class buildPlaylist extends StatelessWidget {
   const buildPlaylist({required this.image,required this.playlist_name});
   final String image;
@@ -125,6 +134,8 @@ class buildPlaylist extends StatelessWidget {
   }
 }
 
+
+//song suggestions for new playlist extracted widget
 class Suggested_song extends StatelessWidget {
   const Suggested_song({required this.image, required this.song_name});
   final String image;
@@ -183,6 +194,8 @@ class Suggested_song extends StatelessWidget {
   }
 }
 
+
+//likes extracted widget
 class Favorite extends StatelessWidget {
 
   const Favorite({required this.image, required this.song_name, required this.artist_name});
@@ -252,6 +265,60 @@ class Favorite extends StatelessWidget {
         SizedBox(width: 40,),
         IconButton(onPressed: (){}, icon: Icon(Icons.favorite, color: navigationbariconcolor, size: 25,)),
         SizedBox(width: 10,)
+      ],
+    );
+  }
+}
+
+
+//genre extracted widget
+class genre extends StatelessWidget {
+  final String image;
+  final String songgenre;
+  genre({
+    required this.image, required this.songgenre
+});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        MaterialButton(
+          onPressed: (){
+            Provider.of<Data>(context,listen: false).Genre=songgenre;
+
+            Navigator.pushNamed(context, Songlist.id);},
+          child: Container(
+            padding: EdgeInsets.all(5.0),
+            height: 135.0,
+            width: 120.0,
+            child: Image.asset(image,height: 135.0,
+              width: 120.0,),
+          ),
+        ),
+        SizedBox(height: 10),
+        Positioned(
+          left: 25,
+          bottom: 0,
+          child: Container(
+            width: 100.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: lighttextboxcolor,
+            ),
+            padding: EdgeInsets.all(1),
+            child: Text(songgenre,
+
+              style: TextStyle(
+                color: lightfontcolor,
+                fontWeight: FontWeight.bold,
+                fontSize: 18.0,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
       ],
     );
   }
