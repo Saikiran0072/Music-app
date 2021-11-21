@@ -9,6 +9,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'Extract.dart';
+import 'ex.dart';
+import 'package:provider/provider.dart';
+import 'user.dart';
 
 
 class Artist extends StatefulWidget {
@@ -132,28 +135,7 @@ class _ArtistState extends State<Artist> {
                     padding: EdgeInsets.only(left: 20),
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      child: Column(
-                        children: [
-                          buildContainer(image: "images/default_img.jpg",
-                              album_name: "album1"),
-                          SizedBox(height: 20,),
-                          buildContainer(image: "images/default_img.jpg",
-                              album_name: "album2"),
-                          SizedBox(height: 20,),
-                          buildContainer(image: "images/default_img.jpg",
-                              album_name: "album3"),
-                          SizedBox(height: 20,),
-                          buildContainer(image: "images/default_img.jpg",
-                              album_name: "album4"),
-                          SizedBox(height: 20,),
-                          buildContainer(image: "images/default_img.jpg",
-                              album_name: "album5"),
-                          SizedBox(height: 20,),
-                          buildContainer(image: "images/default_img.jpg",
-                              album_name: "album6"),
-
-                        ],
-                      ),
+                      child: albums(albumdata: Provider.of<Data>(context).album_datalist)
                     ),
                   ),
 
