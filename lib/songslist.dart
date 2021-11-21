@@ -8,6 +8,13 @@ import 'Song.dart';
 import 'Extract.dart';
 import 'package:provider/provider.dart';
 import 'user.dart';
+import 'ex.dart';
+
+
+
+
+
+
 
 class Songlist extends StatefulWidget {
   static const String id = "songlist_screen";
@@ -18,10 +25,19 @@ class Songlist extends StatefulWidget {
 
 class _SonglistState extends State<Songlist> {
 
-  Future songData() async{
-    Provider.of<Data>(context).getData();
+
+  List songdata=[];
+  //Future songdata() async{
+  //  songdata= Provider.of<Data>(context).data_list2;
+  //  for(int i =0;i<songdata.length;i++){
+  //    return buildSong(image: 'images/default_img.jpg', song_name: songdata[i]['songname'], artist_names: 'artist_names');
+  //  }
+  //}
+
+  Future text() async{
+    return Text('H E L L OOOOOOOOO');
   }
-  
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -51,7 +67,7 @@ class _SonglistState extends State<Songlist> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 30),
-                        child: Text("xxxxx tracks",
+                        child: Text('${Provider.of<Data>(context).genrename} tracks',
                           style: TextStyle(
                             color: darkfontcolor,
                             fontSize: 40,
@@ -83,31 +99,7 @@ class _SonglistState extends State<Songlist> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 30, left: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      buildSong(
-                          image: "images/default_img.jpg", song_name: "song1", artist_names: "Artist names",),
-                      SizedBox(height: 20,),
-                      buildSong(
-                          image: "images/default_img.jpg", song_name: "song2", artist_names: "Artist names",),
-                      SizedBox(height: 20,),
-                      buildSong(
-                          image: "images/default_img.jpg", song_name: "song3", artist_names: "Artist names",),
-                      SizedBox(height: 20,),
-                      buildSong(
-                          image: "images/default_img.jpg", song_name: "song4", artist_names: "Artist names",),
-                      SizedBox(height: 20,),
-                      buildSong(
-                          image: "images/default_img.jpg", song_name: "song5", artist_names: "Artist names",),
-                      SizedBox(height: 20,),
-                      buildSong(
-                          image: "images/default_img.jpg", song_name: "song6", artist_names: "Artist names",),
-                      SizedBox(height: 20,),
-
-
-                    ],
-                  ),
+                  child: msgTxt(songdata: Provider.of<Data>(context).data_list2,)
                 ),
 
               ],
