@@ -93,11 +93,12 @@ class Data extends ChangeNotifier{
     album_datalist = jsonDecode(response.body);
     for(int i =0;i<data_list2.length;i++){
       print(data_list2[i]);
-      if(data_list2[i]['AlbumId']== album_datalist[i])
+      if(data_list2[i]['AlbumId']== album_datalist[i]);
     }
 
     notifyListeners();
     print(response.statusCode);
   }
 }
+
 
