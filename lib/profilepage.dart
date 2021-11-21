@@ -28,7 +28,7 @@ class _ProfilepageState extends State<Profilepage> {
   bool enable = false;
 
   Future updateData() async{
-    http.Response response = await http.post(Uri.parse('http://192.168.0.6/update.php'),
+    http.Response response = await http.post(Uri.parse('http://192.168.0.102/update.php'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -75,36 +75,36 @@ class _ProfilepageState extends State<Profilepage> {
                 SizedBox(height:30.0),
 
                 Center(
-                    child: Stack(
-                      children: [
-                        Container(
-                          height: 130.0,
-                          width: 130.0,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 4,
-                              color: Theme.of(context).scaffoldBackgroundColor,
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 130.0,
+                        width: 130.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 4,
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              spreadRadius: 2,blurRadius: 10,
+                              color: Colors.black.withOpacity(0.1),
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                spreadRadius: 2,blurRadius: 10,
-                                color: Colors.black.withOpacity(0.1),
-                              ),
 
-                            ],
+                          ],
 
 
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                                image: AssetImage('assets/5.jpg'),
-                            ),
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage('assets/5.jpg'),
                           ),
                         ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
                           height: 40.0,
                           width: 40.0,
                           decoration: BoxDecoration(
@@ -125,10 +125,10 @@ class _ProfilepageState extends State<Profilepage> {
 
 
 
-                          ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height:50.0),
                 Row(
@@ -218,39 +218,39 @@ class _ProfilepageState extends State<Profilepage> {
                     Visibility(
                       visible: !enable,
                       child: Center(
-                          child: Container(
+                        child: Container(
 
 
-                            child: MaterialButton(
-                              padding: EdgeInsets.symmetric(vertical: 10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.update,
-                                  ),
-                                  SizedBox(width: 10,),
-                                  Text("Update", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)
+                          child: MaterialButton(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.update,
+                                ),
+                                SizedBox(width: 10,),
+                                Text("Update", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)
 
-                                ],
-                              ),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-
-
-                              onPressed: () async {
-                                        setState(() {
-                                          enable = !enable;
-                                        });
-                              } ,
-                              color: lighttextboxcolor,
-
-                                  ),
-
-
-
+                              ],
                             ),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+
+
+                            onPressed: () async {
+                              setState(() {
+                                enable = !enable;
+                              });
+                            } ,
+                            color: lighttextboxcolor,
 
                           ),
+
+
+
+                        ),
+
+                      ),
                     ),
                     Visibility(
                       visible: enable,
