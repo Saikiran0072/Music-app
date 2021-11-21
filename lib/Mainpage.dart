@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:e_commerce/ex.dart';
 import 'package:e_commerce/profilepage.dart';
+import 'package:e_commerce/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -15,6 +17,7 @@ import 'songslist.dart';
 import 'Song.dart';
 import 'package:provider/provider.dart';
 import 'loginpage.dart';
+import 'Extract.dart';
 
 
 void main() {
@@ -35,9 +38,9 @@ class _MainpageeState extends State<Mainpagee> {
   void changebanner() async {
     while(true){
       await new Future.delayed(Duration(seconds: 8));
-        setState(() {
-          i = Random().nextInt(7)+1;
-        });
+      setState(() {
+        i = Random().nextInt(7)+1;
+      });
     }
   }
 
@@ -143,7 +146,7 @@ class _MainpageeState extends State<Mainpagee> {
                             height: 200.0,
                             width: 350.0,
                             color: containercolor,
-                            child: Image.asset('images/banner $i.jpg', fit: BoxFit.fill,height:200.0 ,
+                            child: Image.asset('images/banner$i.jpeg', fit: BoxFit.fill,height:200.0 ,
                               width: 300.0,
                             ),
 
@@ -201,233 +204,16 @@ class _MainpageeState extends State<Mainpagee> {
               // genres
               SingleChildScrollView(scrollDirection: Axis.horizontal,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SizedBox(width: 10,),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){Navigator.pushNamed(context, Songlist.id);},
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('POP',
+                  children: <Widget>[
+                    genre(image: 'images/default_img.jpg', songgenre:'POP' ),
+                    genre(image: 'images/default_img.jpg', songgenre:'PARTY'),
+                    genre(image: 'images/default_img.jpg', songgenre:'DANCE'),
+                    genre(image: 'images/default_img.jpg', songgenre:'HIPHOP' ),
+                    genre(image: 'images/default_img.jpg', songgenre:'ROCK' ),
+                    genre(image: 'images/default_img.jpg', songgenre:'WORKOUT' )
 
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){
-                            Navigator.pushNamed(context, Songlist.id);
-                            print(i);
-                            },
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
-                        ),
-                        SizedBox(height: 10,),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('PARTY',
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-
-
-                          ),
-                        ),
-                      ],
-                    ),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){Navigator.pushNamed(context, Songlist.id);},
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
-                        ),
-                        SizedBox(height: 10,),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('DANCE',
-
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){Navigator.pushNamed(context, Songlist.id);},
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
-                        ),
-                        SizedBox(height: 10,),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('HIP-HOP',
-
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){Navigator.pushNamed(context, Songlist.id);},
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
-                        ),
-                        SizedBox(height: 10,),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('ROCK',
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Stack(
-                      children: [
-                        MaterialButton(
-                          onPressed: (){Navigator.pushNamed(context, Songlist.id);},
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            height: 135.0,
-                            width: 120.0,
-                            child: Image.asset('images/default_img.jpg',height: 135.0,
-                              width: 120.0,),
-                          ),
-                        ),
-                        SizedBox(height: 10,),
-                        Positioned(
-                          left: 25,
-                          bottom: 0,
-                          child: Container(
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: lighttextboxcolor,
-                            ),
-                            padding: EdgeInsets.all(1),
-                            child: Text('WORKOUT',
-                              style: TextStyle(
-                                color: lightfontcolor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 10,),
                   ],
-                ),
+                )
               ),
 
 //playmusic bar(mad love)
@@ -548,3 +334,4 @@ class _MainpageeState extends State<Mainpagee> {
 
   }
 }
+
