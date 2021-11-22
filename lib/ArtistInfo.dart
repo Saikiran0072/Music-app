@@ -72,7 +72,7 @@ class _ArtistState extends State<Artist> {
                   ),
                   Container(
                       width: 500,
-                      height: 130,
+                      height: 150,
                       color: containercolor,
                       padding: EdgeInsets.only(left: 20, bottom: 20),
                       alignment: Alignment.bottomLeft,
@@ -82,9 +82,9 @@ class _ArtistState extends State<Artist> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Artist Name",
+                            Text(Provider.of<Data>(context).artist_name,
                               style: TextStyle(
-                                  fontSize: 40,
+                                  fontSize: 35,
                                   color: darkfontcolor
                               ),),
                             Text("xxxxx followers",
