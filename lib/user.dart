@@ -12,7 +12,7 @@ class Data extends ChangeNotifier{
   String songname='';
   int AlbumId=0;
   List album_datalist= [];
-  String albumname='';
+  int artistId=0;
   List artist_datalist=[];
   List id_datalist = [];
   List artist_names = [];
@@ -72,17 +72,20 @@ class Data extends ChangeNotifier{
     notifyListeners();
     print(response.statusCode);
   }
-  String get Album => albumname;
-  set Album(String data){
-    albumname = data;
+  int get Album => artistId;
+  set Album(int data){
+    artistId = data;
     notifyListeners();
   }
 //album data
   Future getalbumData() async{
-    http.Response response = await http.get(Uri.parse('http://192.168.0.6/albumdatasample.php'),
+    http.Response response = await http.post(Uri.parse('http://192.168.0.6/albumdatasample.php'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
+      body: json.encode({
+        "ArtistId": Album
+      })
     );
     album_datalist = jsonDecode(response.body);
 
@@ -97,11 +100,13 @@ class Data extends ChangeNotifier{
       },
     );
     id_datalist = jsonDecode(response.body);
+
     notifyListeners();
     print(response.statusCode);
     print(email);
     print(fullname);
   }
+
 }
 
 
