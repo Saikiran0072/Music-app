@@ -27,16 +27,10 @@ class _SonglistState extends State<Songlist> {
 
 
   List songdata=[];
-  //Future songdata() async{
-  //  songdata= Provider.of<Data>(context).data_list2;
-  //  for(int i =0;i<songdata.length;i++){
-  //    return buildSong(image: 'images/default_img.jpg', song_name: songdata[i]['songname'], artist_names: 'artist_names');
-  //  }
-  //}
 
-  Future text() async{
-    return Text('H E L L OOOOOOOOO');
-  }
+
+
+
 
   Widget build(BuildContext context) {
     return SafeArea(
@@ -98,8 +92,8 @@ class _SonglistState extends State<Songlist> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 30, left: 20),
-                  child: msgTxt(songdata: Provider.of<Data>(context).data_list2,)
+                    padding: const EdgeInsets.only(top: 30, left: 20),
+                    child: msgTxt(songdata: Provider.of<Data>(context).data_list2, albumiddata: Provider.of<Data>(context).id_datalist,)
                 ),
 
               ],
