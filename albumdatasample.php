@@ -1,30 +1,47 @@
-<?php
-
-$servername = "localhost";
-$username = "satvika";
-$password = "abcd";
-$database = "musicdb";
+<?php 
+//Define your Server host name here.
+$HostName = "localhost";
  
-
-$conn = new mysqli($servername, $username, $password, $database);
+//Define your MySQL Database Name here.
+$DatabaseName = "musicdb";
  
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+//Define your Database User Name here.
+$HostUser = "root";
+ 
+//Define your Database Password here.
+$HostPass = ""; 
+ 
+// Creating MySQL Connection.
+$con = mysqli_connect($HostName,$HostUser,$HostPass,$DatabaseName);
+ 
+// Storing the received JSON into $json variable.
+$json = file_get_contents('php://input');
+ 
+// Decode the received JSON and Store into $obj variable.
+$obj = json_decode($json,true);
+ 
+// Getting name from $obj object.
+$ArtistId = $obj['ArtistId'] ?? "";
+
+// Creating SQL query and insert the record into MySQL database table.
+$sql = "SELECT AlbumId,ArtistId,Likes,Albumname, Release_yr FROM album WHERE ArtistId = ('$ArtistId');";
+$result = mysqli_query($con,$sql);
+$count = mysqli_num_rows($result);
+if(!$count){
+	echo json_encode("Error");
 }
- 
+else{
+	
 $data = array(); 
  
-//this is our sql query 
-$sql = "SELECT AlbumId,ArtistId,likes,albumname, release_yr FROM album;";
- 
 //creating an statment with the query
-$stmt = $conn->prepare($sql);
+$stmt = $con->prepare($sql);
  
 //executing that statment
 $stmt->execute();
  
 //binding results for that statment 
-$stmt->bind_result($AlbumId,$ArtistId,$likes,$albumname,$release_yr);
+$stmt->bind_result($AlbumId,$ArtistId,$Likes,$Albumname, $Release_yr);
  
 //looping through all the records
 while($stmt->fetch()){
@@ -33,9 +50,10 @@ while($stmt->fetch()){
  $temp = [
  'AlbumId'=>$AlbumId,
  'ArtistId'=>$ArtistId,
- 'likes'=>$likes,
- 'albumname'=>$albumname,
- 'release_yr'=>$release_yr,
+ 'Likes'=>$Likes,
+ 'Albumname'=>$Albumname,
+ 'Release_yr'=>$Release_yr
+ 
  
  ];
  
@@ -45,3 +63,8 @@ while($stmt->fetch()){
  
 //displaying the data in json format 
 echo json_encode($data);
+
+	}
+
+ mysqli_close($con);
+?>
