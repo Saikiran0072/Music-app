@@ -134,8 +134,8 @@ class _ArtistState extends State<Artist> {
                   Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: Container(
-                      alignment: Alignment.centerLeft,
-                      child: albums(albumdata: Provider.of<Data>(context).album_datalist)
+                        alignment: Alignment.centerLeft,
+                        child: albums(albumdata: Provider.of<Data>(context).album_datalist)
                     ),
                   ),
 
