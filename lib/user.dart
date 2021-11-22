@@ -15,7 +15,7 @@ class Data extends ChangeNotifier{
   int artistId=0;
   List artist_datalist=[];
   List id_datalist = [];
-  List artist_names = [];
+  String artist_name="";
 
   //login data
   Future getData() async{
@@ -72,6 +72,14 @@ class Data extends ChangeNotifier{
     notifyListeners();
     print(response.statusCode);
   }
+
+  String get ArtistName => artist_name;
+  set ArtistName(String data){
+    artist_name = data;
+    notifyListeners();
+  }
+
+
   int get Album => artistId;
   set Album(int data){
     artistId = data;
@@ -88,7 +96,7 @@ class Data extends ChangeNotifier{
       })
     );
     album_datalist = jsonDecode(response.body);
-
+    print(album_datalist);
     notifyListeners();
     print(response.statusCode);
   }
