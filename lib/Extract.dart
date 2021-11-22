@@ -10,17 +10,21 @@ import 'user.dart';
 
 //create song extracted widget
 class buildSong extends StatelessWidget {
-  const buildSong({required this.image, required this.song_name, required this.artist_names});
+  const buildSong({required this.image, required this.song_name, required this.artist_names,required this.artist_id});
   final String image;
   final String song_name;
   final String artist_names;
+  final int artist_id;
+
 
 
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){Navigator.pushNamed(context, Song.id);},
+      onTap: (){
+        Provider.of<Data>(context, listen: false).Album = artist_id;
+        Navigator.pushNamed(context, Song.id);},
       child: Row(
         children: [
           Container(
@@ -37,13 +41,14 @@ class buildSong extends StatelessWidget {
                     image: AssetImage(image),
                   ),
                 ),
-                SizedBox(width: 20,),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(song_name, style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                    GestureDetector(onTap: (){Navigator.pushNamed(context, Artist.id);},child: Text(artist_names, style: TextStyle(fontSize: 15, color: darkfontcolor, fontWeight: FontWeight.bold),)),
-                  ],
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(song_name, style: TextStyle(fontSize: 15,color: darkfontcolor,),),
+                      GestureDetector(onTap: (){Navigator.pushNamed(context, Artist.id);},child: Text(artist_names, style: TextStyle(fontSize: 15, color: darkfontcolor, fontWeight: FontWeight.bold),)),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -59,32 +64,36 @@ class buildSong extends StatelessWidget {
 
 //create album extracted widget
 class buildContainer extends StatelessWidget {
-  const buildContainer({required this.image, required this.album_name});
+  const buildContainer({required this.image, required this.album_name,});
   final String image;
   final String album_name;
 
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.bottomLeft,
-      padding: EdgeInsets.only(left: 8),
-      height: 80,
-      width: 250,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-      child: Row(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 5),
-            child: Image(
-              image: AssetImage(image),
+    return Padding(
+      padding: const EdgeInsets.only(right: 20),
+      child: Container(
+        alignment: Alignment.bottomLeft,
+        padding: EdgeInsets.only(left: 8),
+        height: 80,
+        width: 250,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: Image(
+                image: AssetImage(image),
+              ),
             ),
-          ),
-          Expanded(
-            child: Container(
-                alignment: Alignment.center,
-                child: Text(album_name, style: TextStyle(fontSize: 15,color: darkfontcolor),)),
-          ),
-        ],
+            Expanded(
+              child: Container(
+                  alignment: Alignment.center,
+                  child: Text(album_name, style: TextStyle(fontSize: 15,color: darkfontcolor),)),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -277,7 +286,7 @@ class genre extends StatelessWidget {
   final String songgenre;
   genre({
     required this.image, required this.songgenre
-});
+  });
 
 
   @override
@@ -287,7 +296,6 @@ class genre extends StatelessWidget {
         MaterialButton(
           onPressed: (){
             Provider.of<Data>(context,listen: false).Genre=songgenre;
-
             Navigator.pushNamed(context, Songlist.id);},
           child: Container(
             padding: EdgeInsets.all(5.0),
