@@ -23,7 +23,6 @@ class buildSong extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Provider.of<Data>(context, listen: false).Album = artist_id;
         Navigator.pushNamed(context, Song.id);},
       child: Row(
         children: [
@@ -46,7 +45,12 @@ class buildSong extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(song_name, style: TextStyle(fontSize: 15,color: darkfontcolor,),),
-                      GestureDetector(onTap: (){Navigator.pushNamed(context, Artist.id);},child: Text(artist_names, style: TextStyle(fontSize: 15, color: darkfontcolor, fontWeight: FontWeight.bold),)),
+                      GestureDetector(onTap: (){
+                        Provider.of<Data>(context, listen: false).Album = artist_id;
+                        Provider.of<Data>(context, listen: false).getalbumData();
+                        Provider.of<Data>(context,listen: false).ArtistName = artist_names;
+                        Navigator.pushNamed(context, Artist.id);
+                        },child: Text(artist_names, style: TextStyle(fontSize: 15, color: darkfontcolor, fontWeight: FontWeight.bold),)),
                     ],
                   ),
                 ),
