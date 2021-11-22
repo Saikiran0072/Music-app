@@ -188,8 +188,8 @@ class _MainpageState extends State<Mainpage> {
                                 Provider.of<Data>(context, listen: false).Email = emailController.text;
                                 Provider.of<Data>(context, listen: false).getData();
                                 Provider.of<Data>(context,listen:false).getsongData();
-                                Provider.of<Data>(context, listen: false).getalbumData();
                                 Provider.of<Data>(context,listen: false).getartistData();
+                                Provider.of<Data>(context,listen: false).getalbumData();
                                 Provider.of<Data>(context,listen: false).checkData();
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
                               }
