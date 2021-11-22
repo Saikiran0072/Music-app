@@ -24,7 +24,7 @@ class msgTxt extends StatelessWidget {
           child: ListView.builder(itemCount: songdata.length,itemBuilder: (BuildContext context, int i){
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: buildSong(image: "images/default_img.jpg", song_name: songdata[i]['songname'], artist_names: albumiddata[i]["name"]),
+              child: buildSong(image: "images/default_img.jpg", song_name: songdata[i]['songname'], artist_names: albumiddata[i]["name"], artist_id: albumiddata[i]["ArtistId"],),
             );
           }),
         ),
@@ -50,7 +50,7 @@ class albums extends StatelessWidget {
           child: ListView.builder(itemCount: albumdata.length,itemBuilder: (BuildContext context, int i){
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: buildSong(image: "images/default_img.jpg", song_name: albumdata[i]['albumname'], artist_names: "artists names"),
+              child: buildContainer(image: "images/default_img.jpg", album_name: albumdata[i]['Albumname'], ),
             );
           }),
         ),
