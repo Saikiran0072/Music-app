@@ -8,15 +8,15 @@ import 'Extract.dart';
 //song
 class msgTxt extends StatelessWidget {
   List songdata;
+  List albumiddata;
   msgTxt({
-    required this.songdata
-});
-
+    required this.songdata,
+    required this.albumiddata
+  });
 
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         LimitedBox(
@@ -24,7 +24,7 @@ class msgTxt extends StatelessWidget {
           child: ListView.builder(itemCount: songdata.length,itemBuilder: (BuildContext context, int i){
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: buildSong(image: "images/default_img.jpg", song_name: songdata[i]['songname'], artist_names: "artists names"),
+              child: buildSong(image: "images/default_img.jpg", song_name: songdata[i]['songname'], artist_names: albumiddata[i]["name"]),
             );
           }),
         ),
@@ -39,7 +39,7 @@ class albums extends StatelessWidget {
   List albumdata;
   albums({
     required this.albumdata
-});
+  });
 
   @override
   Widget build(BuildContext context) {
