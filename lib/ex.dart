@@ -9,9 +9,11 @@ import 'Extract.dart';
 class msgTxt extends StatelessWidget {
   List songdata;
   List albumiddata;
+  List followdata;
   msgTxt({
     required this.songdata,
-    required this.albumiddata
+    required this.albumiddata,
+    required this.followdata
   });
 
 
@@ -24,7 +26,7 @@ class msgTxt extends StatelessWidget {
           child: ListView.builder(itemCount: songdata.length,itemBuilder: (BuildContext context, int i){
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: buildSong(image: "images/default_img.jpg", song_name: songdata[i]['songname'], artist_names: albumiddata[i]["name"], artist_id: albumiddata[i]["ArtistId"],),
+              child: buildSong(image: "images/default_img.jpg", song_name: songdata[i]['songname'], artist_names: albumiddata[i]["name"], artist_id: albumiddata[i]["ArtistId"],followers: followdata[i]["followers"],),
             );
           }),
         ),
@@ -37,8 +39,9 @@ class msgTxt extends StatelessWidget {
 class albums extends StatelessWidget {
 
   List albumdata;
+
   albums({
-    required this.albumdata
+    required this.albumdata,
   });
 
   @override
@@ -50,7 +53,7 @@ class albums extends StatelessWidget {
           child: ListView.builder(itemCount: albumdata.length,itemBuilder: (BuildContext context, int i){
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: buildContainer(image: "images/default_img.jpg", album_name: albumdata[i]['Albumname'], ),
+              child: buildContainer(image: "images/default_img.jpg", album_name: albumdata[i]['albumname'], ),
             );
           }),
         ),
