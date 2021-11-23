@@ -15,7 +15,9 @@ class Data extends ChangeNotifier{
   int artistId=0;
   List artist_datalist=[];
   List id_datalist = [];
+  List artist_follow = [];
   String artist_name="";
+  int followers =0;
 
   //login data
   Future getData() async{
@@ -79,6 +81,12 @@ class Data extends ChangeNotifier{
     notifyListeners();
   }
 
+  int get Follow => followers;
+  set Follow(int data){
+    followers = data;
+    notifyListeners();
+  }
+
 
   int get Album => artistId;
   set Album(int data){
@@ -96,7 +104,7 @@ class Data extends ChangeNotifier{
       })
     );
     album_datalist = jsonDecode(response.body);
-    print(album_datalist);
+    print(Album);
     notifyListeners();
     print(response.statusCode);
   }
@@ -113,6 +121,19 @@ class Data extends ChangeNotifier{
     print(response.statusCode);
     print(email);
     print(fullname);
+  }
+
+  Future getfollow() async{
+    http.Response response = await http.get(Uri.parse('http://192.168.0.6/follow.php'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    artist_follow = jsonDecode(response.body);
+
+    notifyListeners();
+    print(response.statusCode);
+    print(artist_follow);
   }
 
 }
