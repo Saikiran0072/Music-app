@@ -10,11 +10,12 @@ import 'user.dart';
 
 //create song extracted widget
 class buildSong extends StatelessWidget {
-  const buildSong({required this.image, required this.song_name, required this.artist_names,required this.artist_id});
+  const buildSong({required this.image, required this.song_name, required this.artist_names,required this.artist_id, required this.followers});
   final String image;
   final String song_name;
   final String artist_names;
   final int artist_id;
+  final int followers;
 
 
 
@@ -49,6 +50,7 @@ class buildSong extends StatelessWidget {
                         Provider.of<Data>(context, listen: false).Album = artist_id;
                         Provider.of<Data>(context, listen: false).getalbumData();
                         Provider.of<Data>(context,listen: false).ArtistName = artist_names;
+                        Provider.of<Data>(context,listen: false).Follow = followers;
                         Navigator.pushNamed(context, Artist.id);
                         },child: Text(artist_names, style: TextStyle(fontSize: 15, color: darkfontcolor, fontWeight: FontWeight.bold),)),
                     ],
