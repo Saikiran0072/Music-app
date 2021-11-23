@@ -191,6 +191,7 @@ class _MainpageState extends State<Mainpage> {
                                 Provider.of<Data>(context,listen: false).getartistData();
                                 Provider.of<Data>(context,listen: false).getalbumData();
                                 Provider.of<Data>(context,listen: false).checkData();
+                                Provider.of<Data>(context, listen: false).getfollow();
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
                               }
                             },
