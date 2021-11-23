@@ -27,11 +27,6 @@ class _SonglistState extends State<Songlist> {
 
 
   List songdata=[];
-
-
-
-
-
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -93,7 +88,7 @@ class _SonglistState extends State<Songlist> {
                 ),
                 Padding(
                     padding: const EdgeInsets.only(top: 30, left: 20),
-                    child: msgTxt(songdata: Provider.of<Data>(context).data_list2, albumiddata: Provider.of<Data>(context).id_datalist,)
+                    child: msgTxt(songdata: Provider.of<Data>(context).data_list2, albumiddata: Provider.of<Data>(context).id_datalist, followdata: Provider.of<Data>(context).artist_follow,)
                 ),
 
               ],
