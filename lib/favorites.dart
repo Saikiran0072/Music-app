@@ -6,7 +6,10 @@ import 'Mainpage.dart';
 import 'colors.dart';
 import 'Extract.dart';
 import 'Song.dart';
-
+import 'ex.dart';
+import 'package:provider/provider.dart';
+import 'user.dart';
+import 'songslist.dart';
 
 
 void main() {
@@ -42,7 +45,7 @@ class _FavoritesState extends State<Favorites> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.pushNamed(context, Mainpagee.id);
+            Navigator.pushNamed(context, Songlist.id);
           },
           icon: Icon(
             Icons.arrow_back_ios_rounded,
@@ -53,35 +56,9 @@ class _FavoritesState extends State<Favorites> {
       ),
 
       body: SingleChildScrollView(
-        child: SafeArea(
-          child: Expanded(
-            child: Container(
-              margin: EdgeInsets.only(top: 0.0),
-              child: Column(
-                children: <Widget> [
-                  SizedBox(height: 70,),
-                  Favorite(image: "images/default_img.jpg", song_name: "song name", artist_name: "artist name"),
-                  SizedBox(height:20,),
-                  Favorite(image: "images/default_img.jpg", song_name: "song name", artist_name: "artist name"),
-                  SizedBox(height:20,),
-                  Favorite(image: "images/default_img.jpg", song_name: "song name", artist_name: "artist name"),
-                  SizedBox(height:20,),
-                  Favorite(image: "images/default_img.jpg", song_name: "song name", artist_name: "artist name"),
-                  SizedBox(height:20,),
-                  Favorite(image: "images/default_img.jpg", song_name: "song name", artist_name: "artist name"),
-                  SizedBox(height:20,),
-                  Favorite(image: "images/default_img.jpg", song_name: "song name", artist_name: "artist name"),
-                  SizedBox(height:20,),
-
-
-
-
-                ],
-              ),
-            ),
-
-          ),
-        ),
+        child: Padding(
+          padding: EdgeInsets.only(top: 30),
+            child: Favorite_page(favdata: Provider.of<Data>(context).favList, albumdata: Provider.of<Data>(context).id_datalist, followdata: Provider.of<Data>(context).artist_follow,))
 
       ),
     );
