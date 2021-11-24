@@ -408,15 +408,14 @@ class genre extends StatelessWidget {
 }
 
 class songPage extends StatefulWidget {
-  songPage({required this.playing,required this.position, required this.slider, required this.duration, required this.songname, required this.artistname, required this.image});
+  songPage({required this.playing,required this.position, required this.slider, required this.duration,required this.image});
   late final bool playing;
   final Duration position;
   final Widget slider;
   final String duration;
-  final String songname;
-  final String artistname;
   final String image;
-  late int i = 0;
+  List songnames = ["34+35","Infinity","Black Swan","Gimme More","Good 4 u","I wanna be your slave","Kiss me more","Sweat","Sweet melody"];
+  List artistnames = ["Ariana Grande","One Direction","BTS","Britney Spears","Olivia Rodrigo","Maneskin","Doja Cat","Zayn","Little Mix"];
 
 
   @override
@@ -444,7 +443,7 @@ class _songPageState extends State<songPage> {
 
           Padding(
             padding: EdgeInsets.only(left: 12.0,),
-            child: Text(widget.songname,
+            child: Text(widget.songnames[Provider.of<Data>(context,listen:false ).i],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 19.0,
@@ -471,7 +470,7 @@ class _songPageState extends State<songPage> {
           Center(
             child: Column(
               children: [
-                Text(widget.songname,
+                Text(widget.songnames[Provider.of<Data>(context,listen:false ).i],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32.0,
@@ -479,7 +478,7 @@ class _songPageState extends State<songPage> {
                   ),
                 ),
                 SizedBox(height: 5,),
-                Text(widget.artistname,
+                Text(widget.artistnames[Provider.of<Data>(context,listen:false ).i],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
@@ -553,9 +552,20 @@ class _songPageState extends State<songPage> {
                             child: IconButton(
                               iconSize: 40.0,
                               color: Color(0xFF1CDFCB),
-                              onPressed: (){},
+                              onPressed: (){
+                                if(Provider.of<Data>(context,listen: false).i == 0){
+                                  Provider.of<Data>(context,listen: false).i = Provider.of<Data>(context, listen: false).selectSong.length-1;
+                                }
+                                else{
+                                  Provider.of<Data>(context,listen: false).i--;
+                                }
+                                Provider.of<Data>(context,listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
+                                Provider.of<Data>(context,listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                                Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                              },
                               icon: Icon(
                                 Icons.skip_previous,
+
                               ),),
                           ),
                         ),
@@ -570,28 +580,22 @@ class _songPageState extends State<songPage> {
                             iconSize: 62.0,
                             color: Color(0xFF1CDFCB),
                             onPressed: (){
-                              setState(() {
-                                print(widget.i);
-                                print(Provider.of<Data>(context, listen: false).selectSong[widget.i]);
-                                if(!Provider.of<Data>(context, listen: false).chosenList.contains(Provider.of<Data>(context, listen: false).selectSong[widget.i])){
-                                  setState((){
-                                    print("mingi");
-                                    Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context, listen: false).selectSong[widget.i]);
-                                    print(Provider.of<Data>(context, listen: false).chosenList);
-                                    Provider.of<Data>(context, listen: false).playSound(Provider.of<Data>(context, listen: false).selectSong[widget.i]);
-                                  });
-                                }else{
-                                  setState(() {
-                                    print("yess");
-                                    Provider.of<Data>(context, listen: false).unselectMusic(Provider.of<Data>(context, listen: false).selectSong[widget.i]);
-                                    print(Provider.of<Data>(context, listen: false).chosenList);
-                                    Provider.of<Data>(context, listen: false).pauseSound();
-                                  });
-                                }
-                              });
+                                Provider.of<Data>(context, listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
+                                setState(() {
+                                  if(Provider.of<Data>(context, listen: false).chosenList != Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context, listen: false).i]){
+                                    Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                                    Provider.of<Data>(context, listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                                  }else {
+                                    Provider.of<Data>(context, listen: false)
+                                        .unselectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                                    Provider.of<Data>(context, listen: false)
+                                        .pauseSound();
+                                  }
+                                });
+
 
                             },
-                            icon: Icon(Provider.of<Data>(context, listen: false).chosenList.contains(Provider.of<Data>(context).selectSong[widget.i])?Icons.pause:Icons.play_arrow
+                            icon: Icon(Provider.of<Data>(context, listen: false).chosenList == (Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i])?Icons.pause:Icons.play_arrow
                             ),),
                         ),
                         SizedBox(
@@ -607,11 +611,15 @@ class _songPageState extends State<songPage> {
                               color: Color(0xFF1CDFCB),
                               onPressed: (){
                                 setState(() {
-                                  widget.i = widget.i+1;
-                                  print(widget.i);
-                                 // Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context, listen: false).selectSong[widget.i]);
-                                  print(Provider.of<Data>(context,listen: false).chosenList);
-                                  //Navigator.pushNamed(context, Song.id);
+                                  if(Provider.of<Data>(context,listen: false).i == Provider.of<Data>(context,listen: false).selectSong.length-1){
+                                    Provider.of<Data>(context,listen: false).i = 0;
+                                  }
+                                  else{
+                                    Provider.of<Data>(context,listen: false).i++;
+                                  }
+                                  Provider.of<Data>(context,listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
+                                  Provider.of<Data>(context,listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                                  Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
 
                                 });
                               },
