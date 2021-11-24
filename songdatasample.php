@@ -1,8 +1,8 @@
 <?php
 
 $servername = "localhost";
-$username = "satvika";
-$password = "abcd";
+$username = "root";
+$password = "";
 $database = "musicdb";
  
 
@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 $data = array(); 
  
 //this is our sql query 
-$sql = "SELECT songname, AlbumId FROM song;";
+$sql = "SELECT songname, AlbumId, likes_song, SongId, duration FROM song;";
  
 //creating an statment with the query
 $stmt = $conn->prepare($sql);
@@ -24,7 +24,7 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
  
 //binding results for that statment 
-$stmt->bind_result($songname, $AlbumId);
+$stmt->bind_result($songname, $AlbumId, $likes_song, $SongId, $duration);
  
 //looping through all the records
 while($stmt->fetch()){
@@ -32,7 +32,10 @@ while($stmt->fetch()){
  //pushing fetched data in an array 
  $temp = [
  'songname'=>$songname,
- 'AlbumId'=>$AlbumId
+ 'AlbumId'=>$AlbumId,
+ 'likes_song'=>$likes_song,
+ 'SongId'=>$SongId,
+ 'duration'=>$duration
  ];
  
  //pushing the array inside the hero array 
