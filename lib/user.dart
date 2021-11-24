@@ -24,8 +24,12 @@ class Data extends ChangeNotifier{
   int likes = 0;
   List favList = [];
   List buttonList = [];
-  List selectSong= ["infinity.mp3","black swan.mp3","Gimme More.mp3","good 4 u.mp3", "i wanna be your slave.mp3", "infinity.mp3","kiss me more.mp3","sweat.mp3","sweet melody.mp3"];
-  List chosenList = [];
+  List nextSong = [];
+  List prevSong = [];
+  List selectSong= ["34+35.mp3","infinity.mp3","black swan.mp3","Gimme More.mp3","good 4 u.mp3", "i wanna be your slave.mp3","kiss me more.mp3","sweat.mp3","sweet melody.mp3"];
+  String chosenList="";
+  String playsong = "";
+  int i = 0;
   final audioPlayer = AudioPlayer();
 
   //login data
@@ -120,6 +124,12 @@ class Data extends ChangeNotifier{
     likes = data;
     notifyListeners();
   }
+
+  int get Var=> i;
+  set Var(int data){
+    i = data;
+    notifyListeners();
+  }
 //album data
   Future getalbumData() async{
     http.Response response = await http.post(Uri.parse('http://192.168.0.6/albumdatasample.php'),
@@ -203,24 +213,29 @@ class Data extends ChangeNotifier{
       }
     }
   }
+  String get Playsong => playsong;
+  set Playsong(String data){
+    playsong = data;
+    notifyListeners();
+  }
 
-  void playSound(String sound) {
+  void playSound(String song) {
     AudioCache cache = new AudioCache(fixedPlayer: audioPlayer);
-    cache.play(sound);
+    cache.play(song);
   }
 
   void pauseSound() {audioPlayer.pause();}
 
-  Future selectMusic(String sound) async {
-    if(!chosenList.contains(sound)){
-      chosenList += [sound];
+  Future selectMusic(String song) async {
+    if(!chosenList.contains(song)){
+      chosenList = song;
     }
 
   }
-  Future unselectMusic(String sound) async {
+  Future unselectMusic(String song) async {
     for(int i =0;i<selectSong.length;i++){
-      if(selectSong[i] == sound){
-        chosenList.removeAt(i);
+      if(selectSong[i] == song){
+        chosenList = "";
       }
     }
   }
