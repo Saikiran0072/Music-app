@@ -26,7 +26,7 @@ class msgTxt extends StatelessWidget {
           child: ListView.builder(itemCount: songdata.length,itemBuilder: (BuildContext context, int i){
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: buildSong(image: "images/default_img.jpg", song_name: songdata[i]['songname'], artist_names: albumiddata[i]["name"], artist_id: albumiddata[i]["ArtistId"],followers: followdata[i]["followers"],),
+              child: buildSong(image: "images/default_img.jpg", song_name: songdata[i]['songname'], artist_names: albumiddata[i]["name"], artist_id: albumiddata[i]["ArtistId"],followers: followdata[i]["followers"], likes: songdata[i]["likes_song"],song_id: songdata[i]["SongId"],),
             );
           }),
         ),
@@ -59,5 +59,34 @@ class albums extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class Favorite_page extends StatelessWidget {
+  List favdata;
+  List albumdata;
+  List followdata;
+  Favorite_page({
+    required this.favdata,
+    required this.albumdata,
+    required this.followdata
+});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        LimitedBox(
+          maxHeight: 600,
+          child: ListView.builder(itemCount: favdata.length,itemBuilder: (BuildContext context, int i){
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Favorite(image: "images/default_img.jpg", song_name: favdata[i]['songname'], artist_names: favdata[i]["artistname"], song_id: favdata[i]["songid"],artist_id: albumdata[i]["ArtistId"],followers: followdata[i]["followers"],),
+            );
+          }),
+        ),
+      ],
+    );
+
   }
 }
