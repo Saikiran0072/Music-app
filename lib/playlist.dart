@@ -5,6 +5,10 @@ import 'Library.dart';
 import 'colors.dart';
 import 'savedplaylist.dart';
 import 'Mainpage.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'user.dart';
 
 
 
@@ -13,9 +17,33 @@ void main() {
     home: Createplaylist(),
   ));
 }
-class Createplaylist extends StatelessWidget {
+class Createplaylist extends StatefulWidget {
   static const String id = "playlist_screen";
   const Createplaylist({Key? key}) : super(key: key);
+
+  @override
+  State<Createplaylist> createState() => _CreateplaylistState();
+}
+
+class _CreateplaylistState extends State<Createplaylist> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _autoValidate = false;
+  final playlistController = TextEditingController();
+  String message = "";
+
+  Future playlistInfo() async{
+    http.Response response = await http.post(Uri.parse('http://192.168.0.6/playlist.php'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body:json.encode({
+          "playlistname": playlistController.text,
+        }));
+    message = response.body;
+    print(message);
+    print(response.statusCode);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,22 +73,27 @@ class Createplaylist extends StatelessWidget {
               child: Neumorphic(
 
                 margin: EdgeInsets.fromLTRB(0, 0  , 30, 0),
-                child: TextField(decoration: InputDecoration(
-                  hintText: 'Playlist Name' ,
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color:navigationbariconcolor),
+                child: Form(
+                  key: _formKey,
+                  child: TextFormField(
+                    controller: playlistController,
+                    decoration: InputDecoration(
+                    hintText: 'Playlist Name' ,
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color:navigationbariconcolor),
+                    ),
+                    fillColor: Color(0xFF9AA5B1),
+                    filled: true,
+                    border: UnderlineInputBorder(),
+                    labelStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,color: Colors.black
+                    ),
                   ),
-                  fillColor: Color(0xFF9AA5B1),
-                  filled: true,
-                  border: UnderlineInputBorder(),
-                  labelStyle: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,color: Colors.black
-                  ),
-                ),
-                  cursorColor: Colors.black,
+                    cursorColor: Colors.black,
 
 
+                  ),
                 ),
                 style: NeumorphicStyle(
                     shape: NeumorphicShape.concave,
@@ -116,7 +149,21 @@ class Createplaylist extends StatelessWidget {
 
 
 
-                    onPressed: () {Navigator.pushNamed(context, Playlist.id);} ,
+                    onPressed: () async{
+                      setState(() {
+                        if (_formKey.currentState!.validate()) {
+                          _autoValidate = true;
+                        }
+                      });
+                      print(playlistController.text);
+                      await playlistInfo();
+                      if(message == "\"Success\""){
+                        print("yessss");
+                        Provider.of<Data>(context,listen: false).getPlaylistInfo();
+                        Provider.of<Data>(context,listen: false).Playlistname = playlistController.text;
+                        Navigator.pushNamed(context, Playlist.id);
+                      }
+                      },
                     color: containercolor,
 
 
