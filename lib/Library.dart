@@ -35,7 +35,7 @@ class Library extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, Mainpagee.id);
           },
-          icon: Icon(Icons.arrow_back_ios_rounded),
+          icon: Icon(Icons.arrow_back_ios_rounded,color:arrowcolor),
         ),
         title: Provider.of<Data>(context,listen: false).addtoplaylist?Text('Select playlist') : Text("Your library"),
         centerTitle: true,
@@ -43,8 +43,8 @@ class Library extends StatelessWidget {
 
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        child: playlist(playlist_info: Provider.of<Data>(context,listen: false).playlistData)
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          child: playlist(playlist_info: Provider.of<Data>(context,listen: false).playlistData)
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
