@@ -47,7 +47,7 @@ class _MainpageeState extends State<Mainpagee> {
 
 
   Future searchfordata() async{
-    http.Response response = await http.post(Uri.parse('http://192.168.0.6/searchdata.php'),
+    http.Response response = await http.post(Uri.parse('http:// 192.168.0.102/searchbar.php'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -253,7 +253,7 @@ class _MainpageeState extends State<Mainpagee> {
                             height: 200.0,
                             width: 350.0,
                             color: containercolor,
-                            child: Image.asset('images/banner $i.jpg', fit: BoxFit.fill,height:200.0 ,
+                            child: Image.asset('images/banner$i.jpeg', fit: BoxFit.fill,height:200.0 ,
                               width: 300.0,
                             ),
 
@@ -271,13 +271,6 @@ class _MainpageeState extends State<Mainpagee> {
               Row(
                 children: [
                   SizedBox(height: 120.0,),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
-                    child: Icon(Icons.format_list_bulleted_sharp,
-                      color: Color(0xFF9AA5B1),
-
-                    ),
-                  ),
                   Container(
                     padding: EdgeInsets.only(left: 20.0),
                     child: Text('Categories',
@@ -302,8 +295,9 @@ class _MainpageeState extends State<Mainpagee> {
                       genre(image: 'images/p.jpg', songgenre:'PARTY'),
                       genre(image: 'images/dance.jpg', songgenre:'DANCE'),
                       genre(image: 'images/hiphop.jpg', songgenre:'HIPHOP' ),
-                      genre(image: 'images/rock.png', songgenre:'ROCK' ),
-                      genre(image: 'images/w.png', songgenre:'WORKOUT' )
+                      genre(image: 'images/rock.PNG', songgenre:'ROCK' ),
+                      genre(image: 'images/w.PNG', songgenre:'WORKOUT' )
+
 
                     ],
                   )
@@ -311,13 +305,7 @@ class _MainpageeState extends State<Mainpagee> {
               Row(
                 children: [
                   SizedBox(height: 120.0,),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
-                    child: Icon(Icons.format_list_bulleted_sharp,
-                      color: Color(0xFF9AA5B1),
 
-                    ),
-                  ),
                   Container(
                     padding: EdgeInsets.only(left: 20.0),
                     child: Text('Trending Songs',
@@ -377,8 +365,8 @@ class _MainpageeState extends State<Mainpagee> {
                       child: TextButton(
                         onPressed: ()async
                         {
-                        Navigator.pushNamed(context, Song.id);
-                          },
+                          Navigator.pushNamed(context, Song.id);
+                        },
                         child: Text('Infinity',
                           style: TextStyle(
 
@@ -402,27 +390,27 @@ class _MainpageeState extends State<Mainpagee> {
                         // Provider.of<Data>(context,listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
                         // Provider.of<Data>(context,listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
                         // Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                      },icon: Icon(Icons.arrow_left,color: Color(0xFF9AA5B1),size: 30,),),
+                      },icon: Icon(Icons.arrow_left,color: arrowcolor,size: 30,),),
                     ),
                     ),
                     Expanded(child:
                     Padding(
                       padding: const EdgeInsets.only(left: 50.0),
                       child: IconButton(onPressed: () {
-                          Provider.of<Data>(context, listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
-                            if(Provider.of<Data>(context, listen: false).chosenList != Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context, listen: false).i]){
-                              Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                              Provider.of<Data>(context, listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                            }else {
-                              Provider.of<Data>(context, listen: false)
-                                  .unselectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                              Provider.of<Data>(context, listen: false)
-                                  .pauseSound();
-                            }
+                        Provider.of<Data>(context, listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
+                        if(Provider.of<Data>(context, listen: false).chosenList != Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context, listen: false).i]){
+                          Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                          Provider.of<Data>(context, listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                        }else {
+                          Provider.of<Data>(context, listen: false)
+                              .unselectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                          Provider.of<Data>(context, listen: false)
+                              .pauseSound();
+                        }
 
 
-                        },
-                          icon: Icon(Provider.of<Data>(context, listen: false).chosenList == (Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i])?Icons.pause:Icons.play_arrow), iconSize: 30,),
+                      },
+                        icon: Icon(Provider.of<Data>(context, listen: false).chosenList == (Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i])?Icons.pause:Icons.play_arrow), iconSize: 30,color:arrowcolor,),
                     ),
                     ),
 
@@ -439,12 +427,12 @@ class _MainpageeState extends State<Mainpagee> {
                         Provider.of<Data>(context,listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
                         Provider.of<Data>(context,listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
                         Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                      },icon: Icon(Icons.arrow_right,color: Color(0xFF9AA5B1)),),
+                      },icon: Icon(Icons.arrow_right,color: arrowcolor),),
                     ),
                     ),
                     Expanded(child: Padding(
                       padding: const EdgeInsets.only(left: 5.0),
-                      child: Icon(Icons.close,color: Color(0xFF9AA5B1),),
+                      child: Icon(Icons.close,color: arrowcolor,),
                     ),
                     ),
                   ],
