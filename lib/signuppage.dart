@@ -253,7 +253,7 @@ class _SignuppageState extends State<Signuppage> {
                                   _autoValidate = true;
                                 }
                               });
-                              if (passwdController.text == confirmpasswdController.text && (passwdController.text.length >=6 && confirmpasswdController.text.length >=6) && emailController.text.contains(check_pattern)){
+                              if (passwdController.text == confirmpasswdController.text && (passwdController.text.length >=6 && confirmpasswdController.text.length >=6) && emailController.text.contains(check_pattern) && fullNameController.text.contains(RegExp(r'[0-9]'))){
                                 await register();
                                 if(message != "success"){
                                   ScaffoldMessenger.of(context).showSnackBar(
