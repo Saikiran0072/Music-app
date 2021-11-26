@@ -510,7 +510,8 @@ class _songPageState extends State<songPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 image: DecorationImage(
-                  image: AssetImage(Provider.of<Data>(context,listen: false).images[Provider.of<Data>(context,listen:false ).i]),
+                  image: AssetImage(
+                      Provider.of<Data>(context,listen: false).images[Provider.of<Data>(context,listen:false ).i]),
                 ),
                 color: Colors.white,
               ),
@@ -604,15 +605,18 @@ class _songPageState extends State<songPage> {
                               iconSize: 40.0,
                               color: Color(0xFF1CDFCB),
                               onPressed: (){
-                                if(Provider.of<Data>(context,listen: false).i == 0){
-                                  Provider.of<Data>(context,listen: false).i = Provider.of<Data>(context, listen: false).selectSong.length-1;
-                                }
-                                else{
-                                  Provider.of<Data>(context,listen: false).i--;
-                                }
-                                Provider.of<Data>(context,listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
-                                Provider.of<Data>(context,listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                                Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                                setState(() {
+                                  if(Provider.of<Data>(context,listen: false).i == 0){
+                                    Provider.of<Data>(context,listen: false).i = Provider.of<Data>(context, listen: false).selectSong.length-1;
+                                  }
+                                  else{
+                                    Provider.of<Data>(context,listen: false).i--;
+                                  }
+                                  Provider.of<Data>(context,listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
+                                  Provider.of<Data>(context,listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                                  Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                                });
+
                               },
                               icon: Icon(
                                 Icons.skip_previous,
