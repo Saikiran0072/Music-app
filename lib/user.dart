@@ -36,7 +36,7 @@ class Data extends ChangeNotifier{
   String chosenList="";
   String playsong = "";
   String image = "";
-  List images = ["images/34+35.jpg", "images/infinity.png","images/blackswan.jpg","images/gimme more.png","images/good 4 u.png","images/i wanna be your slave.png","images/kiss me more.jpg""images/sweat.jpg","images/sweet melody.jpg"];
+  List images = ["images/34+35.jpg", "images/infinity.png","images/blackswan.jpg","images/gimme more.png","images/good 4 u.png","images/i wanna be your slave.png","images/kiss me more.jpg","images/sweat.jpg","images/sweet melody.jpg"];
   bool addtoplaylist = false;
   int i = 0;
   final audioPlayer = AudioPlayer();
@@ -65,6 +65,11 @@ class Data extends ChangeNotifier{
   String get Email => email;
   set Email(String data){
     email = data;
+    notifyListeners();
+  }
+  String get Fullname => fullname;
+  set Fullname(String data){
+    fullname = data;
     notifyListeners();
   }
   //song data
