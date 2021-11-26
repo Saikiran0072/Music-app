@@ -24,7 +24,7 @@ class Category extends StatelessWidget {
           onPressed: () {
 
             Navigator.pushNamed(context, Song.id);},
-          icon: Icon(Icons.arrow_back_ios_rounded),
+          icon: Icon(Icons.arrow_back_ios_rounded,color:arrowcolor,),
         ),
         centerTitle: true,
         backgroundColor: appbarcolor,
@@ -41,4 +41,3 @@ class Category extends StatelessWidget {
   }
 
 }
-
