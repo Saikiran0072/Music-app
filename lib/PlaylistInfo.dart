@@ -39,12 +39,9 @@ class _PlaylistInfoState extends State<PlaylistInfo> {
                       IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, Library.id);},
-                        icon: Icon(Icons.arrow_back_ios_rounded, color: darkfontcolor,),
+                        icon: Icon(Icons.arrow_back_ios_rounded, color: arrowcolor,),
                       ),
-                      IconButton(
-                        icon: Icon(Icons.more_vert ,color: Color(0xFF1CDFCB), ),
-                        onPressed: () {  },
-                      ),
+
                     ],
                   ),
                 ),
@@ -89,8 +86,8 @@ class _PlaylistInfoState extends State<PlaylistInfo> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 30, left: 20),
-                  child: playlistTxt(playlistData: Provider.of<Data>(context,listen: false).addingSong)
+                    padding: const EdgeInsets.only(top: 30, left: 20),
+                    child: playlistTxt(playlistData: Provider.of<Data>(context,listen: false).addingSong)
                 ),
 
               ],
