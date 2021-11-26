@@ -70,7 +70,7 @@ class Favorite_page extends StatelessWidget {
     required this.favdata,
     required this.albumdata,
     required this.followdata
-  });
+});
 
   @override
   Widget build(BuildContext context) {
@@ -107,8 +107,8 @@ class playlist extends StatelessWidget {
           maxHeight: 500,
           child: ListView.builder(itemCount: playlist_info.length,itemBuilder: (BuildContext context, int i){
             return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: createPlaylist(image: "images/default_img.jpg", playlist_name: playlist_info[i]["playlistname"],playlist_id: playlist_info[i]["PlaylistId"],)
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: createPlaylist(image: "images/default_img.jpg", playlist_name: playlist_info[i]["playlistname"],playlist_id: playlist_info[i]["PlaylistId"],)
             );
           }),
         ),
@@ -129,11 +129,11 @@ class recommendedSongs extends StatelessWidget {
     return Column(
       children: [
         LimitedBox(
-          maxHeight:650,
+          maxHeight: 500,
           child: ListView.builder(itemCount: songdata.length,itemBuilder: (BuildContext context, int i){
             return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Suggested_song(image: "images/default_img.jpg", song_name: songdata[i]["songname"])
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Suggested_song(image: "images/default_img.jpg", song_name: songdata[i]["songname"])
             );
           }),
         ),
@@ -167,5 +167,24 @@ class playlistTxt extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class boxTracks extends StatelessWidget {
+  List data=[];
+  boxTracks({required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children:[LimitedBox(
+        child: ListView.builder(itemCount: data.length,itemBuilder: (BuildContext context, int i){
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: genre(image: "images/default_img.jpg", songgenre: data[i],),
+          );
+        }),
+      ),
+    ]);
   }
 }
