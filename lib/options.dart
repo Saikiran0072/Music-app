@@ -8,8 +8,8 @@ import 'loginpage.dart';
 import 'profilepage.dart';
 import 'savedplaylist.dart';
 import 'colors.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'main.dart';
+import 'package:provider/provider.dart';
+import 'user.dart';
 import '2nd page.dart';
 
 
@@ -40,7 +40,6 @@ class _OptionsState extends State<Options> {
         children: [
           Row(
             children: [
-
               Container(
                 margin: EdgeInsets.only(left: 30.0,top: 40.0),
                 height: 70.0,
@@ -62,10 +61,9 @@ class _OptionsState extends State<Options> {
                 child: Column(
 
                   children: [
-                    SizedBox(height: 60,),
                     Container(
                       margin: EdgeInsets.only(left: 30.0,top: 40.0),
-                      child: Text('User Name',
+                      child: Text(Provider.of<Data>(context,listen: false).Fullname,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20.0,
@@ -87,14 +85,13 @@ class _OptionsState extends State<Options> {
                   ],
                 ),
               ),
-
               Expanded(
                 child: Container(
                     child:IconButton(
 
                       onPressed: () {Navigator.pushNamed(context, Mainpagee.id);},
                       color: Colors.white,
-                      icon: const Icon(Icons.close,color:arrowcolor),
+                      icon: const Icon(Icons.close),
                       alignment: Alignment.topRight,
                     )),
               )
@@ -119,7 +116,6 @@ class _OptionsState extends State<Options> {
                 ),
 
               ),
- //edit profile
               Container(
                 margin: EdgeInsets.only(left: 30.0),
 
@@ -154,7 +150,6 @@ class _OptionsState extends State<Options> {
                 ),
 
               ),
- //library
               Container(
                 margin: EdgeInsets.only(left: 30.0),
                 child: Text('Library',
@@ -188,7 +183,6 @@ class _OptionsState extends State<Options> {
                 ),
 
               ),
- //favorites
               Container(
                 margin: EdgeInsets.only(left: 30.0),
                 child: Text('Favorite',
@@ -223,7 +217,6 @@ class _OptionsState extends State<Options> {
                 ),
 
               ),
- //share your profile
               Container(
                 margin: EdgeInsets.only(left: 30.0),
                 child: Text('Share your Profile',
@@ -250,10 +243,7 @@ class _OptionsState extends State<Options> {
               onPressed: () {
                 Navigator.pushNamed(context, Login.id);
 
-
-
-              },
-//logout
+                },
               child: Text('Log Out',
                   style: TextStyle(
                     fontSize: 20.0,
@@ -292,3 +282,4 @@ class _OptionsState extends State<Options> {
 
   }
 }
+
