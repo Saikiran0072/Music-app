@@ -1,4 +1,5 @@
 
+
 import 'dart:convert';
 
 import 'package:e_commerce/colors.dart';
@@ -59,7 +60,7 @@ class _ProfilepageState extends State<Profilepage> {
             onPressed: () {
               Navigator.pushNamed(context, Options.id);
             },
-            icon: Icon(Icons.arrow_back_ios_rounded, color: darkfontcolor,),
+            icon: Icon(Icons.arrow_back_ios_rounded, color: arrowcolor,),
           ),
         ),
 
