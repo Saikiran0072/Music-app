@@ -96,6 +96,23 @@ class _SongState extends State<Song> {
             icon: Icon(Icons.more_vert_outlined,),
             color: Color(0xFF1CDFCB),
             onPressed: () {
+              setState(() {
+                Provider.of<Data>(context,listen: false).Songname = Provider.of<Data>(context,listen: false).songnames[Provider.of<Data>(context,listen:false ).i];
+                Provider.of<Data>(context,listen: false).ArtistName = Provider.of<Data>(context,listen: false).artistnames[Provider.of<Data>(context,listen:false ).i];
+                for(int i =0;i<Provider.of<Data>(context,listen: false).id_datalist.length;i++){
+                  if(Provider.of<Data>(context,listen: false).id_datalist[i]["name"] == Provider.of<Data>(context,listen: false).ArtistName ){
+                    Provider.of<Data>(context,listen: false).Album = Provider.of<Data>(context,listen: false).id_datalist[i]["ArtistId"];
+                  }
+                }
+                Provider.of<Data>(context,listen: false).getfollow();
+                for(int i =0;i<Provider.of<Data>(context,listen: false).artist_follow.length;i++){
+                  if(Provider.of<Data>(context,listen: false).artist_follow[i]["ArtistId"] == Provider.of<Data>(context,listen: false).Album ){
+                    Provider.of<Data>(context,listen: false).Follow = Provider.of<Data>(context,listen: false).artist_follow[i]["followers"];
+                  }
+                }
+                print(Provider.of<Data>(context,listen: false).Album);
+                Provider.of<Data>(context,listen: false).getalbumData();
+              });
               Navigator.pushNamed(context, Category.id);
             },),
         ],
