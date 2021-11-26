@@ -91,7 +91,7 @@ class _OptionsState extends State<Options> {
 
                       onPressed: () {Navigator.pushNamed(context, Mainpagee.id);},
                       color: Colors.white,
-                      icon: const Icon(Icons.close),
+                      icon: const Icon(Icons.close,color:arrowcolor),
                       alignment: Alignment.topRight,
                     )),
               )
@@ -243,7 +243,7 @@ class _OptionsState extends State<Options> {
               onPressed: () {
                 Navigator.pushNamed(context, Login.id);
 
-                },
+              },
               child: Text('Log Out',
                   style: TextStyle(
                     fontSize: 20.0,
@@ -282,4 +282,3 @@ class _OptionsState extends State<Options> {
 
   }
 }
-
