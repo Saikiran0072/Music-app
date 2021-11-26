@@ -1,3 +1,4 @@
+import 'package:e_commerce/ex.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -5,6 +6,8 @@ import 'Library.dart';
 import 'Mainpage.dart';
 import 'colors.dart';
 import 'Extract.dart';
+import 'package:provider/provider.dart';
+import 'user.dart';
 
 
 void main() {
@@ -89,26 +92,7 @@ class Addsong extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20, right: 20),
                   child: Container(
                     alignment: Alignment.centerLeft,
-                    child: Column(
-                      children: [
-                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
-                        SizedBox(height: 20,),
-                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
-                        SizedBox(height: 20,),
-                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
-                        SizedBox(height: 20,),
-                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
-                        SizedBox(height: 20,),
-                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
-                        SizedBox(height: 20,),
-                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
-                        SizedBox(height: 20,),
-                        Suggested_song(image: "images/default_img.jpg", song_name: "Vibez"),
-                        SizedBox(height: 40,),
-
-
-                      ],
-                    ),
+                    child: recommendedSongs(songdata: Provider.of<Data>(context,listen:false).data_list2)
                   ),
                 ),
               ],
