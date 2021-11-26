@@ -89,4 +89,83 @@ class Favorite_page extends StatelessWidget {
     );
 
   }
+
+}
+
+class playlist extends StatelessWidget {
+  List playlist_info;
+  playlist({
+    required this.playlist_info,
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        LimitedBox(
+          maxHeight: 500,
+          child: ListView.builder(itemCount: playlist_info.length,itemBuilder: (BuildContext context, int i){
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: createPlaylist(image: "images/default_img.jpg", playlist_name: playlist_info[i]["playlistname"],playlist_id: playlist_info[i]["PlaylistId"],)
+            );
+          }),
+        ),
+      ],
+    );
+  }
+}
+
+class recommendedSongs extends StatelessWidget {
+  List songdata;
+  recommendedSongs({
+    required this.songdata,
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        LimitedBox(
+          maxHeight: 500,
+          child: ListView.builder(itemCount: songdata.length,itemBuilder: (BuildContext context, int i){
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Suggested_song(image: "images/default_img.jpg", song_name: songdata[i]["songname"])
+            );
+          }),
+        ),
+      ],
+    );
+  }
+}
+
+class playlistTxt extends StatelessWidget {
+  List playlistData;
+
+  playlistTxt({
+    required this.playlistData,
+
+
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        LimitedBox(
+          maxHeight: 500,
+          child: ListView.builder(itemCount: playlistData.length,itemBuilder: (BuildContext context, int i){
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: buildSong(image: "images/default_img.jpg", song_name: playlistData[i]["songname"], artist_names: playlistData[i]["name"], artist_id: playlistData[i]["ArtistId"],followers: playlistData[i]["followers"], likes: playlistData[i]["likes"],song_id: playlistData[i]["SongId"],),
+            );
+          }),
+        ),
+      ],
+    );
+  }
 }
