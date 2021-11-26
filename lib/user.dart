@@ -26,9 +26,14 @@ class Data extends ChangeNotifier{
   List buttonList = [];
   List nextSong = [];
   List prevSong = [];
+  List playlistData = [];
+  List addingSong = [];
+  String playlistname = "";
+  int playlistId = 0;
   List selectSong= ["34+35.mp3","infinity.mp3","black swan.mp3","Gimme More.mp3","good 4 u.mp3", "i wanna be your slave.mp3","kiss me more.mp3","sweat.mp3","sweet melody.mp3"];
   String chosenList="";
   String playsong = "";
+  bool addtoplaylist = false;
   int i = 0;
   final audioPlayer = AudioPlayer();
 
@@ -107,6 +112,12 @@ class Data extends ChangeNotifier{
     notifyListeners();
   }
 
+  bool get Add => addtoplaylist;
+  set Add(bool data){
+    addtoplaylist = data;
+    notifyListeners();
+  }
+
   int get Songid => songid;
   set Songid(int data){
     songid = data;
@@ -116,6 +127,18 @@ class Data extends ChangeNotifier{
   String get Songname => songname;
   set Songname(String data){
     songname = data;
+    notifyListeners();
+  }
+
+  String get Playlistname => playlistname;
+  set Playlistname(String data){
+    playlistname = data;
+    notifyListeners();
+  }
+
+  int get PlaylistId => playlistId;
+  set PlaylistId(int data){
+    playlistId = data;
     notifyListeners();
   }
 
@@ -189,6 +212,44 @@ class Data extends ChangeNotifier{
     print("success");
     print(response.statusCode);
   }
+  Future getPlaylistInfo() async{
+    http.Response response = await http.get(Uri.parse('http://192.168.0.6/selectPlaylist.php'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    playlistData = jsonDecode(response.body);
+
+    notifyListeners();
+    print(response.statusCode);
+  }
+
+  Future getAddData() async{
+    http.Response response = await http.get(Uri.parse('http://192.168.0.6/ppdata.php'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    print("woooo");
+    addingSong = jsonDecode(response.body);
+    print(addingSong);
+    notifyListeners();
+    print(response.statusCode);
+  }
+
+  Future playlistSongs() async{
+    http.Response response = await http.post(Uri.parse('http://192.168.0.6/playlistsongs.php'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body:json.encode({
+          "SongId":Songid,
+          "PlaylistId": PlaylistId
+        }));
+    print(response.statusCode);
+  }
+
+
   Future favSong() async{
     favList += [{"songname" : Songname, "artistname" : ArtistName, "songid": Songid, "artist_id": artistId}];
   }
