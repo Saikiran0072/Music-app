@@ -340,6 +340,7 @@ class genre extends StatelessWidget {
         MaterialButton(
           onPressed: (){
             Provider.of<Data>(context,listen: false).Genre=songgenre;
+
             Navigator.pushNamed(context, Songlist.id);},
           child: Container(
             padding: EdgeInsets.all(5.0),
@@ -376,13 +377,96 @@ class genre extends StatelessWidget {
   }
 }
 
+class songCategories extends StatefulWidget {
+  final String songname;
+  songCategories({
+     required this.songname
+  });
+
+  @override
+  State<songCategories> createState() => _songCategoriesState();
+}
+
+class _songCategoriesState extends State<songCategories> {
+
+  @override
+  Widget build(BuildContext context) {
+    setState(() {
+      Provider.of<Data>(context,listen: false).Songname = widget.songname;
+      print(Provider.of<Data>(context,listen: false).Songname);
+      switch(Provider.of<Data>(context,listen: false).Songname) {
+        case "34+35": {Provider.of<Data>(context,listen: false).Image = "images/34+35.jpg";}
+        break;
+
+        case "Infinity": {Provider.of<Data>(context,listen: false).Image = "images/infinity.png"; }
+        break;
+
+        case "Black Swan": {Provider.of<Data>(context,listen: false).Image = "images/blackswan.jpg";}
+        break;
+
+        case "Gimme More": {Provider.of<Data>(context,listen: false).Image = "images/gimme more.png";}
+        break;
+        case "Good 4 u": {Provider.of<Data>(context,listen: false).Image = "images/good 4 u.png";}
+        break;
+        case "I wanna be your slave": {Provider.of<Data>(context,listen: false).Image = "images/i wanna be your slave.png";}
+        break;
+        case "Kiss me more": {Provider.of<Data>(context,listen: false).Image = "images/kiss me more.jpg";}
+        break;
+        case "Sweat": {Provider.of<Data>(context,listen: false).Image = "images/sweat.jpg";}
+        break;
+        case "Sweet melody": {Provider.of<Data>(context,listen: false).Image = "images/sweet melody.jpg";}
+        break;
+
+        default: { print("Invalid choice"); }
+        break;
+      }
+    });
+    return Stack(
+      children: [
+        MaterialButton(
+          onPressed: (){
+            Navigator.pushNamed(context, Song.id);},
+          child: Container(
+            padding: EdgeInsets.all(5.0),
+            height: 135.0,
+            width: 120.0,
+            child: Image.asset(Provider.of<Data>(context,listen: false).Image,height: 135.0,
+              width: 120.0,),
+          ),
+        ),
+        SizedBox(height: 10),
+        Positioned(
+          left: 25,
+          bottom: 0,
+          child: Container(
+            width: 100.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: lighttextboxcolor,
+            ),
+            padding: EdgeInsets.all(1),
+            child: Text(widget.songname,
+
+              style: TextStyle(
+                color: lightfontcolor,
+                fontWeight: FontWeight.bold,
+                fontSize: 18.0,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class songPage extends StatefulWidget {
-  songPage({required this.playing,required this.position, required this.slider, required this.duration,required this.image});
+  songPage({required this.playing,required this.position, required this.slider, required this.duration});
   late final bool playing;
   final Duration position;
   final Widget slider;
   final String duration;
-  final String image;
 
 
   @override
@@ -390,6 +474,7 @@ class songPage extends StatefulWidget {
 }
 
 class _songPageState extends State<songPage> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -425,7 +510,7 @@ class _songPageState extends State<songPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 image: DecorationImage(
-                  image: AssetImage(widget.image),
+                  image: AssetImage(Provider.of<Data>(context,listen: false).images[Provider.of<Data>(context,listen:false ).i]),
                 ),
                 color: Colors.white,
               ),
@@ -718,6 +803,14 @@ class buildCategory extends StatefulWidget {
 }
 
 class _buildCategoryState extends State<buildCategory> {
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
