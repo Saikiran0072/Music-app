@@ -31,6 +31,8 @@ class Data extends ChangeNotifier{
   String playlistname = "";
   int playlistId = 0;
   List selectSong= ["34+35.mp3","infinity.mp3","black swan.mp3","Gimme More.mp3","good 4 u.mp3", "i wanna be your slave.mp3","kiss me more.mp3","sweat.mp3","sweet melody.mp3"];
+  List songnames = ["34+35","Infinity","Black Swan","Gimme More","Good 4 u","I wanna be your slave","Kiss me more","Sweat","Sweet melody"];
+  List artistnames = ["Ariana Grande","One Direction","BTS","Britney Spears","Olivia Rodrigo","Maneskin","Doja Cat","Zayn","Little Mix"];
   String chosenList="";
   String playsong = "";
   bool addtoplaylist = false;
