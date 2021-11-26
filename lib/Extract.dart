@@ -1,3 +1,4 @@
+import 'package:e_commerce/savedplaylist.dart';
 import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'Song.dart';
@@ -7,6 +8,8 @@ import 'favorites.dart';
 import 'songslist.dart';
 import 'package:provider/provider.dart';
 import 'user.dart';
+import 'Library.dart';
+import 'Playlist.dart';
 
 
 //create song extracted widget
@@ -34,6 +37,7 @@ class _buildSongState extends State<buildSong> with AutomaticKeepAliveClientMixi
   bool _isPressed = false;
   @override
   Widget build(BuildContext context) {
+
     super.build(context);
     return GestureDetector(
       onTap: (){
@@ -101,7 +105,17 @@ class _buildSongState extends State<buildSong> with AutomaticKeepAliveClientMixi
 
 
           }, icon: (Provider.of<Data>(context).buttonList.contains(widget.song_id))?Icon(Icons.favorite, color: navigationbariconcolor,size: 25,): Icon(Icons.favorite_outline, color: navigationbariconcolor, size: 25,))),
-          Expanded(child: IconButton(onPressed: (){}, icon: Icon(Icons.add_circle_outline, color: navigationbariconcolor,size: 25)))
+          Expanded(child: IconButton(onPressed: (){
+            Provider.of<Data>(context,listen: false).Add = true;
+            Provider.of<Data>(context,listen: false).Songname = widget.song_name;
+            Provider.of<Data>(context,listen: false).Songid = widget.song_id;
+            Provider.of<Data>(context, listen: false).Album = widget.artist_id;
+            Provider.of<Data>(context, listen: false).getalbumData();
+            Provider.of<Data>(context,listen: false).ArtistName = widget.artist_names;
+            Provider.of<Data>(context,listen: false).Follow = widget.followers;
+            Provider.of<Data>(context,listen: false).Likes = widget.likes;
+            Navigator.pushNamed(context, Library.id);
+          }, icon: Icon(Icons.add_circle_outline, color: navigationbariconcolor,size: 25)))
         ],
       ),
     );
@@ -146,51 +160,6 @@ class buildContainer extends StatelessWidget {
     );
   }
 }
-
-
-//create playlist extracted widget
-class buildPlaylist extends StatelessWidget {
-  const buildPlaylist({required this.image,required this.playlist_name});
-  final String image;
-  final String playlist_name;
-
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){Navigator.pushNamed(context, PlaylistInfo.id);},
-      child: Row(
-        children: [
-          Container(
-            alignment: Alignment.bottomLeft,
-            padding: EdgeInsets.only(left: 8),
-            height: 80,
-            width: 320,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
-            child: Row(
-              children: [
-                Container(
-                  padding:EdgeInsets.symmetric(vertical: 5),
-                  child: Image(
-                    image: AssetImage(image),
-                  ),
-                ),
-                SizedBox(width: 20,),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(playlist_name, style: TextStyle(fontSize: 15,color: darkfontcolor),),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 
 //song suggestions for new playlist extracted widget
 class Suggested_song extends StatelessWidget {
@@ -414,8 +383,6 @@ class songPage extends StatefulWidget {
   final Widget slider;
   final String duration;
   final String image;
-  List songnames = ["34+35","Infinity","Black Swan","Gimme More","Good 4 u","I wanna be your slave","Kiss me more","Sweat","Sweet melody"];
-  List artistnames = ["Ariana Grande","One Direction","BTS","Britney Spears","Olivia Rodrigo","Maneskin","Doja Cat","Zayn","Little Mix"];
 
 
   @override
@@ -423,7 +390,6 @@ class songPage extends StatefulWidget {
 }
 
 class _songPageState extends State<songPage> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -443,7 +409,7 @@ class _songPageState extends State<songPage> {
 
           Padding(
             padding: EdgeInsets.only(left: 12.0,),
-            child: Text(widget.songnames[Provider.of<Data>(context,listen:false ).i],
+            child: Text(Provider.of<Data>(context,listen: false).songnames[Provider.of<Data>(context,listen:false ).i],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 19.0,
@@ -470,7 +436,7 @@ class _songPageState extends State<songPage> {
           Center(
             child: Column(
               children: [
-                Text(widget.songnames[Provider.of<Data>(context,listen:false ).i],
+                Text(Provider.of<Data>(context,listen: false).songnames[Provider.of<Data>(context,listen:false ).i],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32.0,
@@ -478,7 +444,7 @@ class _songPageState extends State<songPage> {
                   ),
                 ),
                 SizedBox(height: 5,),
-                Text(widget.artistnames[Provider.of<Data>(context,listen:false ).i],
+                Text(Provider.of<Data>(context,listen: false).artistnames[Provider.of<Data>(context,listen:false ).i],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
@@ -661,6 +627,223 @@ class _songPageState extends State<songPage> {
 }
 
 
+//create song extracted widget
+class createPlaylist extends StatefulWidget  {
+  const createPlaylist({required this.image, required this.playlist_name, required this.playlist_id});
+  final String image;
+  final String playlist_name;
+  final int playlist_id;
+
+  @override
+  State<createPlaylist> createState() => _createPlaylistState();
+}
+
+class _createPlaylistState extends State<createPlaylist> with AutomaticKeepAliveClientMixin<createPlaylist> {
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
+  bool _isPressed = false;
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return GestureDetector(
+      onTap: (){
+        setState(() {
+          Provider.of<Data>(context,listen: false).PlaylistId = widget.playlist_id;
+          Provider.of<Data>(context,listen: false).Playlistname = widget.playlist_name;
+          Provider.of<Data>(context,listen: false).playlistSongs();
+          Provider.of<Data>(context,listen: false).getAddData();
+          if(Provider.of<Data>(context,listen: false).addtoplaylist){
+            AlertDialog alert = AlertDialog(
+              title: Text("add this song to ${widget.playlist_name}?"),
+              actions: [
+                MaterialButton(onPressed: (){
+                  Navigator.of(context,rootNavigator: true).pop();
+                  Provider.of<Data>(context,listen: false).playlistSongs();
+                  Provider.of<Data>(context,listen: false).getAddData();
+
+                }, child: Text("Yes"),)
+              ],
+            );
+            showDialog(context: context, builder:  (BuildContext context){
+              return alert;
+            });
+            Provider.of<Data>(context,listen: false).Add = false;
+          }else{
+            Navigator.pushNamed(context, PlaylistInfo.id);
+          }
+
+        });
+        },
+
+      child: Container(
+        alignment: Alignment.bottomLeft,
+        padding: EdgeInsets.only(left: 8),
+        height: 80,
+        width: 250,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: containercolor),
+        child: Row(
+          children: [
+            Container(
+              padding:EdgeInsets.symmetric(vertical: 5),
+              child: Image(
+                image: AssetImage(widget.image),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(widget.playlist_name, style: TextStyle(fontSize: 15,color: darkfontcolor,),),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+}
+
+class buildCategory extends StatefulWidget {
+  buildCategory({required this.image, required this.song_name, required this.artist_name});
+  final String image;
+  final String song_name;
+  final String artist_name;
+  @override
+  State<buildCategory> createState() => _buildCategoryState();
+}
+
+class _buildCategoryState extends State<buildCategory> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children:<Widget> [
+          Padding(
+            padding: EdgeInsets.only(top: 20.0,),
+            child: Container(
+              height: 300,
+              width: 250,
+              decoration: BoxDecoration(
+
+                  image: DecorationImage(
+                    image: AssetImage(widget.image),
+                  ),
+                  borderRadius: BorderRadius.circular(20)
+              ),
+
+            ),
+          ),
+          Column(
+            children: [
+              Text(widget.song_name, style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: darkfontcolor
+              ),),
+
+              SizedBox(height: 5,),
+              Text(widget.artist_name,style: TextStyle(
+                  fontSize: 16, fontWeight: FontWeight.bold, color: darkfontcolor
+              ),
+
+              ),
+            ],
+          ) ,
+          //boxs
+          SizedBox(height: 30,),
+          Column(
+            children:<Widget> [
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: Row(
+                  children: [
+                    Container(
+                      child: IconButton(
+                        icon: Icon(Icons.favorite_outline ,color: navigationbariconcolor, ),
+                        onPressed: () {  },
+                      ),
+                    ),
+                    SizedBox(width: 30,),
+                    Text('Like', style: TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.w600, color: darkfontcolor
+                    ), )
+                  ],
+                ),
+              ),
+              SizedBox(height: 20,),
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: Row(
+                  children: [
+                    Container(
+                      child: IconButton(
+                        icon: Icon(Icons.album ,color: navigationbariconcolor, ),
+                        onPressed: () { Navigator.pushNamed(context, Artist.id);},
+                      ),
+                    ),
+                    SizedBox(width: 30,),
+                    Text('View artist', style: TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.w600, color: darkfontcolor
+                    ), )
+                  ],
+                ),
+              ),
+              SizedBox(height: 20,),
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: Row(
+                  children: [
+                    Container(
+                      child: IconButton(
+                        icon: Icon(Icons.share_outlined ,color: navigationbariconcolor , ),
+                        onPressed: () {  },
+                      ),
+                    ),
+                    SizedBox(width: 30,),
+                    Text('Share Your Profile', style: TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.w600, color: darkfontcolor
+                    ), )
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 20,),
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: Row(
+                  children: [
+                    Container(
+                      child: IconButton(
+                        icon: Icon(Icons.headset,color: navigationbariconcolor, ),
+                        onPressed: () {
+                          Provider.of<Data>(context,listen: false).Add = true;
+                          Provider.of<Data>(context,listen: false).Songname = widget.song_name;
+                          Provider.of<Data>(context, listen: false).getalbumData();
+                          Provider.of<Data>(context,listen: false).ArtistName = widget.artist_name;
+                          Navigator.pushNamed(context, Library.id);},
+                      ),
+                    ),
+                    SizedBox(width: 30,),
+                    Text('Add to Playlist', style: TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.w600, color: darkfontcolor
+                    ), )
+                  ],
+                ),
+              ),
+
+
+            ],
+          ),
+
+
+        ]
+    );
+  }
+}
 
 
 
