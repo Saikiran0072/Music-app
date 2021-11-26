@@ -1,4 +1,5 @@
 import 'package:e_commerce/colors.dart';
+import 'package:e_commerce/ex.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/Library.dart';
@@ -6,12 +7,23 @@ import 'Song.dart';
 import 'ArtistInfo.dart';
 import 'Addsong.dart';
 import 'Extract.dart';
+import 'package:provider/provider.dart';
+import 'user.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class PlaylistInfo extends StatelessWidget {
+class PlaylistInfo extends StatefulWidget {
   static const String id = "playlistinfo_screen";
   const PlaylistInfo({Key? key}) : super(key: key);
 
+  @override
+  State<PlaylistInfo> createState() => _PlaylistInfoState();
+}
+
+class _PlaylistInfoState extends State<PlaylistInfo> {
+
   Widget build(BuildContext context) {
+    Provider.of<Data>(context,listen: false).Add = false;
     return SafeArea(
         child: Scaffold(
           backgroundColor: scaffoldbgcolor,
@@ -52,7 +64,7 @@ class PlaylistInfo extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30, left: 20),
-                      child: Text("Playlist xxx",
+                      child: Text(Provider.of<Data>(context,listen: false).playlistname,
                         style: TextStyle(
                           color: darkfontcolor,
                           fontSize: 40,
@@ -78,21 +90,7 @@ class PlaylistInfo extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 30, left: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      buildSong(image: "images/default_img.jpg", song_name: "song1", artist_names: "Artist names", artist_id: 0, followers: 0, likes: 0, song_id: 0,  ),
-                      SizedBox(height: 20,),
-                      buildSong(image: "images/default_img.jpg", song_name: "song2", artist_names: "Artist names", artist_id: 0, followers: 0, likes: 0, song_id: 0,  ),
-                      SizedBox(height: 20,),
-                      buildSong(image: "images/default_img.jpg", song_name: "song3", artist_names: "Artist names", artist_id: 0, followers: 0, likes: 0, song_id: 0,),
-                      SizedBox(height: 20,),
-                      buildSong(image: "images/default_img.jpg", song_name: "song4", artist_names: "Artist names", artist_id: 0, followers: 0, likes: 0, song_id: 0, ),
-                      SizedBox(height: 20,),
-                      buildSong(image: "images/default_img.jpg", song_name: "song5", artist_names: "Artist names", artist_id: 0, followers: 0, likes: 0, song_id: 0, ),
-                      SizedBox(height: 20,),
-                    ],
-                  ),
+                  child: playlistTxt(playlistData: Provider.of<Data>(context,listen: false).addingSong)
                 ),
 
               ],
