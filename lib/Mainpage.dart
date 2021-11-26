@@ -324,109 +324,384 @@ class _MainpageeState extends State<Mainpagee> {
                     ],
                   )
               ),
+Row(
+                children: [
+                  SizedBox(height: 120.0,),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(30.0, 0.0, 0.0, 0.0),
+                    child: Icon(Icons.format_list_bulleted_sharp,
+                      color: Color(0xFF9AA5B1),
 
-//playmusic bar(mad love)
-              SizedBox(height: 50.0,),
-              Container(
-                color: playmusiccolor,
-                child: Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(left: 20.0),
-                      height: 70.0,
-                      width: 50.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('images/default_img.jpg',),
-                        ),
-                        border: Border.all(
-                          width: 4,
-                          color: Color(0xFF9AA5B1),
-                        ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 20.0),
+                    child: Text('Categories',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFF5F7FA),
+
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10.0),
-                      child: TextButton(
-                        onPressed: ()async
-                        {
-                        Navigator.pushNamed(context, Song.id);
-                          },
-                        child: Text('Infinity',
+                  ),
+                  SizedBox(width:60,),
+                  Container(
+                    child:Expanded(
+                      child: RaisedButton(onPressed: (){
+                        Navigator.pushNamed(context, Categories.id);},
+                        child: Text('View All',
                           style: TextStyle(
-
-                            fontSize: 18.0,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFFF5F7FA),
+                            color: Color(0xFFF5F7FA),), ),
+                        color: Color(0xFF52606D),
+                        padding: EdgeInsets.only(top:10,bottom: 10),
+                      ),
+                    ),
+                    padding: EdgeInsets.only(left: 40),
+                  ),
+                ],
+              ),
+
+              SingleChildScrollView(scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(width: 10,),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5.0),
+                            height: 135.0,
+                            width: 120.0,
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
                           ),
                         ),
-                      ),
+                        SizedBox(height: 10),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+                          child: Container(
+                            width: 100.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: lighttextboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('SONG1',
+
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.only(left: 70.0),
-                      child: IconButton(onPressed: (){
-                        print("Yesssssss");
-                        // if(Provider.of<Data>(context,listen: false).i == 0){
-                        //   Provider.of<Data>(context,listen: false).i = Provider.of<Data>(context,listen: false).selectSong.length-1;
-                        // }
-                        // else{
-                        //   Provider.of<Data>(context,listen: false).i--;
-                        // }
-                        // Provider.of<Data>(context,listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
-                        // Provider.of<Data>(context,listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                        // Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                      },icon: Icon(Icons.arrow_left,color: Color(0xFF9AA5B1),size: 30,),),
-                    ),
-                    ),
-                    Expanded(child:
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50.0),
-                      child: IconButton(onPressed: () {
-                          Provider.of<Data>(context, listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
-                            if(Provider.of<Data>(context, listen: false).chosenList != Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context, listen: false).i]){
-                              Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                              Provider.of<Data>(context, listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                            }else {
-                              Provider.of<Data>(context, listen: false)
-                                  .unselectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                              Provider.of<Data>(context, listen: false)
-                                  .pauseSound();
-                            }
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));
+                            print(i);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 135.0,
+                            width: 120.0,
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+                          child: Container(
+                            width: 100.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: lighttextboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('SONG2',
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
 
 
-                        },
-                          icon: Icon(Provider.of<Data>(context, listen: false).chosenList == (Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i])?Icons.pause:Icons.play_arrow), iconSize: 30,),
+                          ),
+                        ),
+                      ],
                     ),
-                    ),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 135.0,
+                            width: 120.0,
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+                          child: Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: lighttextboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('SONG3',
 
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
-                      child: IconButton(onPressed: (){
-                        print("yess");
-                        if(Provider.of<Data>(context,listen: false).i == Provider.of<Data>(context,listen: false).selectSong.length-1){
-                          Provider.of<Data>(context,listen: false).i = 0;
-                        }
-                        else{
-                          Provider.of<Data>(context,listen: false).i++;
-                        }
-                        Provider.of<Data>(context,listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
-                        Provider.of<Data>(context,listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                        Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
-                      },icon: Icon(Icons.arrow_right,color: Color(0xFF9AA5B1)),),
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 135.0,
+                            width: 120.0,
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+                          child: Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: lighttextboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('SONG4',
+
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: Icon(Icons.close,color: Color(0xFF9AA5B1),),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 135.0,
+                            width: 120.0,
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+                          child: Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: lighttextboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('SONG5',
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                    Stack(
+                      children: [
+                        MaterialButton(
+                          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Songlist()));},
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            height: 135.0,
+                            width: 120.0,
+                            child: Image.asset('images/default_img.jpg',height: 135.0,
+                              width: 120.0,),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Positioned(
+                          left: 25,
+                          bottom: 0,
+                          child: Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: lighttextboxcolor,
+                            ),
+                            padding: EdgeInsets.all(1),
+                            child: Text('SONG6',
+                              style: TextStyle(
+                                color: lightfontcolor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                    SizedBox(width: 10,),
                   ],
                 ),
               ),
+
+
+
+
+
+//playmusic bar(mad love)
+              SizedBox(height: 100.0,),
+
             ],
           ),
+        ),
+      ),
+      bottomSheet: Container(
+        color: playmusiccolor,
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(left: 20.0),
+              height: 70.0,
+              width: 50.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('images/default_img.jpg',),
+                ),
+                border: Border.all(
+                  width: 4,
+                  color: Color(0xFF9AA5B1),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: TextButton(
+                onPressed: ()async
+                {
+                  Navigator.pushNamed(context, Song.id);
+                },
+                child: Text('34+35',
+                  style: TextStyle(
+
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFF5F7FA),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(child: Padding(
+              padding: const EdgeInsets.only(left: 70.0),
+              child: IconButton(onPressed: (){
+                print("Yesssssss");
+                // if(Provider.of<Data>(context,listen: false).i == 0){
+                //   Provider.of<Data>(context,listen: false).i = Provider.of<Data>(context,listen: false).selectSong.length-1;
+                // }
+                // else{
+                //   Provider.of<Data>(context,listen: false).i--;
+                // }
+                // Provider.of<Data>(context,listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
+                // Provider.of<Data>(context,listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                // Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+              },icon: Icon(Icons.arrow_left,color: Color(0xFF9AA5B1),size: 30,),),
+            ),
+            ),
+            Expanded(child:
+            Padding(
+              padding: const EdgeInsets.only(left: 50.0),
+              child: IconButton(onPressed: () {
+                Provider.of<Data>(context, listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
+                if(Provider.of<Data>(context, listen: false).chosenList != Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context, listen: false).i]){
+                  Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                  Provider.of<Data>(context, listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                }else {
+                  Provider.of<Data>(context, listen: false)
+                      .unselectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                  Provider.of<Data>(context, listen: false)
+                      .pauseSound();
+                }
+
+
+              },
+                icon: Icon(Provider.of<Data>(context, listen: false).chosenList == (Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i])?Icons.pause:Icons.play_arrow), iconSize: 30,),
+            ),
+            ),
+
+            Expanded(child: Padding(
+              padding: const EdgeInsets.only(left: 30.0),
+              child: IconButton(onPressed: (){
+                print("yess");
+                if(Provider.of<Data>(context,listen: false).i == Provider.of<Data>(context,listen: false).selectSong.length-1){
+                  Provider.of<Data>(context,listen: false).i = 0;
+                }
+                else{
+                  Provider.of<Data>(context,listen: false).i++;
+                }
+                Provider.of<Data>(context,listen: false).Playsong = Provider.of<Data>(context, listen: false).selectSong[Provider.of<Data>(context,  listen: false).i];
+                Provider.of<Data>(context,listen: false).playSound(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+                Provider.of<Data>(context, listen: false).selectMusic(Provider.of<Data>(context,listen: false).selectSong[Provider.of<Data>(context,  listen: false).i]);
+              },icon: Icon(Icons.arrow_right,color: Color(0xFF9AA5B1)),),
+            ),
+            ),
+            Expanded(child: Padding(
+              padding: const EdgeInsets.only(left: 5.0),
+              child: Icon(Icons.close,color: Color(0xFF9AA5B1),),
+            ),
+            ),
+          ],
         ),
       ),
 
@@ -478,8 +753,8 @@ class _MainpageeState extends State<Mainpagee> {
         ),
       ),
 
+
     );
 
   }
 }
-
