@@ -35,6 +35,8 @@ class Data extends ChangeNotifier{
   List artistnames = ["Ariana Grande","One Direction","BTS","Britney Spears","Olivia Rodrigo","Maneskin","Doja Cat","Zayn","Little Mix"];
   String chosenList="";
   String playsong = "";
+  String image = "";
+  List images = ["images/34+35.jpg", "images/infinity.png","images/blackswan.jpg","images/gimme more.png","images/good 4 u.png","images/i wanna be your slave.png","images/kiss me more.jpg""images/sweat.jpg","images/sweet melody.jpg"];
   bool addtoplaylist = false;
   int i = 0;
   final audioPlayer = AudioPlayer();
@@ -80,6 +82,12 @@ class Data extends ChangeNotifier{
   String get Genre => genrename;
   set Genre(String data){
     genrename = data;
+    notifyListeners();
+  }
+
+  String get Image => image;
+  set Image(String data){
+    image = data;
     notifyListeners();
   }
 
