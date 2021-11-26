@@ -49,6 +49,7 @@ class _MainpageState extends State<Mainpage> {
         }));
     print("success");
     message = response.body;
+    print(message);
     print(response.statusCode);
   }
 
@@ -95,7 +96,6 @@ class _MainpageState extends State<Mainpage> {
 //email text field
                     Container(
 
-
                       child: TextFormField(
                         validator: (value){
                           if(value!.isEmpty ){
@@ -105,6 +105,7 @@ class _MainpageState extends State<Mainpage> {
                             return "Enter valid email";
                           }
                         },
+
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(bottom: 30),
                           prefixIcon: Icon(Icons.email),
@@ -119,8 +120,9 @@ class _MainpageState extends State<Mainpage> {
                               fontSize: 30,color: Colors.black
                           ),
                         ),
-                        controller: emailController,
+                        //controller: emailController,
                         cursorColor: Colors.black,
+                        controller: emailController,
 
 
 
@@ -192,6 +194,8 @@ class _MainpageState extends State<Mainpage> {
                                 Provider.of<Data>(context,listen: false).getalbumData();
                                 Provider.of<Data>(context,listen: false).checkData();
                                 Provider.of<Data>(context, listen: false).getfollow();
+                                Provider.of<Data>(context,listen: false).getPlaylistInfo();
+                                Provider.of<Data>(context,listen: false).getAddData();
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Mainpagee()));
                               }
                             },
