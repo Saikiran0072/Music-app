@@ -7,6 +7,8 @@ import 'colors.dart';
 import 'favorites.dart';
 import 'profilepage.dart';
 import 'Mainpage.dart';
+import 'package:provider/provider.dart';
+import 'user.dart';
 
 
 
@@ -62,7 +64,7 @@ class Playlist extends StatelessWidget {
             ),
             SizedBox(height: 30.0,),
             Container(
-              child: Text('My Playlist',
+              child: Text(Provider.of<Data>(context,listen: false).playlistname,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40.0,
@@ -72,17 +74,6 @@ class Playlist extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10.0,),
-            Container(
-              child: Text(' Artist Name',
-                style: TextStyle(
-
-                  fontSize: 15.0,
-                  color: darkfontcolor,
-                ),
-
-
-              ),
-            ),
             SizedBox(height: 30.0,),
             Container(
               child: Text("Let's find some Songs " ,
