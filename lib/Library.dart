@@ -1,4 +1,5 @@
 import 'package:e_commerce/colors.dart';
+import 'package:e_commerce/ex.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -10,6 +11,8 @@ import 'Mainpage.dart';
 import 'songslist.dart';
 import 'PlaylistInfo.dart';
 import 'Extract.dart';
+import 'package:provider/provider.dart';
+import 'user.dart';
 
 
 void main() {
@@ -34,27 +37,19 @@ class Library extends StatelessWidget {
           },
           icon: Icon(Icons.arrow_back_ios_rounded),
         ),
-        title: Text('Your Library'),
+        title: Provider.of<Data>(context,listen: false).addtoplaylist?Text('Select playlist') : Text("Your library"),
         centerTitle: true,
         backgroundColor: appbarcolor,
 
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            buildPlaylist(image: "images/default_img.jpg", playlist_name: "playlist1"),
-            SizedBox(height: 20,),
-            buildPlaylist(image: "images/default_img.jpg", playlist_name: "playlist2"),
-            SizedBox(height: 20,),
-            buildPlaylist(image: "images/default_img.jpg", playlist_name: "playlist3"),
-
-          ],
-        ),
+        child: playlist(playlist_info: Provider.of<Data>(context,listen: false).playlistData)
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {Navigator.pushNamed(context, Createplaylist.id);},
+        onPressed: () {
+          Provider.of<Data>(context,listen: false).Add = false;
+          Navigator.pushNamed(context, Createplaylist.id);},
         child: Icon(Icons.add),
         backgroundColor: navigationbariconcolor,
 
