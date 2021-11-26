@@ -31,7 +31,7 @@ class Category extends StatelessWidget {
       ),
       body:
       SingleChildScrollView(
-        child: buildCategory(image: "images/default_img.jpg", song_name: Provider.of<Data>(context,listen: false).Songname, artist_name: Provider.of<Data>(context,listen: false).ArtistName),
+        child: buildCategory(image: Provider.of<Data>(context,listen: false).images[Provider.of<Data>(context,listen:false ).i], song_name: Provider.of<Data>(context,listen: false).Songname, artist_name: Provider.of<Data>(context,listen: false).ArtistName),
       ),
 
 
